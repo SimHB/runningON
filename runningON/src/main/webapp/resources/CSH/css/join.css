@@ -1,0 +1,127 @@
+body {
+	margin: 0;
+}
+
+header {
+	padding-top: 50px;
+	margin-left: 80px;
+}
+
+header a {
+	text-decoration-line: none;
+	color: white;
+}
+
+.join_space {
+	margin: 30px;
+}
+
+.login {
+	background-color: #FCD397;
+	padding: 30px 10px;
+}
+
+.join a {
+	color: white;
+	text-decoration-line: none;
+	padding: 0px 125px;
+}
+
+.social_login {
+	padding: 30px 125px;
+}
+
+.social_login a {
+	color: white;
+	padding: 0px 10px;
+	text-decoration-line: none;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 8px;
+}
+
+.join1 td {
+	background-color: white;
+	width: 410px;
+	height: 30px;
+	padding: 5px 20px;
+	border: none;
+	border-radius: 8px;
+}
+
+.join_btn {
+	text-align: center; /* 자식 요소를 가운데 정렬 */
+	margin-top: 20px;
+}
+
+.join_btn input {
+	width: 400px;
+	height: 30px;
+	color: #7A7A7A;
+	border: 1px solid #7A7A7A;
+	border-radius: 8px;
+}
+
+.join1 input {
+	border: none;
+	background-color: white;
+	outline: none;
+	width: 70%;
+	height: 100%;
+	border-radius: 8px;
+}
+
+.join1 button {
+	float: right;
+	width: 70px;
+	height: 100%;
+	color: gray;
+	border: none;
+	border-radius: 8px;
+}
+
+.login_space {
+	width: 600px;
+	height: 600px;
+	/* div를 가운데로 */
+	margin: auto;
+	background-color: #FCD397;
+}
+
+.input_join {
+	background-color: white;
+	width: 410px;
+	height: 30px;
+	padding: 5px 20px;
+	border: none;
+	border-radius: 8px;
+}
+
+.join_space join {
+	margin: auto;
+}
+
+.login_box {
+	width: 410px;
+	height: 60px;
+	margin: auto;
+}
+
+.login_button {
+	width: 410px;
+	height: 60px;
+	margin: auto;
+}
+
+.button {
+	display: block;
+	width: 100%;
+	padding: 13px 20px;
+	border-radius: 8px;
+	background-color: #09aa5c;
+	box-sizing: border-box;
+	border: gray;
+}

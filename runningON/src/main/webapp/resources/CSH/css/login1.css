@@ -1,0 +1,58 @@
+header {
+	padding-top: 100px;
+	margin-left: 120px;
+	margin-bottom: 50px;
+}
+
+.login_space {
+	width: 600px;
+    height: 100vh;
+	/* div를 가운데로 */
+	margin: auto;
+	background-color: #FCD397;
+}
+
+.login {
+	padding: 30px 150px;
+}
+
+#login_id{
+	width: 300px;
+	height: 30px;
+	padding: 5px 20px;
+	border: 1px solid lightgray;
+	border-radius: 8px 8px 0 0;
+}
+
+#login_pw{
+	width: 300px;
+	height: 30px;
+	padding: 5px 20px;
+	border: 1px solid lightgray;
+}
+
+#login_btn{
+	width: 341.334px;
+	height: 40px;
+	padding: 5px 20px;
+	border: 1px solid lightgray;
+	border-radius: 0 0 8px 8px;
+}
+
+.join a {
+	color: white;
+	text-decoration-line: none;
+	padding: 0px 125px;
+	
+}
+
+.social_login {
+	padding: 30px 125px;
+	
+}
+
+.social_login a {
+	color: white;
+	padding: 0px 10px;
+	text-decoration-line: none;
+}

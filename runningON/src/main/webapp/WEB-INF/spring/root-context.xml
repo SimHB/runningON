@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 나중에 DB 정보를 입력하는 곳 (공통으로 생성되는 객체를 만드는 공간) -->
+	<!-- MYSQL 접속 정보 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/run_db" />
+		<property name="username" value="admin" />
+		<property name="password" value="1111" />
+	</bean>
+	
+	<!-- mybatis:config(mapper 위치) -->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath*:com/ict/*/service/*_mapper.xml" />
+	</bean>
+	
+	<!-- mybatis: SqlSessionTemplate (실제 실행하는 클래스) -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean" />
+	</bean>
+	
+	<!-- DAO -->
+	<!-- <bean id="m_dao" class="com.ict.runningON.dao.MemberDAO">
+		<property name="sqlSessionTemplate"  ref="sqlSessionTemplate" />
+	</bean> -->
+</beans>

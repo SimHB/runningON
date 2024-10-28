@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.thumbs {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	top: 30px;
+	left: 350px;
+	width: calc(100% - 400px);
+	min-width: 900px;
+}

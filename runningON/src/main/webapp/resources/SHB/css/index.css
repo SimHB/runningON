@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+body{
+	min-width: 1000px;
+	/* bgcolor: '#D0C2AE'; */
+}
+
+ul {
+	list-style-type: none;
+	overflow: hidden;
+	padding: 0px;
+	margin: 0px;
+}
+
+li {
+	/* 한줄 만들기 */
+	float: left;
+}
+
+#navbox{
+	width: 100%;
+	height: 96px;
+	/* background-color: "#EBE5DC"; */
+}
+
+.navbar {
+	height: 48px;
+	display: flex;
+	justify-content: space-between;
+	background-color: orange;
+}
+
+.navbar a {
+	color: white;
+}
+
+.navbar input {
+	width: 50% !important;
+	height: 70%;
+	font-size: 16px;
+	border: 0 !important;
+	border-radius: 10px !important;
+	outline: none;
+	background-color: rgb(240, 240, 240);
+	padding: 1px 2px !important;
+	margin: auto !important;
+}
+
+.navbar_bottom {
+	height: 48px;
+	display: flex;
+	justify-content: space-between;
+	background-color: #FFFBF5;
+}
+
+.index_a {
+	text-decoration: none; /* -- 밑줄 없어짐 */
+	padding: 16px 43px;
+	display: block;
+}
+
+a:hover {
+	font-size: 16px;
+	background-color: black;
+	color: white;
+}
+
+#content {
+	display: flex;
+}
+
+.daily_weather {
+	width: 20%;
+	height: 90vh;
+	background-color: orange;
+}
+
+#loadPage{
+	width : 80%;
+	height: 90vh;
+	background-color: lightgray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+		.thumbs {
+			font-family: Arial, sans-serif;
+			margin: 20px;
+		} 
+		.profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .profile img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .profile-info {
+            line-height: 1.6;
+        }
+        .profile-info h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .profile-info span {
+            font-size: 14px;
+            color: gray;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .tabs a {
+            padding: 10px;
+            margin-right: 15px;
+            text-decoration: none;
+            color: black;
+            border-bottom: 2px solid transparent;
+        }
+        .tabs a.active {
+            color: green;
+            border-bottom: 2px solid green;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+        .checkbox {
+            text-align: center;
+        }
+        .checkbox input {
+            margin: 0;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        .action-buttons button {
+            padding: 10px 20px;
+            background-color: #ddd;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .action-buttons button:hover {
+            background-color: #ccc;
+        }
+        .action-buttons .write-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .action-buttons .write-button:hover {
+            background-color: #45a049;
+        }
+        .comment-count {
+            color: red;
+            font-weight: bold;
+        }
+        .image-count {
+            color: blue;
+        }
+        .gray-icon {
+            background-color: #ddd;
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }

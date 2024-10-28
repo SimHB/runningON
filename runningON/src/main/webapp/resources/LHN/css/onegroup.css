@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+body{
+	margin: 80px 350px;
+}
+table{
+	text-align: center;
+}
+#container {
+	width: 500px;
+	margin: 0px auto; 
+	text-align: center;
+	border: 1px solid black;
+}
+
+#g_name {
+  margin: 50px;
+  text-align: center;
+}
+
+.container2{
+   display: flex;
+    width: 100%;
+}
+.g_left{
+    width: 10%;
+}
+.g_center{
+	size: 100px;
+	width: 80%;
+    text-align: center;
+}
+.g_right{
+	width: 10%;
+}
+
+.container2 > div{
+  margin: 20px;
+  text-align: center;
+}
+#box{
+	width: 100%;
+	height: 600px;
+	
+	
+}
+.leftbox{
+	margin: 10px;
+	width: 47.5%;
+	height: 100%;
+	float: left;
+}
+
+#g_img{
+	margin-bottom: 5%;
+	height: 47%;
+	background-color: pink;
+}
+#g_des{
+	height: 47%;
+	background-color: pink;
+}
+
+.rightbox{
+	margin: 10px;
+	width: 47.5%;
+	height: 100%;
+	float: right;
+}
+
+#g_post{
+	margin-bottom: 5%;
+	height: 47%;
+	background-color: #fdf5e6;
+}
+#g_member{
+	height: 47%;
+	flex: content;
+	background-color: #fdf5e6;
+}
+
+.g_join_box {
+    margin-top: 20px; /* 위쪽 여백 추가 */
+}
+
+.join_container {
+    display: flex;
+    align-items: center; /* 세로 정렬 */
+    width: 100%; /* 부모 요소의 너비에 맞추기 */
+}
+
+#joinbtn {
+   background-color: #F7B655;
+    color: white;    
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 40px;
+}
+
+#g_bmk {
+	background-color: #F7B655;
+    color: white;    
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 40px;
+}
+
+#g_post th, td {
+    text-align: center;
+}

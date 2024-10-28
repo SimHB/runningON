@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+body {bgcolor = '#D0C2AE';
+	
+}
+
+ul {
+	list-style-type: none;
+	overflow: hidden;
+	padding: 0px;
+	margin: 0px
+}
+
+/* 한줄 만들기 */
+li {
+	float: left;
+}
+/* 	li{display: inline;}
+ */
+a {
+	text-decoration: none; /* -- 밑줄 없어짐 */
+	padding: 16px 50px;
+	display: block;
+}
+
+a:hover {
+	font-size: 16px;
+	background-color: black;
+	color: white;
+}
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	background-color: orange;
+}
+
+.navbar a {
+	color: white;
+}
+
+.navbar input {
+	display: flex;
+	width: 500px;
+	height: 32px;
+	font-size: 15px;
+	border: 0;
+	border-radius: 10px;
+	outline: none;
+	background-color: rgb(240, 240, 240);
+	margin-top: 9px;
+}
+
+.navbar_bottom {
+	display: flex;
+	justify-content: space-between;
+	background-color: #FFFBF5;
+}
+
+/* 메인 */
+#content {
+	margin: 0px auto;
+}
+
+.daily_weather {
+	width: 200px;
+	height: 400px;
+	background-color: white;
+	/* 바깥 여백 */
+	margin: 10px 5px 10px 5px;
+	/* 안쪽 여백 */
+	padding: 20px;
+	float: left;
+}
+
+.board {
+	width: 70%;
+	height: 400px;
+	background-color: white;
+	margin: 10px 5px 10px 5px;
+	/* 상 우 하 좌 */
+	padding: 20px 40px 20px 40px;
+	float: left;
+}
+
+table {
+	width: 100%;
+	max-width: 100%;
+}
+
+th {
+	height: 43px;
+	padding: 8px 14px;
+	border: none;
+	width: 50px;
+}
+
+.subject {
+	/* text-align: left; */
+	/* 넘치는 텍스트를 자름 */
+	text-overflow: clip;
+	width: 250px;
+}
+
+button {
+	
+}
