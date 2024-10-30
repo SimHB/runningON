@@ -14,7 +14,7 @@
 <body>
 	
 		<div class="tabs">
-        <a href="/my_msg_recive" class="active">받은 쪽지함</a>
+        <a href="/my_msg_receive" class="active">받은 쪽지함</a>
         <a href="/my_msg_send">보낸 쪽지함</a>
     </div>
 

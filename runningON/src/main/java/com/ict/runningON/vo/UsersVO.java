@@ -2,7 +2,7 @@ package com.ict.runningON.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class Users {
+public class UsersVO {
 	private String user_id,
 		user_pw,
 		user_name,

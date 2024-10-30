@@ -2,7 +2,7 @@ package com.ict.runningON.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class Groups {
+public class GroupsVO {
 	private String group_idx,
 		user_id,
 		group_title,

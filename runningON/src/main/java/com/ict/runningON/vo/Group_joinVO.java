@@ -1,6 +1,6 @@
 package com.ict.runningON.vo;
 
-public class Group_join {
+public class Group_joinVO {
 	private String gJoin_idx,
 		user_id,
 		group_idx,

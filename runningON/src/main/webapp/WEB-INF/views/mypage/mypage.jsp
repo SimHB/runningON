@@ -80,7 +80,7 @@
 					<li id="text"><a href="my_msg_recive">나의 쪽지</a>
 						<ul class="ul2" id="text2">
 							<li><a href="/my_msg_write">쪽지 쓰기</a></li>
-							<li><a href="/my_msg_recive">받은 쪽지</a></li>
+							<li><a href="/my_msg_receive">받은 쪽지</a></li>
 							<li><a href="/my_msg_send">보낸 쪽지</a></li>
 						</ul>
 					</li>

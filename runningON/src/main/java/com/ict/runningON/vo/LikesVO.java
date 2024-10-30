@@ -1,6 +1,6 @@
 package com.ict.runningON.vo;
 
-public class Likes {
+public class LikesVO {
 	private String like_idx,
 		user_id,
 		post_idx,

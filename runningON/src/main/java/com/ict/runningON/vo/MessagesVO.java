@@ -1,9 +1,10 @@
 package com.ict.runningON.vo;
 
-public class Messages {
+public class MessagesVO {
 	private String msg_idx,
 		msg_sender_id,
 		msg_receiver_id,
+		msg_subject,
 		msg_content,
 		msg_sent_at,
 		msg_is_read;
@@ -30,6 +31,14 @@ public class Messages {
 
 	public void setMsg_receiver_id(String msg_receiver_id) {
 		this.msg_receiver_id = msg_receiver_id;
+	}
+
+	public String getMsg_subject() {
+		return msg_subject;
+	}
+
+	public void setMsg_subject(String msg_subject) {
+		this.msg_subject = msg_subject;
 	}
 
 	public String getMsg_content() {
