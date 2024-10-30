@@ -3,10 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>모임 페이지</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
-	<link rel="stylesheet" href="/resources/LHN/css/onegroup.css">
+<link
+	href="
+https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css
+"
+	rel="stylesheet">
+<meta charset="UTF-8">
+<title>모임 페이지</title>
+<link href="/resources/LHN/css/onegroup.css" rel="stylesheet">
 </head>
 <body>
 	<div id="g_name">
@@ -44,7 +48,7 @@
 			</div>
 
 			<div id="g_member">
-				<h5 style="text-align: left;">모임 멤버</h5>
+				<h5 style="text-align:left: ;">모임 멤버</h5>
 				<ul style="text-align: left; margin-left: 15px; margin-top: 10px;">
 					<li>러닝왕👑</li>
 					<li>러닝보</li>
@@ -58,7 +62,7 @@
 	<div class="g_join_box">
 		<div class="join_container">
 			<div class="g_left"></div>
-
+			
 			<div class="g_center">
 				<input type="submit" value="가입하기" id="joinbtn">
 			</div>

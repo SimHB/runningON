@@ -112,23 +112,26 @@ public class RunningONController {
 	}
 	
 	/* 고건우 */
+	@GetMapping("/mypage")
+	public ModelAndView mypage() {
+		return new ModelAndView("mypage/mypage");
+	}
 	
-	@GetMapping("/view1")
-	public ModelAndView view1() {
-		return new ModelAndView("mypage/view1");
+	@GetMapping("/my_info")
+	public ModelAndView my_info() {
+		return new ModelAndView("mypage/my_info");
 	}
-	@GetMapping("/view2")
-	public ModelAndView view2() {
-		return new ModelAndView("mypage/view2");
+	@GetMapping("/my_act")
+	public ModelAndView my_act() {
+		return new ModelAndView("mypage/my_act");
 	}
-	@GetMapping("/view3")
-	public ModelAndView view3() {
-		ModelAndView mv = new ModelAndView("mypage/view3");
-		return mv;
+	@GetMapping("/my_comment")
+	public ModelAndView my_comment() {
+		return new ModelAndView("mypage/my_comment");
 	}
-	@GetMapping("/view4")
-	public ModelAndView view4() {
-		ModelAndView mv = new ModelAndView("mypage/view4");
+	@GetMapping("/my_scrap")
+	public ModelAndView scrap() {
+		ModelAndView mv = new ModelAndView("mypage/my_scrap");
 		return mv;
 	}
 	@GetMapping("/view5")
@@ -146,24 +149,21 @@ public class RunningONController {
 		ModelAndView mv = new ModelAndView("mypage/view7");
 		return mv;
 	}
-	@GetMapping("/view8")
-	public ModelAndView view8() {
-		ModelAndView mv = new ModelAndView("mypage/view8");
-		return mv;
+	@GetMapping("/my_msg_write")
+	public ModelAndView my_msg_write() {
+		return new ModelAndView("mypage/my_msg_write");
 	}
-	@GetMapping("/view9")
-	public ModelAndView view9() {
-		ModelAndView mv = new ModelAndView("mypage/view9");
-		return mv;
+	@GetMapping("/my_msg_recive")
+	public ModelAndView my_msg_recive() {
+		return new ModelAndView("mypage/my_msg_recive");
 	}
-	@GetMapping("/view10")
-	public ModelAndView view10() {
-		ModelAndView mv = new ModelAndView("mypage/view10");
-		return mv;
+	@GetMapping("/my_msg_send")
+	public ModelAndView my_msg_send() {
+		return new ModelAndView("mypage/my_msg_send");
 	}
-	@GetMapping("/view11")
-	public ModelAndView view11() {
-		ModelAndView mv = new ModelAndView("mypage/view11");
+	@GetMapping("/my_msg_detail")
+	public ModelAndView my_msg_detail() {
+		ModelAndView mv = new ModelAndView("mypage/my_msg_detail");
 		return mv;
 	}
 	@GetMapping("/view12")
@@ -171,11 +171,5 @@ public class RunningONController {
 		ModelAndView mv = new ModelAndView("mypage/view12");
 		return mv;
 	}
-	@GetMapping("/view13")
-	public ModelAndView view13() {
-		ModelAndView mv = new ModelAndView("mypage/view13");
-		return mv;
-	}
-	
 	
 }

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>프로필 편집</title>
-<link href="/resources/kgw/css/thumbs1.css" rel="stylesheet">
+<link href="/resources/KGW/css/thumbs1.css" rel="stylesheet">
 </head>
 <body class="body">
 

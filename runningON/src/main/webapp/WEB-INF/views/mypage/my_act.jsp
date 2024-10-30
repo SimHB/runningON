@@ -6,8 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로필 및 게시글 목록</title>
-    <link href="/resources/kgw/css/thumbs2.css" rel="stylesheet">
-    
+<link href="/resources/KGW/css/thumbs2.css" rel="stylesheet">
 </head>
 <body>
 
@@ -21,9 +20,9 @@
     </div>
 
     <div class="tabs">
-        <a href="/view2">작성글</a>
-        <a href="#" class="active">작성댓글</a>
-        <a href="/view4">스크랩</a>
+        <a href="#" class="active">작성글</a>
+        <a href="/my_comment">작성댓글</a>
+        <a href="/my_scrap">스크랩</a>
     </div>
 
     <table>
@@ -57,10 +56,12 @@
         </tr>
     </table>
 
-    <div class="action-buttons">
-        <button>삭제</button>
-        <button class="write-button">글쓰기</button>
-    </div>
+	<!-- 두 버튼 삭제 어떠신지
+		<div class="action-buttons">
+	        <button>삭제</button>
+	        <button class="write-button">글쓰기</button>
+	    </div>
+    -->
 
 </body>
 </html>

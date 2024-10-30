@@ -3,12 +3,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>모임 페이지</title>
-	<!-- 외부 CSS 파일 링크 -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
-	<link rel="stylesheet" href="/resources/LHN/css/join_main.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"
+	rel="stylesheet">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/resources/LHN/css/join_main.css" rel="stylesheet">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모임 페이지</title>
+<link rel="stylesheet" href="layout.css">
+<!-- 외부 CSS 파일 링크 -->
 </head>
 <body>
 	<div class="g_name">
@@ -25,7 +30,7 @@
 		<!-- 모임 수다 -->
 		<div class="content_sd">
 			<h2>모임 수다</h2>
-			<table class="content-table">
+			<table class="content_table">
 				<thead>
 					<tr>
 						<th>제목</th>
@@ -53,23 +58,38 @@
 						<td>즐거운 시간이었어요!</td>
 						<td>참여자2</td>
 					</tr>
+					<tr>
+						<td>즐거운 시간이었어요!</td>
+						<td>참여자2</td>
+					</tr>
 				</tbody>
 			</table>
+			<div id="t_foot">
+					<b>이전</b>
+					<b>현재페이지</b>
+					<b>다음</b>
+			</div>
 		</div>
 		<!-- 모임 사진 -->
-		<div class="photo-section">
+		<div class="photo_section">
 			<h2 style="text-align: center; margin: 20px;">모임 사진</h2>
 			<hr>
-			<div class="photo-table">
-				<img alt="그림1" src="/resources/LHN/images/testlogo.PNG" class="photo1">
-				<img alt="그림2" src="/resources/LHN/images/testlogo.PNG" class="photo2">
-				<img alt="그림3" src="/resources/LHN/images/testlogo.PNG" class="photo3">
-				<img alt="그림4" src="/resources/LHN/images/testlogo.PNG" class="photo4">
-				<img alt="그림5" src="/resources/LHN/images/testlogo.PNG" class="photo5">
-				<img alt="그림6" src="/resources/LHN/images/testlogo.PNG" class="photo6">
-				<img alt="그림7" src="/resources/LHN/images/testlogo.PNG" class="photo7">
-				<img alt="그림8" src="/resources/LHN/images/testlogo.PNG" class="photo8">
-				<img alt="그림9" src="/resources/LHN/images/testlogo.PNG" class="photo9">
+			<div class="photo_table">
+				<img alt="그림1" src="/resources/LHN/images/cat01.png" class="photo1">
+				<img alt="그림2" src="/resources/LHN/images/cat01.png" class="photo2">
+				<img alt="그림3" src="/resources/LHN/images/cat01.png" class="photo3">
+				<img alt="그림4" src="/resources/LHN/images/cat01.png" class="photo4">
+				<img alt="그림5" src="/resources/LHN/images/cat01.png" class="photo5">
+				<img alt="그림6" src="/resources/LHN/images/cat01.png" class="photo6">
+				<img alt="그림7" src="/resources/LHN/images/cat01.png" class="photo7">
+				<img alt="그림8" src="/resources/LHN/images/cat01.png" class="photo8">
+				<img alt="그림9" src="/resources/LHN/images/cat01.png" class="photo9">
+			</div>
+			
+			<div id="p_foot">
+					<b>이전</b>
+					<b>현재페이지</b>
+					<b>다음</b>
 			</div>
 		</div>
 
@@ -87,11 +107,16 @@
 				<li>러너8</li>
 				<li>러너9</li>
 			</ul>
+			
+			<div id="m_foot">
+					<b>이전</b>
+					<b>다음</b>
+			</div>
 		</div>
 	</div>
 	<!-- 06. 하단 버튼 -->
 	<footer class="footer">
-		<button class="action-button">글쓰기</button>
+		<button class="action_button" id="j_writer">글쓰기</button>
 	</footer>
 </body>
 </html>

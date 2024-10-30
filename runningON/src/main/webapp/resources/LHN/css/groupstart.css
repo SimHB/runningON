@@ -54,6 +54,29 @@ textarea.input-box {
 	margin-top: 5%;
 	
 }
+
+#join_ok{
+	background-color: #F7B655;
+    color: white;    
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 30px;
+    width: 70px;
+}
+#join_no{
+	background-color: #9d9d9d;
+    color: white;    
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 30px;
+    width: 70px;
+}
 /* summernote toolbar 수정  */
-	.note-btn-group{width: auto;}
-	.note-toolbar{width: auto;}
+.note-btn-group{width: auto;}
+.note-toolbar{width: auto;}

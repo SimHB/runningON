@@ -4,14 +4,15 @@ body {
 	margin: 20px 20px;
 	/* width: 50% 50% (-15px); */
 }
-.g_name h1{
+
+.g_name h1 {
 	font-size: 24px; /* 글자 크기 */
-    font-weight: bold; /* 진하게 */
-    letter-spacing: 2px; /* 자간(글자 사이 간격) */
-    margin-bottom: 10px; /* 제목 아래 간격 */
+	font-weight: bold; /* 진하게 */
+	letter-spacing: 2px; /* 자간(글자 사이 간격) */
+	margin-bottom: 10px; /* 제목 아래 간격 */
 }
 
-.g_gong{
+.g_gong {
 	font-size: 17px;
 	text-align: center;
 	margin: 0 auto;
@@ -20,130 +21,179 @@ body {
 	vertical-align: middle;
 }
 
-.content_sd h2{
+.content_sd h2 {
 	font-size: 20px; /* 글자 크기 */
-    font-weight: bold; /* 진하게 */
-    letter-spacing: 2px; /* 자간(글자 사이 간격) */
-    margin: 20px; /* 제목 아래 간격 */
-    text-align: center;
-    
+	font-weight: bold; /* 진하게 */
+	letter-spacing: 2px; /* 자간(글자 사이 간격) */
+	margin: 20px; /* 제목 아래 간격 */
+	text-align: center;
 }
 
-.photo-section h2{
+.photo_section h2 {
 	font-size: 20px; /* 글자 크기 */
-    font-weight: bold; /* 진하게 */
-    letter-spacing: 2px; /* 자간(글자 사이 간격) */
-    text-align: center;
+	font-weight: bold; /* 진하게 */
+	letter-spacing: 2px; /* 자간(글자 사이 간격) */
+	text-align: center;
 }
 
 .content_box {
 	margin: 0 auto;
 	width: 95%;
-	height: 700px; 
-	display : flex; /* 부모컨테이너에게 지정 */
+	height: 700px;
+	display: flex; /* 부모컨테이너에게 지정 */
 	justify-content: space-between;
 	/* gap:10px; */ /* 플렉스항목(자식) 간의 간격:인접 요소가 없으면 gap이 생기지 않음 */
 }
 
-.g_name{
+.g_name {
 	width: 95%;
 	margin: 0 auto;
 	padding: 20px 0 20px 0;
 	text-align: center;
 }
 
-.content_sd{
+.content_sd {
 	width: 100%;
 	margin: 20px;
-	
 }
 
-.content-table {
+.content_table {
 	width: 90%;
 	margin: 0 auto;
 }
-.photo-section{
+
+.photo_section {
 	width: 100%;
 	margin: 20px;
-
-	
 }
 
-.photo-table {
+.photo_table {
 	margin: 0 auto;
 	display: grid;
 	grid-template-areas:
-	"photo1 photo2 photo3"
-	"photo4 photo5 photo6"
-	"photo7 photo8 photo9";
+		"photo1 photo2 photo3"
+		"photo4 photo5 photo6"
+		"photo7 photo8 photo9";
 	grid-gap: 15px;
-	
 }
 
-.photo-table img{
+.photo_table img {
 	width: 90%;
 	margin: 0 auto;
 }
 
-.photo-table table {
+.photo_table table {
 	width: 90%;
 	margin: 0 auto;
 }
 
 .member {
-	
-	width: 20%;
-	margin: 10px 20px 30px 0;
-	margin-top: 30px;
-	text-align: center;
-	background-color: lightgray;
+    width: 20%; /* 박스의 가로 크기를 부모 요소의 20%로 설정 */
+    margin: 200px 20px 30px 0; /* 상: 20px, 우: 20px, 하: 30px, 좌: 0px의 외부 여백 설정 */
+    margin-top: 100px; /* 기존 상단 여백을 100px로 덮어쓰기 */
+    text-align: center; /* 내부 텍스트를 가운데 정렬 */
+    background-color: #fdecc6; /* 배경색을 옅은 크림색으로 설정 */
 }
 
-.content-table {
-        border-collapse: collapse; /* 테두리가 겹치지 않게 */
-        width: 100%; /* 테이블 전체 너비 */
-    }
+.content_table {
+	border-collapse: collapse; /* 테두리가 겹치지 않게 */
+	width: 100%; /* 테이블 전체 너비 */
+}
 
-    /* 헤더 셀 가운데 정렬 */
-    .content-table th {
-        padding: 15px; /* 여백 추가 */
-        border: 1px solid #ddd;
-        text-align: center; /* 가운데 정렬 */
-        background-color: #808080; /* 헤더 배경 색상 */
-    }
+/* 헤더 셀 가운데 정렬 */
+.content_table th {
+	padding: 15px; /* 여백 추가 */
+	border: 1px solid #ddd;
+	text-align: center; /* 가운데 정렬 */
+	background-color: #c8c8c8; /* 헤더 배경 색상 */
+}
 
-    /* 본문 셀 왼쪽 정렬 */
-    .content-table td {
-        padding: 15px;
-        border: 1px solid #ddd;
-        text-align: left; /* 기본적으로 왼쪽 정렬 */
-    }
-    
-      /* 모임 멤버 제목 스타일 */
-    .member h2 {
-        font-size: 17px; /* 글자 크기 */
-        font-weight: bold; /* 진하게 */
-        letter-spacing: 2px; /* 자간(글자 사이 간격) */
-        margin: 15px; /* 제목 아래 간격 */
-    }
+/* 본문 셀 왼쪽 정렬 */
+.content_table td {
+	padding: 15px;
+	border: 1px solid #ddd;
+	text-align: left; /* 기본적으로 왼쪽 정렬 */
+}
 
-    /* 멤버 목록 스타일 */
-    .member ul {
-        list-style-type: none; /* 기본 불릿 제거 */
-        padding: 0; /* 여백 제거 */
-    }
+/* 모임 멤버 제목 스타일 */
+.member h2 {
+	font-size: 17px; /* 글자 크기 */
+	font-weight: bold; /* 진하게 */
+	letter-spacing: 2px; /* 자간(글자 사이 간격) */
+	margin: 15px; /* 제목 아래 간격 */
+}
 
-    .member li {
-        font-size: 18px; /* 멤버 글자 크기 */
-        letter-spacing: 1px; /* 글자 간격 */
-        margin-bottom: 5px; /* 각 멤버 간격 */
-    }
-    
-    .footer {
-        display: flex;
-        justify-content: center; /* 가로 가운데 정렬 */
-        align-items: center; /* 세로 가운데 정렬 */
-        height: 50px; /* 푸터 높이 */
-    }
+/* 멤버 목록 스타일 */
+.member ul {
+	list-style-type: none; /* 기본 불릿 제거 */
+	padding: 0; /* 여백 제거 */
+}
 
+/* 모임 멤버 닉네임 스타일 */
+.member li {
+	font-size: 13px; /* 멤버 글자 크기 */
+	letter-spacing: 2px; /* 글자 간격 */
+	margin-bottom: 10px; /* 각 멤버 간격 */
+}
 
+.footer {
+	display: flex;
+	justify-content: center; /* 가로 가운데 정렬 */
+	align-items: center; /* 세로 가운데 정렬 */
+	height: 50px; /* 푸터 높이 */
+}
+
+#j_writer { /* 하단 버튼 설정 */
+	background-color: #F7B655;
+	color: white;
+	border: none;
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: bold;
+	border-radius: 5px;
+	height: 30px;
+	width: 70px;
+	margin-top: 10px;
+}
+
+.content_sd {
+    display: flex;              /* 플렉스 레이아웃으로 변경 */
+    flex-direction: column;     /* 세로 방향 정렬 */
+    height: 100%;               /* 부모의 높이를 100%로 설정 */
+}
+
+#t_foot {
+    margin-top: auto; /* 위쪽 공간을 자동으로 채워서 가장 밑으로 이동 */
+    text-align: center;
+    padding: 10px 0;
+    font-size: 10px;
+    word-spacing: 25px; /* 단어 간격 */
+}
+
+.photo_section {
+    display: flex;              /* 플렉스 레이아웃으로 변경 */
+    flex-direction: column;     /* 세로 방향 정렬 */
+    height: 100%;               /* 부모의 높이를 100%로 설정 */
+}
+
+#p_foot {
+    margin-top: auto; /* 위쪽 공간을 자동으로 채워서 가장 밑으로 이동 */
+    text-align: center;
+    padding: 10px 0;
+    font-size: 10px;
+    word-spacing: 25px; /* 단어 간격 */
+}
+
+.member {
+    display: flex;              /* 플렉스 레이아웃으로 변경 */
+    flex-direction: column;     /* 세로 방향 정렬 */
+    height: 80%;               /* 부모의 높이를 80%로 설정 */
+}
+
+#m_foot {
+    margin-top: auto; /* 위쪽 공간을 자동으로 채워서 가장 밑으로 이동 */
+    text-align: center;
+    padding: 10px 0;
+    font-size: 10px;
+    word-spacing: 5px; /* 단어 간격 */
+}

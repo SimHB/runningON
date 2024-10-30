@@ -24,7 +24,7 @@
 		
 				<ul class="navbar_link">
 					<li><a class="index_a" href="/login1">로그인</a></li>
-					<li><a class="index_a" href="/view2">MY</a></li>
+					<li><a class="index_a" href="/mypage">MY</a></li>
 				</ul>
 			</header>
 		
@@ -214,7 +214,7 @@
 			$("a").on("click", function(e) {
 				var url = $(this).attr("href"); // 클릭된 링크의 href 값 가져오기
 				
-				if(url !== "/home" && url !== "/main" && url !== "/login1"){
+				if(url !== "/home" && url !== "/main" && url !== "/login1" && url !== "/mypage"){
 					e.preventDefault(); // 기본 링크 이동 동작 막기
 					$("#loadPage").load(url);
 				//	loadContent(url);
@@ -224,15 +224,15 @@
 			$(document).on("click", "a",function(e) {
 				var url = $(this).attr("href"); // 클릭된 링크의 href 값 가져오기
 				
-				if(url !== "/home" && url !== "/main" && url !== "/login1"){
+				if(url !== "/home" && url !== "/main" && url !== "/login1" && url !== "/mypage"){
 					e.preventDefault(); // 기본 링크 이동 동작 막기
 					$("#loadPage").load(url);
-					loadContent(url);
+				//	loadContent(url);
 				}
 			});
 
 			$(document).on("submit", "form", function(e) {
-				var url = $(this).find("input[type='submit']").data("url"); // 클릭된 링크의 href 값 가져오기
+				var url = $(this).find("input[type='submit']").data("url" && url !== "/mypage"); // 클릭된 링크의 href 값 가져오기
 				
 				e.preventDefault(); // 기본 링크 이동 동작 막기
 				$("#loadPage").load(url);

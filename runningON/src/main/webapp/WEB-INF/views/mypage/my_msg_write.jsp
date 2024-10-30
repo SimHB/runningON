@@ -9,7 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
-<link href="/resources/kgw/css/thumbs8.css" rel="stylesheet">
+<link href="/resources/KGW/css/thumbs8.css" rel="stylesheet">
 
 </head>
 <body>
@@ -24,7 +24,7 @@
 			<div class="char-count" id="char-count">0 / 1000자</div>
 
 			<div class="submit-button">
-				<input type="submit" value="보내기" data-url="/view9">
+				<input type="submit" value="보내기" data-url="/my_msg_send">
 			</div>
 		</form>
 

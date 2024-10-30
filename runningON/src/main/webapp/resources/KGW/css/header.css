@@ -31,7 +31,7 @@ a:link, a:visited {
     color: black; /* 원하는 색상으로 설정 */
 }
 
-.navbar_search a:hover {
+a:hover {
 	font-size: 16px;
 	background-color: black;
 	color: white;
