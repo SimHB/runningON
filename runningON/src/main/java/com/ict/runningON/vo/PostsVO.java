@@ -1,7 +1,15 @@
 package com.ict.runningON.vo;
 
 public class PostsVO {
-	private String post_idx,board_idx,user_id,post_title,post_content,post_views,post_created_at,post_updated_at,post_is_public;
+	private String post_idx,
+		board_idx,
+		user_id,
+		post_title,
+		post_content,
+		post_views,
+		post_created_at,
+		post_updated_at,
+		post_is_public;
 
 	public String getPost_idx() {
 		return post_idx;
