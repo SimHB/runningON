@@ -27,25 +27,20 @@
 					<li><a class="index_a" href="/mypage">MY</a></li>
 				</ul>
 			</header>
-		
+			
 			<nav class="navbar_bottom">
 				<div class="navbar_blank">
 					<!-- 메뉴를 중간으로 두기위해.. -->
 				</div>
 		
 				<ul class="navbar_search">
-					<%-- <c:forEach var="board" items="${boards}">
-						<c:if test="${board.board_idx >= 2 && board.board_idx <= 8}">
-							<li><a href="/board/${board.board_idx}">${board.board_name}</a></li>
-						</c:if>
-					</c:forEach> --%>
-					<li><a class="index_a" href="#">HOT</a></li>
-					<li><a class="index_a" href="/free_board">자유</a></li>
-					<li><a class="index_a" href="#">코스추천</a></li>
-					<li><a class="index_a" href="/group_board">러닝모임</a></li>
-					<li><a class="index_a" href="#">마라톤 대회</a></li>
-					<li><a class="index_a" href="#">플리추천</a></li>
-					<li><a class="index_a" href="#">러닝용품</a></li>
+					<li><a class="index_a" href="/board?board_idx=2">HOT</a></li>
+					<li><a class="index_a" href="/board?board_idx=3">자유</a></li>
+					<li><a class="index_a" href="/board?board_idx=4">코스추천</a></li>
+					<li><a class="index_a" href="/board?board_idx=5">러닝모임</a></li>
+					<li><a class="index_a" href="/board?board_idx=6">마라톤 대회</a></li>
+					<li><a class="index_a" href="/board?board_idx=7">플리추천</a></li>
+					<li><a class="index_a" href="/board?board_idx=8">러닝용품</a></li>
 				</ul>
 				<div class="navbar_blank">
 					<!-- 메뉴를 중간으로 두기위해.. -->

@@ -3,7 +3,7 @@ package com.ict.runningON.vo;
 public class BoardsVO {
 	private String board_idx,
 		board_name,
-		board_dex,
+		board_des,
 		board_created_at;
 
 	public String getBoard_idx() {
@@ -22,12 +22,12 @@ public class BoardsVO {
 		this.board_name = board_name;
 	}
 
-	public String getBoard_dex() {
-		return board_dex;
+	public String getBoard_des() {
+		return board_des;
 	}
 
-	public void setBoard_dex(String board_dex) {
-		this.board_dex = board_dex;
+	public void setBoard_des(String board_des) {
+		this.board_des = board_des;
 	}
 
 	public String getBoard_created_at() {

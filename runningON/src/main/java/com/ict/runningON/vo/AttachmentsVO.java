@@ -4,6 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class AttachmentsVO {
 	private String attachment_idx,
+		user_id,
 		post_idx,
 		comment_idx,
 		attachment_file_path,
@@ -25,6 +26,14 @@ public class AttachmentsVO {
 
 	public void setAttachment_idx(String attachment_idx) {
 		this.attachment_idx = attachment_idx;
+	}
+	
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
 	public String getPost_idx() {

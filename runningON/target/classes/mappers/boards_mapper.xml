@@ -4,5 +4,69 @@
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="boards">
+	<select id="b_list" parameterType="String" resultType="bvo">
+		select * from boards where board_idx = #{board_idx}
+	</select>
 	
+	<select id="p_list" resultType="pvo">
+		select * from posts order by post_idx desc
+	</select>
+	
+	<insert id="insert" parameterType="pvo">
+		insert into posts(board_idx,user_id,post_title,post_content,post_created_at,post_is_public)
+		values(#{board_idx},#{user_id},#{post_title},#{post_content},NOW(),#{post_is_public})
+		
+		insert into attachments(user_id, post_idx, attachment_file_path, attachment_created_at)
+		values(#{user_id}, #{post_idx}, #{attachment_file_path}, NOW())
+	</insert>
+	
+	<select id="count" parameterType="String" resultType="int">
+		select count(*) from posts where board_idx = #{board_idx}
+	</select>
+	
+	<!--  결과 행 제한하기 - LIMIT = 출력값을 제한함. (MySQL(MariaDB)과 PostgreSQL)
+ 	      SELECT 명령 FROM 테이블명 LIMIT 행수 [OFFSET 시작행]; 
+ 	       offset = limit * (현재페이지 - 1)
+ 	      LIMIT 구는 SELECT 명령의 마지막에 지정하는 것으로 WHERE구나 ORDER BY구의 뒤에 지정한다.
+ 	-->
+	<select id="pageList" parameterType="Map" resultType="pvo">
+		SELECT * FROM posts where board_idx = #{board_idx} 
+		order by post_idx desc limit #{limit} offset #{offset};
+	</select>
+	
+	<update id="viewsupdate" parameterType="String">
+		update posts set post_views = post_views + 1 where posts_idx = #{posts_idx} 
+	</update>
+	
+	<select id="detail" parameterType="String" resultType="pvo">
+		select * from posts where posts_idx = #{posts_idx}
+	</select>
+	
+	<select id="clist" parameterType="String" resultType="cvo">
+		select * from comments where posts_idx = #{posts_idx}
+	</select>
+	
+	<insert id="cinsert" parameterType="cvo">
+		insert into comments(user_id,post_idx,comment_content)
+		values(#{user_id},#{post_idx},#{comment_content})
+	</insert>
+	
+	<delete id="cdelete" parameterType="String">
+		delete from comments where comment_idx = #{comment_idx}
+	</delete>
+	
+	<!-- 삭제 이지만 post_is_public = 0 (비공개) 로 변경하는 업데이트 -->
+	<update id="delete" parameterType="String">
+		update posts set post_is_public = 0 where posts_idx = #{posts_idx}
+	</update>
+	
+	<update id="update" parameterType="pvo">
+		<!-- 첨부파일 추가하기 -->
+		update posts
+		set board_idx = #{board_idx}, post_title=#{post_title}, post_content = #{post_content}, 
+		post_updated_at = NOW(), post_is_public = #{post_is_public}
+		where posts_idx = #{posts_idx}
+		
+		update attachments
+	</update>
 </mapper>

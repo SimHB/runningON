@@ -28,11 +28,12 @@ public class BoardsAjaxController {
 	
 	@RequestMapping("/posts_ajax")
 	@ResponseBody
-	public Map<String, Object> getPostListAjax(@RequestParam(defaultValue = "1") int cPage) {
+	public Map<String, Object> getPostListAjax(@RequestParam(defaultValue = "1") int cPage,
+											@RequestParam String board_idx) {
 	    Map<String, Object> map = new HashMap<>();
 
 	    // 1. 전체 게시물 수 가져오기 및 페이징 설정
-	    int count = boardsService.getTotalCount();
+	    int count = boardsService.getTotalCount(board_idx);
 	    paging.setTotalRecord(count);
 
 	    if (paging.getTotalRecord() <= paging.getNumPerPage()) {
@@ -54,7 +55,7 @@ public class BoardsAjaxController {
 	    }
 
 	    // DB에서 데이터 가져오기
-	    List<PostsVO> list = boardsService.getPostsList(paging.getOffset(), paging.getNumPerPage());
+	    List<PostsVO> list = boardsService.getPostsList(board_idx, paging.getOffset(), paging.getNumPerPage());
 
 	    map.put("list", list);
 	    map.put("paging", paging);

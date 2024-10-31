@@ -54,8 +54,6 @@ tbody td {
 
 .title{
 	width: 30%;
-	text-align: left;
-	padding-left: 5%;
 	vertical-align: middle;
 }
 
@@ -97,9 +95,53 @@ tbody td {
 	text-decoration: none; /* -- 밑줄 없어짐 */
 }
 
-
 .board_btn:hover {
 	background-color: black;
 	border: 2px solid black;
 	cursor: pointer;
+}
+
+
+
+
+/* paging */
+.paging {
+	list-style: none;
+	margin-top: 40px;
+	display: flex;
+	justify-content: center; /* 가운데 정렬 */
+}
+
+ol.paging li {
+	float: left;
+	margin-right: 8px;
+}
+
+ol.paging li a {
+	display: block;
+	padding: 3px 7px;
+	border: 1px solid black;
+	color: black;
+	font-weight: bold;
+	text-decoration: none; /* -- 밑줄 없어짐 */
+}
+
+ol.paging li a:hover {
+	background: black;
+	color: white;
+	font-weight: bold;
+}
+
+.disable {
+	padding: 3px 7px;
+	border: 1px solid silver;
+	color: silver;
+}
+
+.now {
+	padding: 3px 7px;
+	border: 1px solid #F7B655;
+	background: #F7B655;
+	color: white;
+	font-weight: bold;
 }
