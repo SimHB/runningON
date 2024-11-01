@@ -29,9 +29,20 @@
  	       offset = limit * (현재페이지 - 1)
  	      LIMIT 구는 SELECT 명령의 마지막에 지정하는 것으로 WHERE구나 ORDER BY구의 뒤에 지정한다.
  	-->
+	<!-- <select id="pageList" parameterType="Map" resultType="pvo">
+		SELECT * FROM posts order by post_idx desc limit #{limit} offset #{offset};
+	</select> -->
 	<select id="pageList" parameterType="Map" resultType="pvo">
-		SELECT * FROM posts where board_idx = #{board_idx} 
-		order by post_idx desc limit #{limit} offset #{offset};
+		SELECT * FROM posts where board_idx = #{board_idx}
+		<choose>
+	        <when test="desc == 'post_views'">
+	            ORDER BY post_views DESC
+	        </when>
+	        <otherwise>
+	            ORDER BY post_idx DESC
+	        </otherwise>
+	    </choose> 
+		limit #{limit} offset #{offset};
 	</select>
 	
 	<update id="viewsupdate" parameterType="String">

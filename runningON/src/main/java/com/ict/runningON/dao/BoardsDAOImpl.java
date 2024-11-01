@@ -57,12 +57,22 @@ public class BoardsDAOImpl implements BoardsDAO{
 		return sqlSessionTemplate.selectOne("boards.count", board_idx);
 	}
 
+//	@Override
+//	public List<PostsVO> getPostsList(int offset, int limit) {
+//		Map<String, Integer> map = new HashMap<String, Integer>();
+//		map.put("offset", offset);
+//		map.put("limit", limit);
+//		
+//		return sqlSessionTemplate.selectList("boards.pageList", map);
+//	}
 	@Override
-	public List<PostsVO> getPostsList(String board_idx, int offset, int limit) {
+	public List<PostsVO> getPostsList(int offset, int limit, String board_idx, String desc) {
+		System.out.println(desc);
 		Map<String, Object> map = new HashMap<>();
-		map.put("board_idx", board_idx);
 		map.put("limit", limit);
 		map.put("offset", offset);
+		map.put("board_idx", board_idx);
+		map.put("desc", desc);
 		
 		return sqlSessionTemplate.selectList("boards.pageList", map);
 	}

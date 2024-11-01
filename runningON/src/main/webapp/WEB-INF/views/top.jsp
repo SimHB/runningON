@@ -47,15 +47,5 @@
 				</div>
 			</nav>
 		</div>
-		
-		<div id="content">
-			<section class="daily_weather">
-				<h2><a href="/weather">날씨</a></h2>
-				<p>날씨 정보..</p>
-				<p>날씨 정보..</p>
-				<p>날씨 정보..</p>
-				<p>날씨 정보..</p>
-			</section>
-		</div>
 	</body>
 </html>

@@ -10,55 +10,80 @@
 		<link href="/resources/SHB/css/board.css" rel="stylesheet">
 	</head>
 	<body>
-		<div id="board_body" data-board-name="${board_name.board_name}">
-			<div id="board_header">
-				<b id="board_name">${board_name.board_name}</b> <!-- 동적으로 게시판 이름 출력 -->
-				<%-- <h2>${board.board_name}</h2> <!-- 동적으로 게시판 이름 출력 --> --%>
-				<div class="sort_box">
-					<button class="board_btn" type="button" onclick="newest">최신순</button>
-					<button class="board_btn" type="button" onclick="popularity">인기순</button>
+		<jsp:include page="/WEB-INF/views/top.jsp" />
+		<div id="layout">
+			<jsp:include page="/WEB-INF/views/side_left.jsp" />
+			<div id="board_body" data-board-name="${board_name.board_name}">
+				<div id="board_header">
+					<b id="board_name">${board_name.board_name}</b> <!-- 동적으로 게시판 이름 출력 -->
+					<%-- <h2>${board.board_name}</h2> <!-- 동적으로 게시판 이름 출력 --> --%>
+					<div class="sort_box">
+						<button class="board_btn" type="button" onclick="newest()">최신순</button>
+						<button class="board_btn" type="button" onclick="popularity()">인기순</button>
+					</div>
 				</div>
-			</div>
-			<table>
-				<thead>
-					<tr id="thead_tr">
-						<th class="num">번호</th>
-						<th class="category">카테고리</th>
-						<th class="title">제목</th>
-						<th class="user">작성자</th>
-						<th class="views">조회수</th>
-						<th class="likes">좋아요수</th>
-						<th class="regdate">작성일</th>
-					</tr>
-				</thead>
-				<tbody id="tbody">
-					<!-- 데이터는 AJAX 요청으로 동적 로딩 -->
-				</tbody>
-			</table>
-			<div id="footer">
-				<ol class="paging">
-					<!-- 페이징 목록은 AJAX 요청으로 동적 로딩 -->
-				</ol>
-				<div class="sort_box">
-					<!-- 게시글 작성버튼 board_idx=2 (HOT게시글)인 경우에는 글쓰기 비활성화  -->
-					<a class="board_btn" href="/write">글쓰기</a>
+				<table>
+					<thead>
+						<tr id="thead_tr">
+							<th class="num">번호</th>
+							<th class="category">카테고리</th>
+							<th class="title">제목</th>
+							<th class="user">작성자</th>
+							<th class="views">조회수</th>
+							<th class="likes">좋아요수</th>
+							<th class="regdate">작성일</th>
+						</tr>
+					</thead>
+					<tbody id="tbody">
+						<!-- 데이터는 AJAX 요청으로 동적 로딩 -->
+					</tbody>
+				</table>
+				<div id="footer">
+					<ol class="paging">
+						<!-- 페이징 목록은 AJAX 요청으로 동적 로딩 -->
+					</ol>
+					<div class="sort_box">
+						<!-- 게시글 작성버튼 board_idx=2 (HOT게시글)인 경우에는 글쓰기 비활성화  -->
+						<c:choose>
+							<c:when test="${board_name.board_idx != 2 }">
+								<a class="board_btn" href="/write">글쓰기</a>
+							</c:when>
+							<c:otherwise></c:otherwise>
+						</c:choose>
+					</div>
 				</div>
 			</div>
 		</div>
 		
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-			<script type="text/javascript">
-				$(document).ready(function() {
-				// 페이지 로드 시 첫 페이지 데이터 요청
-				loadPostList(1);
+		<script type="text/javascript">
+			$(document).ready(function() {
 				
-				function loadPostList(cPage) {
+				let sortOrder = "newest"; // 기본 정렬 기준은 최신순
+
+		        // 페이지 로드 시 첫 페이지 데이터 요청
+		        loadPostList(1, sortOrder);
+
+		        // 최신순 버튼 클릭 이벤트
+		        window.newest = function() {
+		            sortOrder = "newest";
+		            loadPostList(1, sortOrder);
+		        }
+
+		        // 인기순 버튼 클릭 이벤트
+		        window.popularity = function() {
+		            sortOrder = "popular";
+		            loadPostList(1, sortOrder);
+		        }
+				
+				function loadPostList(cPage, sortOrder) {
 					$.ajax({
 						url: '/posts_ajax',
 						type: 'GET',
 						data: {
 							cPage: cPage,
-							board_idx: $("#board_body").data("board-name")  // data 속성에서 board_idx 가져오기
+							board_idx: ${board_name.board_idx},  // data 속성에서 board_idx 가져오기
+							sortOrder: sortOrder // 정렬 기준 전달
 						},
 						dataType: 'json',
 						success: function(response) {
@@ -89,7 +114,7 @@
 						
 						row +=	"<td>" + item.user_id + "</td>" +
 								"<td>" + item.post_views + "</td>" +
-								"<td>" + item.post_views + "</td>" +
+								"<td>" + item.post_views + "</td>" + // 좋아요로 바꾸기
 								"<td>" + item.post_created_at + "</td>" +
 								"</tr>";
 						
@@ -137,7 +162,7 @@
 						pagination.append(pageItem);
 					}
 				
-				 // 다음 버튼
+					// 다음 버튼
 					let nextItem = $("<li>");
 					if (paging.endBlock >= paging.totalPage) {
 						// 비활성화 상태
@@ -153,9 +178,8 @@
 					}
 					pagination.append(nextItem);
 				}
-			
-			
 			});
+			
 		</script>
 	</body>
 </html>

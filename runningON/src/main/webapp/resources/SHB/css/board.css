@@ -1,6 +1,11 @@
 @charset "UTF-8";
 
+#layout{
+	display: flex;
+}
+
 #board_body{
+	width: 80%; /* 전체의 나머지 80% 너비로 설정 */
 	padding-top: 10px;
 	padding-bottom: 10px;
 	margin: 0 20px;
@@ -53,7 +58,7 @@ tbody td {
 }
 
 .title{
-	width: 30%;
+	width: 15%;
 	vertical-align: middle;
 }
 
