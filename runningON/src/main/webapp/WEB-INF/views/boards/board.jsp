@@ -16,7 +16,6 @@
 			<div id="board_body" data-board-name="${board_name.board_name}">
 				<div id="board_header">
 					<b id="board_name">${board_name.board_name}</b> <!-- 동적으로 게시판 이름 출력 -->
-					<%-- <h2>${board.board_name}</h2> <!-- 동적으로 게시판 이름 출력 --> --%>
 					<div class="sort_box">
 						<button class="board_btn" type="button" onclick="newest()">최신순</button>
 						<button class="board_btn" type="button" onclick="popularity()">인기순</button>

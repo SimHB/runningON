@@ -12,50 +12,10 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	</head>
 	<body>
-		<div id="navbox">
-			<header class="navbar">
-				<div class="navbar_logo">
-					<a class="index_a" href="/home"> RUNNINGON </a>
-					<a class="index_a" href="/main"> 관리자페이지 </a>
-				</div>
-		
-				<!-- 검색창 -->
-				<input type="text" placeholder="검색" autofocus>
-		
-				<ul class="navbar_link">
-					<li><a class="index_a" href="/login1">로그인</a></li>
-					<li><a class="index_a" href="/mypage">MY</a></li>
-				</ul>
-			</header>
-			
-			<nav class="navbar_bottom">
-				<div class="navbar_blank">
-					<!-- 메뉴를 중간으로 두기위해.. -->
-				</div>
-		
-				<ul class="navbar_search">
-					<li><a class="index_a" href="/board?board_idx=2">HOT</a></li>
-					<li><a class="index_a" href="/board?board_idx=3">자유</a></li>
-					<li><a class="index_a" href="/board?board_idx=4">코스추천</a></li>
-					<li><a class="index_a" href="/board?board_idx=5">러닝모임</a></li>
-					<li><a class="index_a" href="/board?board_idx=6">마라톤 대회</a></li>
-					<li><a class="index_a" href="/board?board_idx=7">플리추천</a></li>
-					<li><a class="index_a" href="/board?board_idx=8">러닝용품</a></li>
-				</ul>
-				<div class="navbar_blank">
-					<!-- 메뉴를 중간으로 두기위해.. -->
-				</div>
-			</nav>
-		</div>
-		
-		<div id="content">
-			<section class="daily_weather">
-				<h2><a href="/weather">날씨</a></h2>
-				<p>날씨 정보..</p>
-				<p>날씨 정보..</p>
-				<p>날씨 정보..</p>
-				<p>날씨 정보..</p>
-			</section>
+		<jsp:include page="/WEB-INF/views/top.jsp" />
+		<div id="layout">
+			<jsp:include page="/WEB-INF/views/side_left.jsp" />
+			<!-- 심현보가 할거임 스크립트 사용해서 공지사항 불러오기 -->
 		</div>
 	</body>
 </html>

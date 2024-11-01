@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+#layout{
+	display: flex;
+}
+
 body{
 	min-width: 1000px;
 	/* bgcolor: '#D0C2AE'; */
