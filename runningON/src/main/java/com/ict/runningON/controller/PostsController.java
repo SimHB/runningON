@@ -3,18 +3,26 @@ package com.ict.runningON.controller;
 import java.io.File;
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ict.runningON.service.PostsService;
+import com.ict.runningON.vo.PostsVO;
+
 @Controller
 public class PostsController {
 	
 	/* 조성주 */
-	
+	@Autowired
+	private PostsService postsService;
 	// 게시글 작성 페이지
 	@GetMapping("/write")
 	public ModelAndView boardwrite() {
@@ -27,6 +35,20 @@ public class PostsController {
 	public ModelAndView boarddetail() {
 		ModelAndView mv = new ModelAndView("posts/detail");		
 		return mv;
+	}
+	@PostMapping("/write_ok") 
+	public ModelAndView boardwriteok(PostsVO pvo, HttpServletRequest request) {
+		try {
+			ModelAndView mv = new ModelAndView("redirect:/board?board_idx="+pvo.getBoard_idx());
+			int result = postsService.getPostsInsert(pvo);
+			if(result>0) {
+				return mv;
+			}
+			return new ModelAndView("posts/error");
+		} catch (Exception e) {
+			System.out.println(e);
+			return new ModelAndView("posts/error");
+		}
 	}
 	
 	// 게시글 이미지

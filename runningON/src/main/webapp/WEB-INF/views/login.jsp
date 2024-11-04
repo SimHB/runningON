@@ -9,7 +9,7 @@
 	<link href="/resources/CSH/css/login1.css" rel="stylesheet">
 </head>
 <body bgcolor="#FEF8F1">
-	<form method="post">
+	<form method="post" action="/login1">
 		<div class="login_space">
 			<header class="header">
 				<a href="/home" class="logo"> <img alt="로고"
@@ -17,10 +17,12 @@
 				</a>
 			</header>
 			<div class="login">
-				<input id="login_id" type="text" placeholder="아이디" size="14" name="m_id" required>
-				<input id="login_pw" type="password" placeholder="비밀번호" size="14" name="m_pw" required>
+				<input id="login_id" type="text" placeholder="아이디" size="14" name="user_id" required>
+				<input id="login_pw" type="password" placeholder="비밀번호" size="14" name="user_pw" required>
 				<input id="login_btn" type="submit" value="로그인">
 			</div>
+			
+		
 
 			<div class="join">
 				<a href="/login_join_form"> 회원가입 </a>

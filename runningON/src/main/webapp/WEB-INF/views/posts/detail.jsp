@@ -96,9 +96,8 @@
 		<!-- 게시글 내용 -->
 		<div id="post-content">
 			<!-- 업로드된 이미지 표시 -->
-			<img id="post-image" src="/resources/JSJ/images/img01.jpg"
-				alt="게시글 이미지"> <img id="post-image"
-				src="/resources/JSJ/images/img01.jpg" alt="게시글 이미지">
+			<img class="post-image" src="/resources/JSJ/images/img01.jpg" alt="게시글 이미지">
+			<img class="post-image" src="/resources/JSJ/images/img01.jpg" alt="게시글 이미지">
 			<p>게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용</p>
 			<p>게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용</p>
 		</div>

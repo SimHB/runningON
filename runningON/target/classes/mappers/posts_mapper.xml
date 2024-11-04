@@ -4,5 +4,8 @@
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="posts">
-	
+	<insert id="insert" parameterType="pvo">
+		insert into posts(board_idx, user_id, post_title, post_content, post_views, post_created_at, post_updated_at)
+		values(#{board_idx}, "admin1", #{post_title}, #{post_content}, 0, now(), now())
+	</insert>
 </mapper>

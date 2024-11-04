@@ -75,7 +75,7 @@ body {
 }
 
 /* 본문 이미지 */
-#post-image {
+.post-image {
 	display: block;
 	margin: 20px auto;
 	max-width: 100%;
