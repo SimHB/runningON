@@ -1,5 +1,21 @@
 @charset "UTF-8";
 
+body{
+	min-width: 1100px;
+}
+
+#side_left{
+	width: 20%;
+	min-width: 300px;
+}
+
+#main_page {
+	width: 80%; /* 전체의 나머지 80% 너비로 설정 */
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: 0 20px;
+}
+
 table {
 	width: 100%;
 	border-collapse: collapse;

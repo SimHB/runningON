@@ -1,10 +1,22 @@
 @charset "UTF-8";
 
 body {
+	min-width: 1100px;
 	font-family: 'Noto Sans KR', sans-serif;
 	margin: 0;
 	padding: 0;
 	background-color: #f4f4f4;
+}
+
+#side_left{
+	width:20%;
+}
+
+#main_page {
+	width: 80%; /* 전체의 나머지 80% 너비로 설정 */
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: 0 20px;
 }
 
 /* 전체 레이아웃 */

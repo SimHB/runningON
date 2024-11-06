@@ -1,7 +1,11 @@
 @charset "UTF-8";
 
-#layout{
-	display: flex;
+body{
+	min-width: 1000px;
+}
+
+#side_left{
+	width:20%;
 }
 
 #board_body{

@@ -1,40 +1,55 @@
 @charset "UTF-8";
 
+body{
+	min-width: 1100px;
+}
 
-		.thumbs {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-        .tabs {
-            margin-bottom: 20px;
-        }
-        .tabs a {
-            margin-right: 15px;
-            text-decoration: none;
-            font-weight: bold;
-            color: black;
-        }
-        .tabs a.active {
-            color: green;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border-bottom: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            font-weight: bold;
-        }
-        .message-title {
-            color: red;
-            font-weight: bold;
-        }
-        .message-title::before {
-            content: "4.";
-            margin-right: 5px;
-            color: red;
-        }
+#side_left{
+	width: 20%;
+	min-width: 300px;
+}
+
+#main_page {
+	width: 80%; /* 전체의 나머지 80% 너비로 설정 */
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: 0 20px;
+}
+
+.thumbs {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+.tabs {
+    margin-bottom: 20px;
+}
+.tabs a {
+    margin-right: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+.tabs a.active {
+    color: green;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+th {
+    font-weight: bold;
+}
+.message-title {
+    color: red;
+    font-weight: bold;
+}
+.message-title::before {
+    content: "4.";
+    margin-right: 5px;
+    color: red;
+}

@@ -3,120 +3,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"
-	rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>모임 가입 페이지</title>
 <link href="/resources/LHN/css/join_main.css" rel="stylesheet">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>모임 페이지</title>
-<link rel="stylesheet" href="layout.css">
-<!-- 외부 CSS 파일 링크 -->
 </head>
 <body>
-	<div class="g_name">
-		<h1>우리 러닝은 영원히! 포에버런!</h1>
-	</div>
-	<br>
-	<hr>
-	<br>
-	<div class="g_gong">
-		<p>러닝할때 노래 소리를 크게 틀어놓지 않도록 주의해 주시길 바랍니다.</p>
-	</div>
-	<hr>
-	<div class="content_box">
-		<!-- 모임 수다 -->
-		<div class="content_sd">
-			<h2>모임 수다</h2>
-			<table class="content_table">
-				<thead>
-					<tr>
-						<th>제목</th>
-						<th>작성자</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>1회 러닝</td>
-						<td>사용자1</td>
-					</tr>
-					<tr>
-						<td>2회 러닝</td>
-						<td>사용자2</td>
-					</tr>
-					<tr>
-						<td>3회 러닝</td>
-						<td>관리자</td>
-					</tr>
-					<tr>
-						<td>다음 모임 언제하나요?</td>
-						<td>참여자1</td>
-					</tr>
-					<tr>
-						<td>즐거운 시간이었어요!</td>
-						<td>참여자2</td>
-					</tr>
-					<tr>
-						<td>즐거운 시간이었어요!</td>
-						<td>참여자2</td>
-					</tr>
-				</tbody>
-			</table>
-			<div id="t_foot">
-					<b>이전</b>
-					<b>현재페이지</b>
-					<b>다음</b>
-			</div>
+	<jsp:include page="/WEB-INF/views/top.jsp" />
+	<div id="layout">
+		<div id="side_left">
+			<jsp:include page="/WEB-INF/views/side_left.jsp" />
 		</div>
-		<!-- 모임 사진 -->
-		<div class="photo_section">
-			<h2 style="text-align: center; margin: 20px;">모임 사진</h2>
+		<div id="main_page">
+			<div id="g_name">
+				<p>우리 러닝은 영원히! 포에버런!</p>
+			</div>
 			<hr>
-			<div class="photo_table">
-				<img alt="그림1" src="/resources/LHN/images/cat01.png" class="photo1">
-				<img alt="그림2" src="/resources/LHN/images/cat01.png" class="photo2">
-				<img alt="그림3" src="/resources/LHN/images/cat01.png" class="photo3">
-				<img alt="그림4" src="/resources/LHN/images/cat01.png" class="photo4">
-				<img alt="그림5" src="/resources/LHN/images/cat01.png" class="photo5">
-				<img alt="그림6" src="/resources/LHN/images/cat01.png" class="photo6">
-				<img alt="그림7" src="/resources/LHN/images/cat01.png" class="photo7">
-				<img alt="그림8" src="/resources/LHN/images/cat01.png" class="photo8">
-				<img alt="그림9" src="/resources/LHN/images/cat01.png" class="photo9">
+			<div class="container2">
+				<div class="g_left"></div>
+				<div class="g_center">모임 상세 보기</div>
+				<div class="g_right">10/15</div>
 			</div>
-			
-			<div id="p_foot">
-					<b>이전</b>
-					<b>현재페이지</b>
-					<b>다음</b>
-			</div>
-		</div>
+			<hr>
+			<div id="box">
+				<div class="leftbox">
+					<div id="g_img">모임 사진</div>
+					<div id="g_des">모임 소개 글</div>
+				</div>
+				<div class="rightbox">
+					<div id="g_post">
+						<h5 style="text-align: center; border: thick;">모임 수다</h5>
+						<table style="width: 100%; margin-top: 10px;">
+							<tr>
+								<th>게시물 제목</th>
+								<th>닉네임</th>
+							</tr>
+							<tr>
+								<td>오늘 운동 너무 힘들었어요!</td>
+								<td>장만호</td>
+							</tr>
+							<tr>
+								<td>같이 뛸 사람 모집합니다~</td>
+								<td>최기영</td>
+							</tr>
+						</table>
+					</div>
 
-		<div class="member">
-			<h2>모임 멤버</h2>
-			<ul>
-				<li>관리자</li>
-				<li>러너1</li>
-				<li>러너2</li>
-				<li>러너3</li>
-				<li>러너4</li>
-				<li>러너5</li>
-				<li>러너6</li>
-				<li>러너7</li>
-				<li>러너8</li>
-				<li>러너9</li>
-			</ul>
-			
-			<div id="m_foot">
-					<b>이전</b>
-					<b>다음</b>
+					<div id="g_member">
+						<h5 style="text-align: left:;">모임 멤버</h5>
+						<ul style="text-align: left; margin-left: 15px; margin-top: 10px;">
+							<li>러닝왕👑</li>
+							<li>러닝보</li>
+							<li>최기영</li>
+							<li>양호석</li>
+							<li>오연차</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="g_join_box">
+				<div class="join_container">
+					<div class="g_left"></div>
+
+					<div class="g_center">
+						<input type="submit" value="가입하기" id="joinbtn">
+					</div>
+					<div class="g_right" id="g_book_mark">
+						<input type="submit" value="즐겨찾기" id="g_bmk">
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<!-- 06. 하단 버튼 -->
-	<footer class="footer">
-		<button class="action_button" id="j_writer">글쓰기</button>
-	</footer>
 </body>
 </html>

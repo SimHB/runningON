@@ -31,16 +31,10 @@ public class BoardsController {
 		ModelAndView mv = new ModelAndView("boards/board");
 		
 		List<PostsVO> posts = boardsService.getPostsList(); // 서비스에서 board_idx로 게시글 조회
-		BoardsVO board_name = boardsService.getBoardName(board_idx); 
+		BoardsVO board_t = boardsService.getBoardName(board_idx); 
 	    mv.addObject("posts", posts);
-	    mv.addObject("board_name", board_name);
+	    mv.addObject("board_t", board_t);
 		
 		return mv;
-	}
-	
-	// 러닝모임 게시판
-	@GetMapping("/group_board")
-	public ModelAndView group() {
-		return new ModelAndView("boards/groupboard");
 	}
 }

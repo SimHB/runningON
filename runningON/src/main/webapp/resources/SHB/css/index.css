@@ -5,8 +5,7 @@
 }
 
 body{
-	min-width: 1000px;
-	/* bgcolor: '#D0C2AE'; */
+	min-width: 1100px;
 }
 
 ul {
@@ -23,15 +22,19 @@ li {
 
 #navbox{
 	width: 100%;
-	height: 96px;
+	height: 140px;
 	/* background-color: "#EBE5DC"; */
 }
 
 .navbar {
-	height: 48px;
 	display: flex;
+	height: 92px;
 	justify-content: space-between;
 	background-color: orange;
+}
+
+.navbar_logo img{
+	width: 150px;
 }
 
 .navbar a {
@@ -40,7 +43,7 @@ li {
 
 .navbar input {
 	width: 50% !important;
-	height: 70%;
+	height: 32px;
 	font-size: 16px;
 	border: 0 !important;
 	border-radius: 10px !important;
@@ -63,40 +66,21 @@ li {
 	display: block;
 }
 
+a:link, a:visited {
+	/* color: black; */ /* 원하는 색상으로 설정 */
+}
+
 a:hover {
 	font-size: 16px;
 	background-color: black;
 	color: white;
 }
 
-#content {
-	display: flex;
-}
-
 .daily_weather {
+	position: absolute;
+	top: 140px;
 	width: 20%;
-	height: 90vh;
+	min-width: 200px;
+	height: 100%;
 	background-color: orange;
 }
-
-#loadPage{
-	width : 80%;
-	height: 90vh;
-	background-color: lightgray;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

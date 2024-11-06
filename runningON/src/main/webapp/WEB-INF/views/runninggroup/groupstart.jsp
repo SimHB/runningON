@@ -25,49 +25,56 @@
 </script>
 </head>
 <body>
-	<form id="groupForm" method="post" enctype="multipart/form-data"
-		action="/group_board">
-		<div>
-			<div class="form-container">
-				<ul>
-					<li class="section-title">모임 이름</li>
-					<li><input type="text" name="new_gr_name" class="input-box"
-						size="50" placeholder="모임명은 짧을수록 이해하기 쉬워요." required></li>
-				</ul>
+	<jsp:include page="/WEB-INF/views/top.jsp" />
+	<div id="layout">
+		<div id="side_left">
+			<jsp:include page="/WEB-INF/views/side_left.jsp" />
+		</div>
+		<div id="main_page">
+			<form id="groupForm" method="post" enctype="multipart/form-data"
+				action="/group_board">
+				<div>
+					<div class="form-container">
+						<ul>
+							<li class="section-title">모임 이름</li>
+							<li><input type="text" name="new_gr_name" class="input-box"
+								size="50" placeholder="모임명은 짧을수록 이해하기 쉬워요." required></li>
+						</ul>
+						<div class="form-group">
+							<ul>
+								<li class="section-title">모임 대표 사진</li>
+								<li><input type="file" name="new_gr_file"></li>
+							</ul>
+						</div>
+					</div>
+					<br>
+					<div class="group_count">
+						<ul>
+							<li class="section-title">모임 규모</li>
+							<li><select name="new_gr_count" id="select"
+								onchange="submitForm()" style="width: 50%;">
+									<option value="5">5</option>
+									<option value="10">10</option>
+									<option value="15">15</option>
+									<option value="20">20</option>
+							</select></li>
+						</ul>
+					</div>
+				</div>
+				<br>
 				<div class="form-group">
 					<ul>
-						<li class="section-title">모임 대표 사진</li>
-						<li><input type="file" name="new_gr_file"></li>
+						<li class="section-title" style="text-align: left;">모임 소개</li>
 					</ul>
+						<textarea id="new_gr_content" rows="10" style="width: 99%" name="new_gr_into"></textarea>
 				</div>
-			</div>
-			<br>
-			<div class="group_count">
-				<ul>
-					<li class="section-title">모임 규모</li>
-					<li><select name="new_gr_count" id="select"
-						onchange="submitForm()" style="width: 50%;">
-							<option value="5">5</option>
-							<option value="10">10</option>
-							<option value="15">15</option>
-							<option value="20">20</option>
-					</select></li>
-				</ul>
-			</div>
+				<div class="button-group" style="text-align: center;">
+					<input type="submit" value="완료" id="join_ok"> 
+					<input type="reset" value="취소" id="join_no">
+				</div>
+			</form>
 		</div>
-		<br>
-		<div class="form-group">
-			<ul>
-				<li class="section-title" style="text-align: left;">모임 소개</li>
-				<li><textarea rows="10" style="width: 99%" name="new_gr_into"
-						id="new_gr_content"></textarea></li>
-			</ul>
-		</div>
-		<div class="button-group" style="text-align: center;">
-			<input type="submit" value="완료" id="join_ok"> 
-			<input type="reset" value="취소" id="join_no">
-		</div>
-	</form>
+	</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous"></script>
 <script src="resources/LHN/js/summernote-lite.js" ></script>
 <script src="resources/LHN/js/lang/summernote-ko-KR.js" ></script>

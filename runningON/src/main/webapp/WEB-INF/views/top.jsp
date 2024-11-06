@@ -6,23 +6,21 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>RunningON</title>
-		<link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
 		<link href="/resources/SHB/css/index.css" rel="stylesheet">
-		<link href="/resources/SHB/css/board.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<div id="navbox">
 			<header class="navbar">
 				<div class="navbar_logo">
-					<a class="index_a" href="/home"> RUNNINGON </a>
-					<a class="index_a" href="/main"> 관리자페이지 </a>
+					<a class="index_a" href="/home"><img alt="로고" src="resources/KGW/images/logowhite.png"></a>
 				</div>
 		
 				<!-- 검색창 -->
 				<input type="text" placeholder="검색" autofocus>
 		
 				<ul class="navbar_link">
+					<li><a class="index_a" href="/main"> 관리자페이지 </a></li>
 					<li><a class="index_a" href="/login1">로그인</a></li>
 					<li><a class="index_a" href="/mypage">MY</a></li>
 				</ul>

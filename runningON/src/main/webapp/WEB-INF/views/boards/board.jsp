@@ -5,17 +5,19 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>${board_name.board_name}</title>
-		<!-- <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet"> -->
+		<title>${board_t.board_name}</title>
+		<link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
 		<link href="/resources/SHB/css/board.css" rel="stylesheet">
 	</head>
 	<body>
 		<jsp:include page="/WEB-INF/views/top.jsp" />
 		<div id="layout">
-			<jsp:include page="/WEB-INF/views/side_left.jsp" />
-			<div id="board_body" data-board-name="${board_name.board_name}">
+			<div id="side_left">
+				<jsp:include page="/WEB-INF/views/side_left.jsp" />
+			</div>
+			<div id="board_body" data-board-name="${board_t.board_name}">
 				<div id="board_header">
-					<b id="board_name">${board_name.board_name}</b> <!-- 동적으로 게시판 이름 출력 -->
+					<b id="board_name">${board_t.board_name}</b> <!-- 동적으로 게시판 이름 출력 -->
 					<div class="sort_box">
 						<button class="board_btn" type="button" onclick="newest()">최신순</button>
 						<button class="board_btn" type="button" onclick="popularity()">인기순</button>
@@ -26,6 +28,11 @@
 						<tr id="thead_tr">
 							<th class="num">번호</th>
 							<th class="category">카테고리</th>
+							<c:choose>
+								<c:when test="${board_t.board_idx == 5 }">
+									<th class="group_img">대표이미지</th>
+								</c:when>
+							</c:choose>
 							<th class="title">제목</th>
 							<th class="user">작성자</th>
 							<th class="views">조회수</th>
@@ -42,12 +49,20 @@
 						<!-- 페이징 목록은 AJAX 요청으로 동적 로딩 -->
 					</ol>
 					<div class="sort_box">
-						<!-- 게시글 작성버튼 board_idx=2 (HOT게시글)인 경우에는 글쓰기 비활성화  -->
+						<!--
+							게시글 작성버튼 board_idx=5 (러닝모임게시판)인 경우에는 글쓰기 링크 다르게
+							게시글 작성버튼 board_idx=2 (HOT게시판)인 경우에는 글쓰기 비활성화
+						-->
 						<c:choose>
-							<c:when test="${board_name.board_idx != 2 }">
+							<c:when test="${board_t.board_idx == 5}">
+								<a class="board_btn" href="/groupstart">글쓰기</a>
+							</c:when>
+							
+							<c:when test="${board_t.board_idx != 2}">
 								<a class="board_btn" href="/write">글쓰기</a>
 							</c:when>
-							<c:otherwise></c:otherwise>
+							<c:otherwise>
+							</c:otherwise>
 						</c:choose>
 					</div>
 				</div>
@@ -81,7 +96,7 @@
 						type: 'GET',
 						data: {
 							cPage: cPage,
-							board_idx: ${board_name.board_idx},  // data 속성에서 board_idx 가져오기
+							board_idx: ${board_t.board_idx},  // data 속성에서 board_idx 가져오기
 							sortOrder: sortOrder // 정렬 기준 전달
 						},
 						dataType: 'json',
@@ -103,20 +118,24 @@
 						tbody.append("<tr><td colspan='8'><h3>게시물이 존재하지 않습니다</h3></td></tr>");
 					} else {
 					list.forEach(function(item) {
-						let row = "<tr><td>" + item.post_idx + "</td>";
-							row += "<td>" + boardName + "</td>";
-						if (item.active == 1) {
+						let row = "<tr><td class='num'>" + item.post_idx + "</td>";	// 게시글 번호(번호)
+							row += "<td class='category'>" + boardName + "</td>";		// 게시판 이름(카테고리)
+						if (item.active == 1) {	// 게시글 삭제 시 DB에서 삭제하는게 아니라 비활성화 시키기
 							row += "<td><span style='color: lightgray'>삭제된 게시물 입니다</span></td>";
 						} else {
-							row += "<td><a href='/detail?post_idx=" + item.post_idx + "&cPage=" + item.nowPage + "'>" + item.post_title + "</a></td>";
+							if (${board_t.board_idx} == 5){	// 러닝모임게시판일 때 그룹 대표 이미지 컬럼추가 (**이미지는 DB에서 불러오기)
+								row += "<td class='group_img'><img alt='그룹이미지' src='/resources/SHB/images/kitten-1.jpg'></td>";
+								row += "<td class='title'><a class='post_link' href='/join_main?post_idx=" + item.post_idx + "&cPage=" + item.nowPage + "'>" + item.post_title + "</a></td>";
+							}else{	// 게시글 제목(클릭 시 게시글 내용으로 이동) 러닝모임 제외
+								row += "<td class='title'><a class='post_link' href='/detail?post_idx=" + item.post_idx + "&cPage=" + item.nowPage + "'>" + item.post_title + "</a></td>";
+							}
 						}
-						
-						row +=	"<td>" + item.user_id + "</td>" +
-								"<td>" + item.post_views + "</td>" +
-								"<td>" + item.post_views + "</td>" + // 좋아요로 바꾸기
-								"<td>" + item.post_created_at + "</td>" +
+						row +=	"<td class='user'>" + item.user_id + "</td>" +			// 유저 닉네임(**아이디=>닉네임으로 바꾸기)
+								"<td class='views'>" + item.post_views + "</td>" +		// 게시글 조회수
+								"<td class='likes'>" + item.post_views + "</td>" +		// 게시글 좋아요수(**조회수=>좋아요로 바꾸기)
+								"<td class='regdate'>" + item.post_created_at + "</td>" +	// 게시글 작성일
 								"</tr>";
-						
+								
 						tbody.append(row);
 						});
 					}
