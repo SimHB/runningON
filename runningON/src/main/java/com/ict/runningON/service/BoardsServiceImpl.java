@@ -55,10 +55,6 @@ public class BoardsServiceImpl implements BoardsService{
 		return postsDAO.getTotalCount(board_idx);
 	}
 
-//	@Override
-//	public List<PostsVO> getPostsList(int offset, int limit) {
-//		return postsDAO.getPostsList(offset, limit);
-//	}
 	@Override
 	public List<PostsVO> getPostsList(int offset, int limit, String board_idx, String desc) {
 		return postsDAO.getPostsList(offset, limit, board_idx, desc);

@@ -32,7 +32,6 @@ public interface BoardsDAO {
     public int getTotalCount(String board_idx);
     
     // 페이징 처리을 위한 리스트 
-    //public List<PostsVO> getPostsList(int offset, int limit);
     public List<PostsVO> getPostsList(int offset, int limit, String board_idx, String desc);
     
     // 댓글 가져오기
