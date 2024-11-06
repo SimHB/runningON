@@ -16,7 +16,7 @@
 		<typeAlias type="com.ict.runningON.vo.CommentsVO"  alias="cvo" />
 		<typeAlias type="com.ict.runningON.vo.DislikesVO"  alias="dlvo" />
 		<typeAlias type="com.ict.runningON.vo.Group_joinVO"  alias="gjvo" />
-		<typeAlias type="com.ict.runningON.vo.GroupsVO"  alias="gvo" />
+		<typeAlias type="com.ict.runningON.vo.RunGroupsVO"  alias="gvo" />
 		<typeAlias type="com.ict.runningON.vo.LikesVO"  alias="lvo" />
 		<typeAlias type="com.ict.runningON.vo.MessagesVO"  alias="mvo" />
 		<typeAlias type="com.ict.runningON.vo.PostsVO"  alias="pvo" />
@@ -26,7 +26,7 @@
 	<mappers>
 		<mapper resource="mappers/admin_mapper.xml" />
 		<mapper resource="mappers/boards_mapper.xml" />
-		<mapper resource="mappers/groups_mapper.xml" />
+		<mapper resource="mappers/rungroups_mapper.xml" />
 		<mapper resource="mappers/homepage_mapper.xml" />
 		<mapper resource="mappers/mypage_mapper.xml" />
 		<mapper resource="mappers/posts_mapper.xml" />

@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+#layout{
+	display: flex;
+}
+
+body{
+	min-width: 1100px;
+}
+
+a:link, a:visited {
+	/* color: black; */ /* 원하는 색상으로 설정 */
+}
+
+a:hover {
+	font-size: 16px;
+	background-color: black;
+	color: white;
+}
+
+.daily_weather {
+	position: absolute;
+	top: 140px;
+	width: 20%;
+	min-width: 200px;
+	height: 100%;
+	background-color: orange;
+}

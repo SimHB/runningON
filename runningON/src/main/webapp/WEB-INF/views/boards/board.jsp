@@ -101,7 +101,7 @@
 						},
 						dataType: 'json',
 						success: function(response) {
-							renderTable(response.list);
+							renderTable(response.list, response.paging);
 							renderPagination(response.paging);
 						},
 						error: function(error) {
@@ -110,15 +110,20 @@
 					});
 				}
 				
-				function renderTable(list) {
+				function renderTable(list, paging) {
 					let tbody = $("#board_body tbody");
 					let boardName = $("#board_body").data("board-name");
+					
+					// 게시글총갯수 / ((현재페이지 - 1) * 5)
+					let nowPage = ((paging.nowPage-1)*paging.numPerPage) == 0 ? 1 : (((paging.nowPage-1)*paging.numPerPage) + 1);
+				    let postNumber = paging.totalRecord - nowPage + 1;
+					
 					tbody.empty();
 					if (list.length === 0) {
 						tbody.append("<tr><td colspan='8'><h3>게시물이 존재하지 않습니다</h3></td></tr>");
 					} else {
-					list.forEach(function(item) {
-						let row = "<tr><td class='num'>" + item.post_idx + "</td>";	// 게시글 번호(번호)
+					list.forEach(function(item, index) {
+						let row = "<tr><td class='num'>" + postNumber-- + "</td>";	// 게시글 번호(번호)
 							row += "<td class='category'>" + boardName + "</td>";		// 게시판 이름(카테고리)
 						if (item.active == 1) {	// 게시글 삭제 시 DB에서 삭제하는게 아니라 비활성화 시키기
 							row += "<td><span style='color: lightgray'>삭제된 게시물 입니다</span></td>";
@@ -154,7 +159,7 @@
 						let prevLink = $("<a>").attr("href", "#").text("이전으로");
 						prevLink.on("click", function (e) {
 							e.preventDefault();
-							loadPostList(paging.beginBlock - paging.pagePerBlock);
+							loadPostList((paging.beginBlock - paging.pagePerBlock), sortOrder);
 						});
 						prevItem.append(prevLink);
 					}
@@ -172,7 +177,7 @@
 							let pageLink = $("<a>").attr("href", "#").text(k);
 							pageLink.on("click", function (e) {
 								e.preventDefault();
-								loadPostList(k);
+								loadPostList(k, sortOrder);
 							});
 							pageItem.append(pageLink);
 						}
@@ -190,7 +195,7 @@
 						let nextLink = $("<a>").attr("href", "#").text("다음으로");
 						nextLink.on("click", function (e) {
 							e.preventDefault();
-							loadPostList(paging.beginBlock + paging.pagePerBlock);
+							loadPostList((paging.beginBlock + paging.pagePerBlock), sortOrder);
 						});
 						nextItem.append(nextLink);
 					}

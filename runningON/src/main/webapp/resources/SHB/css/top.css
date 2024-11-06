@@ -75,12 +75,3 @@ a:hover {
 	background-color: black;
 	color: white;
 }
-
-.daily_weather {
-	position: absolute;
-	top: 140px;
-	width: 20%;
-	min-width: 200px;
-	height: 100%;
-	background-color: orange;
-}
