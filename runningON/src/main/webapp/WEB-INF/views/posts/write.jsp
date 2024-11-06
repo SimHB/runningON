@@ -9,8 +9,6 @@
 		<link rel="stylesheet" href="/resources/JSJ/css/post_write.css">
 		<link rel="stylesheet" href="resources/JSJ/css/summernote-lite.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-		<script src="resources/JSJ/js/summernote-lite.js"></script>
-		<script src="resources/JSJ/js/lang/summernote-ko-KR.js"></script>
 	</head>
 	<body>
 		<jsp:include page="/WEB-INF/views/top.jsp" />
@@ -53,6 +51,8 @@
 			</section>
 		</div>
 		
+		<script src="resources/JSJ/js/summernote-lite.js"></script>
+		<script src="resources/JSJ/js/lang/summernote-ko-KR.js"></script>
 		<script>
 			$(function() {
 				$("#mytextarea").summernote({
