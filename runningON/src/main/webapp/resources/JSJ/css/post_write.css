@@ -8,13 +8,6 @@ body{
 	width:20%;
 }
 
-#main_page {
-	width: 80%; /* 전체의 나머지 80% 너비로 설정 */
-	padding-top: 10px;
-	padding-bottom: 10px;
-	margin: 0 20px;
-}
-
 .container {
 	width: 80%;
 	height: 80vh;
