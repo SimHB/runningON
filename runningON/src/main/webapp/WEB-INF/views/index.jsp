@@ -93,9 +93,17 @@
 					let tbody = $("#board_body tbody");
 					let boardName = "공지사항";
 					
-					// 게시글총갯수 / ((현재페이지 - 1) * 5)
-					let nowPage = ((paging.nowPage-1)*paging.numPerPage) == 0 ? 1 : (((paging.nowPage-1)*paging.numPerPage) + 1);
-				    let postNumber = paging.totalRecord - nowPage + 1;
+					// ((현재페이지 - 1) * 페이지당 들어갈 수 있는 게시글 개수)
+					let nowPage = ((paging.nowPage-1)*paging.numPerPage);
+					// 게시글 총 개수 - ((현재페이지 - 1) * 페이지당 들어갈 수 있는 게시글 개수)
+					// 1페이지 인 경우 : 11 - 0
+					// 2페이지 인 경우 : 11 - 5
+					// 3페이지 인 경우 : 11 - 10
+				    let postNumber = paging.totalRecord - nowPage;
+					// 아래 forEach문에서 페이지에 게시글 넣는 작업 동안 postNumber--
+					// 1페이지 인 경우 : 11 10 9 8 7
+					// 2페이지 인 경우 : 6 5 4 3 2
+					// 3페이지 인 경우 : 1
 					
 					tbody.empty();
 					if (list.length === 0) {
@@ -103,15 +111,15 @@
 					} else {
 					list.forEach(function(item, index) {
 						let row = "<tr><td class='num'>" + postNumber-- + "</td>";	// 게시글 번호(번호)
-							row += "<td class='category'>" + boardName + "</td>";		// 게시판 이름(카테고리)
-						if (item.active == 1) {	// 게시글 삭제 시 DB에서 삭제하는게 아니라 비활성화 시키기
+							row += "<td class='category'>" + boardName + "</td>";	// 게시판 이름(카테고리)
+						if (item.post_is_public == 0) {	// 게시글 삭제 시 DB에서 삭제하는게 아니라 비활성화 시키기
 							row += "<td><span style='color: lightgray'>삭제된 게시물 입니다</span></td>";
 						} else {
 							row += "<td class='title'><a class='post_link' href='/detail?post_idx=" + item.post_idx + "&cPage=" + item.nowPage + "'>" + item.post_title + "</a></td>";
 						}
-						row +=	"<td class='user'>" + item.user_id + "</td>" +			// 유저 닉네임(**아이디=>닉네임으로 바꾸기)
+						row +=	"<td class='user'>" + item.user_name + "</td>" +		// 유저 닉네임(**아이디=>닉네임으로 바꾸기)
 								"<td class='views'>" + item.post_views + "</td>" +		// 게시글 조회수
-								"<td class='likes'>" + item.post_views + "</td>" +		// 게시글 좋아요수(**조회수=>좋아요로 바꾸기)
+								"<td class='likes'>" + item.post_likes + "</td>" +		// 게시글 좋아요수
 								"<td class='regdate'>" + item.post_created_at + "</td>" +	// 게시글 작성일
 								"</tr>";
 								
