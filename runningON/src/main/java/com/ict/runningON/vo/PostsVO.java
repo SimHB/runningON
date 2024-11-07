@@ -7,9 +7,20 @@ public class PostsVO {
 		post_title,
 		post_content,
 		post_views,
+		post_likes,
 		post_created_at,
 		post_updated_at,
 		post_is_public;
+
+	private String user_name;
+	
+	public String getUser_name() {
+		return user_name;
+	}
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
 
 	public String getPost_idx() {
 		return post_idx;
@@ -57,6 +68,14 @@ public class PostsVO {
 
 	public void setPost_views(String post_views) {
 		this.post_views = post_views;
+	}
+	
+	public String getPost_likes() {
+		return post_likes;
+	}
+
+	public void setPost_likes(String post_likes) {
+		this.post_likes = post_likes;
 	}
 
 	public String getPost_created_at() {

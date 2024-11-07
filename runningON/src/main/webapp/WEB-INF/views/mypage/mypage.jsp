@@ -11,8 +11,6 @@
 	<!-- 초기화 css -->
 	<link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
 	<link href="/resources/KGW/css/navL.css" rel="stylesheet">
-	<link href="/resources/KGW/css/thumbs.css" rel="stylesheet">
-
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/top.jsp" />

@@ -4,6 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class RunGroupsVO {
 	private String group_idx,
+		post_idx,
 		user_id,
 		group_title,
 		group_image,
@@ -28,6 +29,14 @@ public class RunGroupsVO {
 
 	public void setGroup_idx(String group_idx) {
 		this.group_idx = group_idx;
+	}
+
+	public String getPost_idx() {
+		return post_idx;
+	}
+
+	public void setPost_idx(String post_idx) {
+		this.post_idx = post_idx;
 	}
 
 	public String getUser_id() {

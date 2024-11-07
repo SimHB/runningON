@@ -9,57 +9,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ict.runningON.vo.BoardsVO;
-import com.ict.runningON.vo.CommentsVO;
 import com.ict.runningON.vo.PostsVO;
 
 @Repository
 public class BoardsDAOImpl implements BoardsDAO{
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-	
+	// 게시판 이름 불러오기
 	@Override
-	public BoardsVO getBoardName(String board_idx) {
-		return sqlSessionTemplate.selectOne("boards.b_list",board_idx);
+	public BoardsVO getBoardInfo(String board_idx) {
+		return sqlSessionTemplate.selectOne("boards.b_info",board_idx);
 	}
-	
+	// 리스트 : 게시판에 불러올 게시글들을 담은 리스트
 	@Override
 	public List<PostsVO> getPostsList() {
 		return sqlSessionTemplate.selectList("boards.p_list");
 	}
-
-	@Override
-	public int getPostsInsert(PostsVO pvo) {
-		return sqlSessionTemplate.insert("boards.insert", pvo);
-	}
-
-	@Override
-	public PostsVO getPostsDetail(String post_idx) {
-		return sqlSessionTemplate.selectOne("boards.detail", post_idx);
-	}
-
-	@Override
-	public int getPostsDelete(String post_idx) {
-		return sqlSessionTemplate.update("boards.delete", post_idx);
-	}
-
-	@Override
-	public int getPostsUpdate(PostsVO pvo) {
-		return sqlSessionTemplate.update("boards.update", pvo);
-	}
-
-	@Override
-	public int getHitUpdate(String post_idx) {
-		return sqlSessionTemplate.update("boards.viewsupdate", post_idx);
-	}
-
+	// 페이징 처리 - 전체 게시글의 수
 	@Override
 	public int getTotalCount(String board_idx) {
 		return sqlSessionTemplate.selectOne("boards.count", board_idx);
 	}
-
+	// 페이징 처리을 위한 리스트
 	@Override
 	public List<PostsVO> getPostsList(int offset, int limit, String board_idx, String desc) {
-		System.out.println(desc);
 		Map<String, Object> map = new HashMap<>();
 		map.put("limit", limit);
 		map.put("offset", offset);
@@ -67,20 +40,5 @@ public class BoardsDAOImpl implements BoardsDAO{
 		map.put("desc", desc);
 		
 		return sqlSessionTemplate.selectList("boards.pageList", map);
-	}
-
-	@Override
-	public List<CommentsVO> getCommList(String post_idx) {
-		return sqlSessionTemplate.selectList("boards.clist", post_idx);
-	}
-
-	@Override
-	public int getCommInsert(CommentsVO cvo) {
-		return sqlSessionTemplate.insert("boards.cinsert", cvo);
-	}
-
-	@Override
-	public int getCommDelete(String comment_idx) {
-		return sqlSessionTemplate.delete("boards.cdelete", comment_idx);
 	}
 }

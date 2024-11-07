@@ -4,6 +4,7 @@ public class DislikesVO {
 	private String dislike_idx,
 		user_id,
 		post_idx,
+		comment_idx,
 		dislike_created_at;
 
 	public String getDislike_idx() {
@@ -28,6 +29,14 @@ public class DislikesVO {
 
 	public void setPost_idx(String post_idx) {
 		this.post_idx = post_idx;
+	}
+	
+	public String getComment_idx() {
+		return comment_idx;
+	}
+
+	public void setComment_idx(String comment_idx) {
+		this.comment_idx = comment_idx;
 	}
 
 	public String getDislike_created_at() {
