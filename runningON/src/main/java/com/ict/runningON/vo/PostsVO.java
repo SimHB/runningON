@@ -10,7 +10,8 @@ public class PostsVO {
 		post_likes,
 		post_created_at,
 		post_updated_at,
-		post_is_public;
+		post_is_public,
+		post_is_hot;
 
 	private String user_name;
 	
@@ -100,5 +101,13 @@ public class PostsVO {
 
 	public void setPost_is_public(String post_is_public) {
 		this.post_is_public = post_is_public;
+	}
+
+	public String getPost_is_hot() {
+		return post_is_hot;
+	}
+
+	public void setPost_is_hot(String post_is_hot) {
+		this.post_is_hot = post_is_hot;
 	}
 }

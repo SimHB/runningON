@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 body {bgcolor = '#D0C2AE';
 	
 }
@@ -62,25 +60,42 @@ a:hover {
 	margin: 0px auto;
 }
 
-.daily_weather {
-	width: 200px;
-	height: 400px;
-	background-color: white;
-	/* 바깥 여백 */
-	margin: 10px 5px 10px 5px;
-	/* 안쪽 여백 */
-	padding: 20px;
-	float: left;
+@media screen and (min-width:1150px) {
+	.daily_weather {
+		width: 200px;
+		height: 600px;
+		background-color: white;
+		/* 바깥 여백 */
+		margin: 10px 5px 10px 5px;
+		/* 안쪽 여백 */
+		padding: 20px;
+		float: left;
+	}
+	.board {
+		width: 70%;
+		height: 400px;
+		background-color: white;
+		margin: 10px 5px 10px 5px;
+		/* 상 우 하 좌 */
+		padding: 20px 40px 20px 40px;
+		float: left;
+		height: 600px;
+	}
 }
 
-.board {
-	width: 70%;
-	height: 400px;
-	background-color: white;
-	margin: 10px 5px 10px 5px;
-	/* 상 우 하 좌 */
-	padding: 20px 40px 20px 40px;
-	float: left;
+@media screen and (max-width:1150px) {
+	.daily_weather {
+		display: none;
+	}
+	.board {
+		width: 100%;
+		height: 600px;
+		background-color: white;
+		margin-top: 5px;
+		/* 상 우 하 좌 */
+		padding: 20px 40px 20px 40px;
+		float: left;
+	}
 }
 
 table {

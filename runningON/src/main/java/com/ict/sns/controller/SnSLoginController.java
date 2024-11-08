@@ -110,7 +110,7 @@ public class SnSLoginController {
 	@GetMapping("/kakaologout")
 	public ModelAndView kakaoLogout(HttpServletRequest request) {
 		request.getSession().invalidate();
-		return new ModelAndView("sns/loginForm");
+		return new ModelAndView("/login");
 	}
 	
 	@GetMapping("/naverlogin")

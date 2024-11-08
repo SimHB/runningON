@@ -26,3 +26,18 @@ a:hover {
 	height: 100%;
 	background-color: orange;
 }
+
+
+.weather_table{
+	width: 80%;
+	margin: 0 auto;
+}
+
+.weather_table th{font-weight: bold;}
+
+.weather_table th, .weather_table td {
+	border: 1px solid lightgray;
+	text-align: center;
+	vertical-align: middle;
+	padding: 10px 0 10px 0;
+}

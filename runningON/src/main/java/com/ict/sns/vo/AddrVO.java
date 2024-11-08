@@ -2,40 +2,49 @@ package com.ict.sns.vo;
 
 public class AddrVO {
 	
-	// 원래는 로그인 한 상태에서 주소록을 사용하므로 사용자
-	private String Postcode, Address, DetailAddress, ExtraAddress;
+	// 원래는 로그인 한 상태에서 주소록을 사용하므로 사용자 id 나 사용자테이블의 pk 가 필요
+	private String m_id, postcode, address,detailAddress, extraAddress;
+
+	public String getM_id() {
+		return m_id;
+	}
+
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
 
 	public String getPostcode() {
-		return Postcode;
+		return postcode;
 	}
 
 	public void setPostcode(String postcode) {
-		Postcode = postcode;
+		this.postcode = postcode;
 	}
 
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 
 	public String getDetailAddress() {
-		return DetailAddress;
+		return detailAddress;
 	}
 
 	public void setDetailAddress(String detailAddress) {
-		DetailAddress = detailAddress;
+		this.detailAddress = detailAddress;
 	}
 
 	public String getExtraAddress() {
-		return ExtraAddress;
+		return extraAddress;
 	}
 
 	public void setExtraAddress(String extraAddress) {
-		ExtraAddress = extraAddress;
+		this.extraAddress = extraAddress;
 	}
+	
 	
 	
 }

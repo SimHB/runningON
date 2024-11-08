@@ -27,6 +27,4 @@ public class NaverVO {
 		this.token_type = token_type;
 	}
 	
-	
-
 }

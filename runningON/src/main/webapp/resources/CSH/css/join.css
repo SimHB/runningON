@@ -1,9 +1,13 @@
+#CheckResult {
+    padding: 10px 80px 20px 80px;
+}
+
 body {
 	margin: 0;
 }
 
 header {
-	padding-top: 50px;
+	padding-top: 200px;
 	margin-left: 80px;
 }
 
@@ -13,28 +17,7 @@ header a {
 }
 
 .join_space {
-	margin: 30px;
-}
-
-.login {
-	background-color: #FCD397;
-	padding: 30px 10px;
-}
-
-.join a {
-	color: white;
-	text-decoration-line: none;
-	padding: 0px 125px;
-}
-
-.social_login {
-	padding: 30px 125px;
-}
-
-.social_login a {
-	color: white;
-	padding: 0px 10px;
-	text-decoration-line: none;
+	margin: 30px 30px 3px 30px;
 }
 
 table {
@@ -85,43 +68,7 @@ table {
 
 .login_space {
 	width: 600px;
-	height: 600px;
-	/* div를 가운데로 */
+	height: 100vh;
 	margin: auto;
 	background-color: #FCD397;
-}
-
-.input_join {
-	background-color: white;
-	width: 410px;
-	height: 30px;
-	padding: 5px 20px;
-	border: none;
-	border-radius: 8px;
-}
-
-.join_space join {
-	margin: auto;
-}
-
-.login_box {
-	width: 410px;
-	height: 60px;
-	margin: auto;
-}
-
-.login_button {
-	width: 410px;
-	height: 60px;
-	margin: auto;
-}
-
-.button {
-	display: block;
-	width: 100%;
-	padding: 13px 20px;
-	border-radius: 8px;
-	background-color: #09aa5c;
-	box-sizing: border-box;
-	border: gray;
 }
