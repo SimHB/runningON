@@ -19,6 +19,7 @@
 		<typeAlias type="com.ict.runningON.vo.LikesVO"  alias="lvo" />
 		<typeAlias type="com.ict.runningON.vo.MessagesVO"  alias="mvo" />
 		<typeAlias type="com.ict.runningON.vo.PostsVO"  alias="pvo" />
+		<typeAlias type="com.ict.runningON.vo.ReportVO"  alias="rvo" />
 		<typeAlias type="com.ict.runningON.vo.RunGroupsVO"  alias="gvo" />
 		<typeAlias type="com.ict.runningON.vo.ScrapsVO"  alias="svo" />
 		<typeAlias type="com.ict.runningON.vo.UsersVO"  alias="uvo" />

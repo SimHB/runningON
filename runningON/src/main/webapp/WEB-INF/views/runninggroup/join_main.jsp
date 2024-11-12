@@ -16,41 +16,45 @@
 		</div>
 		<div id="main_page">
 			<div id="g_name">
-				<p>우리 러닝은 영원히! 포에버런!</p>
+				<p>${gvo.group_title}</p>
 			</div>
 			<hr>
 			<div class="container2">
 				<div class="g_left"></div>
 				<div class="g_center">모임 상세 보기</div>
-				<div class="g_right">10/15</div>
+				<div class="g_right">${gvo.group_currentCount}/${gvo.group_maxCount }</div>
 			</div>
 			<hr>
 			<div id="box">
 				<div class="leftbox">
-					<div id="g_img">모임 사진</div>
-					<div id="g_des">모임 소개 글</div>
+					<div id="g_img"><img alt="이미지" src="/resources/upload/${gvo.group_img}"></div>
+					<div id="g_des">${gvo.group_des}</div>
 				</div>
 				<div class="rightbox">
 					<div id="g_post">
 						<h5 style="text-align: center; border: thick;">모임 수다</h5>
 						<table style="width: 100%; margin-top: 10px;">
-							<tr>
-								<th>게시물 제목</th>
-								<th>닉네임</th>
-							</tr>
-							<tr>
-								<td>오늘 운동 너무 힘들었어요!</td>
-								<td>장만호</td>
-							</tr>
-							<tr>
-								<td>같이 뛸 사람 모집합니다~</td>
-								<td>최기영</td>
-							</tr>
+							<thead>
+								<tr>
+									<th>게시물 제목</th>
+									<th>닉네임</th>
+								</tr>
+							</thead>
+							<tbody id="tbody">
+								<tr>
+									<td>오늘 운동 너무 힘들었어요!</td>
+									<td>장만호</td>
+								</tr>
+								<tr>
+									<td>같이 뛸 사람 모집합니다~</td>
+									<td>최기영</td>
+								</tr>
+							</tbody>
 						</table>
 					</div>
 
 					<div id="g_member">
-						<h5 style="text-align: left:;">모임 멤버</h5>
+						<h5 style="text-align: left;">모임 멤버</h5>
 						<ul style="text-align: left; margin-left: 15px; margin-top: 10px;">
 							<li>러닝왕👑</li>
 							<li>러닝보</li>

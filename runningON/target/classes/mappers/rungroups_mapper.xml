@@ -4,5 +4,16 @@
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="rungroups">
+	<select id="count" resultType="int">
+		select count(*) from rungroups
+	</select>
 	
+	<insert id="group_insert" parameterType="gvo">
+		insert into rungroups(board_idx, user_id, group_img, group_title, group_maxCount, group_des, group_created_at, group_currentCount)
+		values('5', 'admin1', #{group_img}, #{group_title}, #{group_maxCount}, #{group_des}, NOW(), '1');
+	</insert>
+	
+	<select id="select_onegroup" parameterType="String" resultType="gvo">
+		select * from rungroups where group_idx = #{group_idx}
+	</select>
 </mapper>

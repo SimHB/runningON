@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>${board_t.board_name}</title>
+		<title>${bvo.board_name}</title>
 		<link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
 		<link href="/resources/SHB/css/board.css" rel="stylesheet">
 	</head>
@@ -15,9 +15,9 @@
 			<div id="side_left">
 				<jsp:include page="/WEB-INF/views/side_left.jsp" />
 			</div>
-			<div id="board_body" data-board-name="${board_t.board_name}">
+			<div id="board_body" data-board-name="${bvo.board_name}">
 				<div id="board_header">
-					<b id="board_name">${board_t.board_name}</b> <!-- 동적으로 게시판 이름 출력 -->
+					<b id="board_name">${bvo.board_name}</b> <!-- 동적으로 게시판 이름 출력 -->
 					<div class="sort_box">
 						<button class="board_btn" type="button" onclick="newest()">최신순</button>
 						<button class="board_btn" type="button" onclick="popularity()">인기순</button>
@@ -29,7 +29,7 @@
 							<th class="num">번호</th>
 							<th class="category">카테고리</th>
 							<c:choose>
-								<c:when test="${board_t.board_idx == 5 }">
+								<c:when test="${bvo.board_idx == 5 }">
 									<th class="group_img">대표이미지</th>
 								</c:when>
 							</c:choose>
@@ -50,20 +50,20 @@
 					</ol>
 					<div class="sort_box">
 						<!--
-							게시글 작성버튼 board_idx=5 (러닝모임게시판)인 경우에는 글쓰기 링크 다르게
-							게시글 작성버튼 board_idx=2 (HOT게시판)인 경우에는 글쓰기 비활성화
+							게시글 작성버튼 board_idx=5 (러닝모임게시판)인 경우에는 모임만들기
+							게시글 작성버튼 board_idx=2 (HOT게시판)이 아닌 경우에는 글쓰기 활성화
 						-->
-						<c:choose>
-							<c:when test="${board_t.board_idx == 5}">
-								<a class="board_btn" href="/groupstart">글쓰기</a>
-							</c:when>
-							
-							<c:when test="${board_t.board_idx != 2}">
-								<a class="board_btn" href="/write">글쓰기</a>
-							</c:when>
-							<c:otherwise>
-							</c:otherwise>
-						</c:choose>
+						<c:if test="${not empty uvo}">
+							<c:choose>
+								<c:when test="${bvo.board_idx == 5}">
+									<a class="board_btn" href="/groupstart">모임만들기</a>
+								</c:when>
+								
+								<c:when test="${bvo.board_idx != 2}">
+									<a class="board_btn" href="/write">글쓰기</a>
+								</c:when>
+							</c:choose>
+						</c:if>
 					</div>
 				</div>
 			</div>
@@ -96,7 +96,7 @@
 						type: 'GET',
 						data: {
 							cPage: cPage,
-							board_idx: ${board_t.board_idx},  // data 속성에서 board_idx 가져오기
+							board_idx: ${bvo.board_idx},  // data 속성에서 board_idx 가져오기
 							sortOrder: sortOrder // 정렬 기준 전달
 						},
 						dataType: 'json',
@@ -113,6 +113,7 @@
 				function renderTable(list, paging) {
 					let tbody = $("#board_body tbody");
 					let boardName = $("#board_body").data("board-name");
+					let user_id = "${uvo.user_id}" || "";
 					
 					// ((현재페이지 - 1) * 페이지당 들어갈 수 있는 게시글 개수)
 					let nowPage = ((paging.nowPage-1)*paging.numPerPage);
@@ -133,21 +134,34 @@
 					list.forEach(function(item, index) {
 						let row = "<tr><td class='num'>" + postNumber-- + "</td>";	// 게시글 번호(번호)
 							row += "<td class='category'>" + boardName + "</td>";	// 게시판 이름(카테고리)
-						if (item.post_is_public == 0) {	// 게시글 삭제 시 DB에서 삭제하는게 아니라 비활성화 시키기
+						if (item.post_is_public == 0 || item.group_is_public == 0) {	// 게시글 삭제 시 DB에서 삭제하는게 아니라 비활성화 시키기
 							row += "<td><span style='color: lightgray'>삭제된 게시물 입니다</span></td>";
 						} else {
-							if (${board_t.board_idx} == 5){	// 러닝모임게시판일 때 그룹 대표 이미지 컬럼추가 (**이미지는 DB에서 불러오기)
+							if (${bvo.board_idx} == 5){	// 러닝모임게시판일 때 그룹 대표 이미지 컬럼추가 (**이미지는 DB에서 불러오기)
 								row += "<td class='group_img'><img alt='그룹이미지' src='/resources/SHB/images/kitten-1.jpg'></td>";
-								row += "<td class='title'><a class='post_link' href='/join_main?post_idx=" + item.post_idx + "&cPage=" + item.nowPage + "'>" + item.post_title + "</a></td>";
+								if(user_id == item.user_id){ // 로그인된 user_id와 해당 group_idx(group_join)안에 있는 user_id가 같을 때 onegroup으로
+									row += "<td class='title'><a class='post_link' href='/onegroup?group_idx=" + item.group_idx + "&cPage=" + item.nowPage + "'>" + item.group_title + "</a></td>";
+								}else{
+									row += "<td class='title'><a class='post_link' href='/join_main?group_idx=" + item.group_idx + "&cPage=" + item.nowPage + "'>" + item.group_title + "</a></td>";
+								}
 							}else{	// 게시글 제목(클릭 시 게시글 내용으로 이동(이동 시 해당 게시글의 idx를 같이 보냄))
 								row += "<td class='title'><a class='post_link' href='/detail?post_idx=" + item.post_idx + "&cPage=" + item.nowPage + "'>" + item.post_title + "</a></td>";
 							}
 						}
-						row +=	"<td class='user'>" + item.user_name + "</td>" +		// 유저 닉네임(**아이디=>닉네임으로 바꾸기)
-								"<td class='views'>" + item.post_views + "</td>" +		// 게시글 조회수
-								"<td class='likes'>" + item.post_likes + "</td>" +		// 게시글 좋아요수
-								"<td class='regdate'>" + item.post_created_at + "</td>" +	// 게시글 작성일
-								"</tr>";
+							
+						if(${bvo.board_idx} == 5){
+							row +=	"<td class='user'>" + item.user_name + "</td>" +		// 유저 닉네임
+									"<td class='views'>" + item.group_views + "</td>" +		// 그룹 조회수
+									"<td class='likes'>" + item.group_likes + "</td>" +		// 그룹 좋아요수
+									"<td class='regdate'>" + item.group_created_at + "</td>" +	// 그룹 작성일
+									"</tr>";
+						}else{
+							row +=	"<td class='user'>" + item.user_name + "</td>" +		// 유저 닉네임
+									"<td class='views'>" + item.post_views + "</td>" +		// 게시글 조회수
+									"<td class='likes'>" + item.post_likes + "</td>" +		// 게시글 좋아요수
+									"<td class='regdate'>" + item.post_created_at + "</td>" +	// 게시글 작성일
+									"</tr>";
+						}
 								
 						tbody.append(row);
 						});

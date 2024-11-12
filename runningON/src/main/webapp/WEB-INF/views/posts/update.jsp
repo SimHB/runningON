@@ -18,14 +18,15 @@
 			</div>
 			<!-- 게시글 작성 페이지 삽입 -->
 			<section class="container">
-				<form id="post_form" method="POST" encType="multipart/form-data">
+				<form id="post_form" action="/update_ok" method="POST" encType="multipart/form-data">
 					<!-- 제목과 게시판 선택 -->
 					<div class="title-and-board">
-						<input type="text" id="title" name="post_title" placeholder="제목을 입력해 주세요" required> 
-						<select id="board" name="board_idx" required>
+						<input type="text" id="title" name="post_title" placeholder="제목을 입력해 주세요" required value="${pvo.post_title }"> 
+						<select id="board" name="board_idx" required >
 							<option value="" disabled selected>게시판을 선택하세요</option>
 							<option value="3">자유게시판</option>
 							<option value="4">코스추천게시판</option>
+							<option value="5">러닝모임게시판</option>
 							<option value="6">마라톤대회게시판</option>
 							<option value="7">플리추천게시판</option>
 							<option value="8">러닝용품게시판</option>
@@ -34,11 +35,12 @@
 					</div>
 		
 					<!-- 본문 입력 -->
-					<textarea id="mytextarea" name="post_content" required ></textarea>
-					
+					<textarea id="mytextarea" name="post_content" required >${pvo.post_content}</textarea>
+					<input type="hidden" name="cPage" value="${cPage }">
+					<input type="hidden" name="post_idx" value="${pvo.post_idx}">
 					<!-- 버튼 -->
 					<div class="button-container">
-						<button type="submit" onclick="write_ok(this.form)">작성 완료</button>
+						<button type="submit" >작성 완료</button>
 						<!--
 							글쓰기 버튼 누르면 load된 페이지 경로(url) 전달받음
 							취소 버튼 클릭 시 url로 이동하게 수정

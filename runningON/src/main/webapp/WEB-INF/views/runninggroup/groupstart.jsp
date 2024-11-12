@@ -18,11 +18,11 @@
 	이렇게 하면 사용자가 드롭다운에서 옵션을 선택할 때마다 
 	자동으로 폼이 제출됩니다.
  -->
-<script>
+<!-- <script>
 	function submitForm() {
 		document.getElementById("groupForm").submit();
 	}
-</script>
+</script> -->
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/top.jsp" />
@@ -31,19 +31,18 @@
 			<jsp:include page="/WEB-INF/views/side_left.jsp" />
 		</div>
 		<div id="main_page">
-			<form id="groupForm" method="post" enctype="multipart/form-data"
-				action="/group_board">
+			<form id="groupForm" method="post" enctype="multipart/form-data">
 				<div>
 					<div class="form-container">
 						<ul>
 							<li class="section-title">모임 이름</li>
-							<li><input type="text" name="new_gr_name" class="input-box"
+							<li><input type="text" name="group_title" class="input-box"
 								size="50" placeholder="모임명은 짧을수록 이해하기 쉬워요." required></li>
 						</ul>
 						<div class="form-group">
 							<ul>
 								<li class="section-title">모임 대표 사진</li>
-								<li><input type="file" name="new_gr_file"></li>
+								<li><input type="file" name="file_name"></li>
 							</ul>
 						</div>
 					</div>
@@ -51,8 +50,7 @@
 					<div class="group_count">
 						<ul>
 							<li class="section-title">모임 규모</li>
-							<li><select name="new_gr_count" id="select"
-								onchange="submitForm()" style="width: 50%;">
+							<li><select name="group_maxCount" id="select" style="width: 50%;">
 									<option value="5">5</option>
 									<option value="10">10</option>
 									<option value="15">15</option>
@@ -66,11 +64,12 @@
 					<ul>
 						<li class="section-title" style="text-align: left;">모임 소개</li>
 					</ul>
-						<textarea id="new_gr_content" rows="10" style="width: 99%" name="new_gr_into"></textarea>
+						<textarea id="new_gr_content" rows="10" style="width: 99%" name="group_des"></textarea>
 				</div>
 				<div class="button-group" style="text-align: center;">
-					<input type="submit" value="완료" id="join_ok"> 
-					<input type="reset" value="취소" id="join_no">
+					<input type="hidden" name="cPage" value="${cPage }" >
+					<input type="button" value="완료" id="join_ok" onclick="group_start_ok(this.form)"> 
+					<input type="button" value="취소" id="join_no" onclick="group_list_go(this.form)">
 				</div>
 			</form>
 		</div>
@@ -110,13 +109,25 @@ function sendImage(file, editor) {
 		 const path = data.path;
 		 const fname = data.fname ;
 		 console.log(path, fname);
-		 $("#gb2_content").summernote("editor.insertImage", path+"/"+fname);
+		 $("#new_gr_content").summernote("editor.insertImage", path+"/"+fname);
 	  },
 	  error : function() {
 		alert("읽기실패");
 	}
   });
 }
+</script>
+<script type="text/javascript">
+  function group_start_ok(f) {
+	  
+	f.action = "/group_start_ok";
+	f.submit();
+}
+  
+  function group_list_go(f) {
+		f.action = "/group_list_go";
+		f.submit();
+	}
 </script>
 </body>
 </html>

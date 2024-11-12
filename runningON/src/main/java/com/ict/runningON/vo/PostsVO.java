@@ -4,10 +4,13 @@ public class PostsVO {
 	private String post_idx,
 		board_idx,
 		user_id,
+		post_img,
 		post_title,
 		post_content,
 		post_views,
 		post_likes,
+		post_dislikes,
+		post_report,
 		post_created_at,
 		post_updated_at,
 		post_is_public,
@@ -47,6 +50,14 @@ public class PostsVO {
 		this.user_id = user_id;
 	}
 
+	public String getPost_img() {
+		return post_img;
+	}
+
+	public void setPost_img(String post_img) {
+		this.post_img = post_img;
+	}
+
 	public String getPost_title() {
 		return post_title;
 	}
@@ -70,13 +81,29 @@ public class PostsVO {
 	public void setPost_views(String post_views) {
 		this.post_views = post_views;
 	}
-	
+
 	public String getPost_likes() {
 		return post_likes;
 	}
 
 	public void setPost_likes(String post_likes) {
 		this.post_likes = post_likes;
+	}
+
+	public String getPost_dislikes() {
+		return post_dislikes;
+	}
+
+	public void setPost_dislikes(String post_dislikes) {
+		this.post_dislikes = post_dislikes;
+	}
+
+	public String getPost_report() {
+		return post_report;
+	}
+
+	public void setPost_report(String post_report) {
+		this.post_report = post_report;
 	}
 
 	public String getPost_created_at() {
@@ -110,4 +137,5 @@ public class PostsVO {
 	public void setPost_is_hot(String post_is_hot) {
 		this.post_is_hot = post_is_hot;
 	}
+	
 }

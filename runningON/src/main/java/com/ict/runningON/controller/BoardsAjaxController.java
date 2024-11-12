@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ict.common.Paging;
 import com.ict.runningON.service.BoardsService;
 import com.ict.runningON.vo.PostsVO;
+import com.ict.runningON.vo.RunGroupsVO;
 
 @RestController
 public class BoardsAjaxController {
@@ -75,12 +76,24 @@ public class BoardsAjaxController {
 	    	desc = "post_views";
 	    }
 	    
-	    // DB에서 데이터 가져오기
-	    List<PostsVO> list = boardsService.getPostsList(paging.getOffset(), paging.getNumPerPage(),
-	    												board_idx, desc);
-	    
-	    map.put("list", list);
-	    map.put("paging", paging);
-	    return map;
+	    // DB에서 데이터 가져오기(러닝모임게시판일 때)
+	    System.out.println("board_idx : " + board_idx);
+	    if(board_idx.equals("5")) {
+	    	System.out.println("groub : board_idx : " + board_idx);
+	    	List<RunGroupsVO> list = boardsService.getRunGroupsList(paging.getOffset(), paging.getNumPerPage(),
+	    			board_idx, desc);
+	    	
+	    	map.put("list", list);
+	    	map.put("paging", paging);
+	    	return map;
+	    }else { // DB에서 데이터 가져오기(러닝모임게시판이 아닐 때)
+	    	System.out.println("post : board_idx : " + board_idx);
+	    	List<PostsVO> list = boardsService.getPostsList(paging.getOffset(), paging.getNumPerPage(),
+	    			board_idx, desc);
+	    	
+	    	map.put("list", list);
+	    	map.put("paging", paging);
+	    	return map;
+	    }
 	}
 }

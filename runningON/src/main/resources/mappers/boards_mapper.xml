@@ -7,13 +7,20 @@
 	<select id="b_info" parameterType="String" resultType="bvo">
 		select * from boards where board_idx = #{board_idx};
 	</select>
-	
+	<!-- 모든 게시글 불러오기(실제로 사용X) 한다면 관리자페이지에서 -->
 	<select id="p_list" resultType="pvo">
 		select * from posts order by post_idx desc;
 	</select>
 	
 	<select id="count" parameterType="String" resultType="int">
-		select count(*) from posts where board_idx = #{board_idx};
+		<choose>
+			<when test="board_idx == 5">
+				select count(*) from rungroups where board_idx = #{board_idx};
+			</when>
+			<otherwise>
+				select count(*) from posts where board_idx = #{board_idx};
+			</otherwise>
+		</choose>
 	</select>
 	
 	<!--  결과 행 제한하기 - LIMIT = 출력값을 제한함. (MySQL(MariaDB)과 PostgreSQL)
@@ -32,6 +39,22 @@
 			</when>
 			<otherwise>
 				ORDER BY p.post_idx DESC
+			</otherwise>
+		</choose>
+		LIMIT #{limit} OFFSET #{offset};
+	</select>
+	
+	<select id="groupPageList" parameterType="Map" resultType="gvo">
+		SELECT g.*, u.user_name 
+		FROM rungroups g
+		JOIN users u ON g.user_id = u.user_id
+		WHERE g.board_idx = #{board_idx}
+		<choose>
+			<when test="desc == 'post_views'">
+				ORDER BY g.group_views DESC
+			</when>
+			<otherwise>
+				ORDER BY g.group_idx DESC
 			</otherwise>
 		</choose>
 		LIMIT #{limit} OFFSET #{offset};

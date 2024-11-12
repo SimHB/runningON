@@ -30,7 +30,6 @@ public class LoginDAOImpl implements LoginDAO{
 	
 	@Override
 	public UsersVO LoginChk(String user_id) throws Exception {
-		System.out.println(user_id);
 		return sqlSessionTemplate.selectOne("homepage.loginchk", user_id);
 	}
 	

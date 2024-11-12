@@ -4,8 +4,129 @@
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="posts">
-	<insert id="insert" parameterType="pvo">
+    <insert id="insert" parameterType="pvo">
 		insert into posts(board_idx, user_id, post_title, post_content, post_views, post_created_at, post_updated_at)
-		values(#{board_idx}, "admin1", #{post_title}, #{post_content}, 0, now(), now())
+		values(#{board_idx}, #{user_id}, #{post_title}, #{post_content}, 0, now(), now())
 	</insert>
+	<update id="viewupdate" parameterType="String">
+		update posts set post_views = post_views + 1 where post_idx = #{post_idx} 
+	</update>
+	<select id="detail" parameterType="String" resultType="pvo">
+		select * from posts where post_idx = #{post_idx}
+	</select>
+	<select id="clist" parameterType="String" resultType="cvo">
+		select * from comments where post_idx = #{post_idx}
+	</select>
+	
+	<insert id="cinsert" parameterType="cvo">
+		insert into comments(user_id, post_idx, comment_content, comment_created_at, comment_updated_at)
+		values(#{user_id}, #{post_idx}, #{comment_content}, now(), now())
+	</insert>
+	<delete id="cdelete" parameterType="String">
+		delete from comments where comment_idx = #{comment_idx}
+	</delete>
+	<insert id="insertClike" parameterType="lvo">
+		insert into likes(user_id, comment_idx, like_created_at)
+		values(#{user_id},#{comment_idx}, now())
+	</insert>
+	<select id="countClike" parameterType="String" resultType="Integer">
+		select count(*) from likes where comment_idx = #{comment_idx}
+	</select>
+	<delete id="deleteClike" parameterType="lvo">
+		delete from likes where user_id = #{user_id} and comment_idx = #{comment_idx}
+	</delete>
+	<select id="checkClike" resultType="int">
+        select count(*)
+        from likes
+        where user_id = #{user_id} and comment_idx = #{comment_idx}
+    </select>
+	<insert id="insertPlike" parameterType="lvo">
+		insert into likes(user_id, post_idx, like_created_at)
+		values(#{user_id},#{post_idx}, now())
+	</insert>
+	<select id="countPlike" parameterType="String" resultType="Integer">
+		select count(*) from likes where post_idx = #{post_idx}
+	</select>
+	<delete id="deletePlike" parameterType="lvo">
+		delete from likes where user_id = #{user_id} and post_idx = #{post_idx}
+	</delete>
+	<select id="checkPlike" resultType="int">
+        select count(*)
+        from likes
+        where user_id = #{user_id} and post_idx = #{post_idx}
+    </select>
+    <update id="updatePlike" parameterType="String">
+    	update posts
+		set post_likes = (select count(*) from likes where post_idx = #{post_idx}) where post_idx = #{post_idx}
+    </update>
+	<insert id="insertPdislike" parameterType="dlvo">
+		insert into dislikes(user_id, post_idx, dislike_created_at)
+		values(#{user_id},#{post_idx}, now())
+	</insert>
+	<select id="countPdislike" parameterType="String" resultType="Integer">
+		select count(*) from dislikes where post_idx = #{post_idx}
+	</select>
+	<delete id="deletePdislike" parameterType="lvo">
+		delete from dislikes where user_id = #{user_id} and post_idx = #{post_idx}
+	</delete>
+	<select id="checkPdislike" resultType="int">
+        select count(*)
+        from dislikes
+        where user_id = #{user_id} and post_idx = #{post_idx}
+    </select>
+    <update id="updatePdislike" parameterType="String">
+    	update posts
+		set post_dislikes = (select count(*) from dislikes where post_idx = #{post_idx}) where post_idx = #{post_idx}
+    </update>
+    <insert id="insertScrap" parameterType="svo">
+    	insert into scraps(user_id, post_idx, scraped_at)
+    	values(#{user_id}, #{post_idx}, now())
+    </insert>
+    <delete id="deleteScrap" parameterType="svo">
+		delete from scraps where user_id = #{user_id} and post_idx = #{post_idx}
+	</delete>
+	<select id="checkScrap" resultType="int">
+        select count(*)
+        from scraps
+        where user_id = #{user_id} and post_idx = #{post_idx}
+    </select>
+    <insert id="reportPost" parameterType="rvo">
+    	insert into report(post_idx, report_user, reported_at)
+    	values(#{post_idx}, #{user_id}, now())
+    </insert>
+	<select id="checkReportPost" resultType="int">
+        select count(*)
+        from report
+        where report_user = #{user_id} and post_idx = #{post_idx}
+    </select>
+    <select id="countReportPost" parameterType="String" resultType="Integer">
+		select count(*) from report where post_idx = #{post_idx}
+	</select>
+	<update id="updateReportPost" parameterType="String">
+    	update posts
+		set post_report = (select count(*) from report where post_idx = #{post_idx}) where post_idx = #{post_idx}
+    </update>
+    <insert id="reportComment" parameterType="rvo">
+    	insert into report(comment_idx, report_user, reported_at)
+    	values(#{comment_idx}, #{user_id}, now())
+    </insert>
+	<select id="checkReportComment" resultType="int">
+        select count(*)
+        from report
+        where report_user = #{user_id} and comment_idx = #{comment_idx}
+    </select>
+	<update id="updateReportComment" parameterType="String">
+    	update comments
+		set comment_report = (select count(*) from report where comment_idx = #{comment_idx}) where comment_idx = #{comment_idx}
+    </update>
+    <update id="update" parameterType="pvo">
+    	update posts
+    	set board_idx=#{board_idx}, post_title=#{post_title}, post_content=#{post_content}, post_updated_at=now()
+    	where post_idx = #{post_idx}
+    </update>
+    <update id="delete" parameterType="String">
+    	update posts
+    	set post_is_public = 0
+    	where post_idx = #{post_idx}
+    </update>
 </mapper>

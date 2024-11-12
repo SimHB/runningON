@@ -5,8 +5,21 @@ public class CommentsVO {
 		user_id,
 		post_idx,
 		comment_content,
+		comment_likes,
+		comment_dislikes,
+		comment_report,
 		comment_created_at,
 		comment_updated_at;
+	
+	private int likeCount;
+	
+	public int getLikeCount() {
+		return likeCount;
+	}
+
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
 
 	public String getComment_idx() {
 		return comment_idx;
@@ -38,6 +51,30 @@ public class CommentsVO {
 
 	public void setComment_content(String comment_content) {
 		this.comment_content = comment_content;
+	}
+
+	public String getComment_likes() {
+		return comment_likes;
+	}
+
+	public void setComment_likes(String comment_likes) {
+		this.comment_likes = comment_likes;
+	}
+
+	public String getComment_dislikes() {
+		return comment_dislikes;
+	}
+
+	public void setComment_dislikes(String comment_dislikes) {
+		this.comment_dislikes = comment_dislikes;
+	}
+
+	public String getComment_report() {
+		return comment_report;
+	}
+
+	public void setComment_report(String comment_report) {
+		this.comment_report = comment_report;
 	}
 
 	public String getComment_created_at() {

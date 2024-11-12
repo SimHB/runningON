@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ict.runningON.vo.BoardsVO;
 import com.ict.runningON.vo.PostsVO;
+import com.ict.runningON.vo.RunGroupsVO;
 
 @Repository
 public class BoardsDAOImpl implements BoardsDAO{
@@ -30,7 +31,7 @@ public class BoardsDAOImpl implements BoardsDAO{
 	public int getTotalCount(String board_idx) {
 		return sqlSessionTemplate.selectOne("boards.count", board_idx);
 	}
-	// 페이징 처리을 위한 리스트
+	// 페이징 처리을 위한 리스트(러닝그룹을 제외한 게시글)
 	@Override
 	public List<PostsVO> getPostsList(int offset, int limit, String board_idx, String desc) {
 		Map<String, Object> map = new HashMap<>();
@@ -40,5 +41,16 @@ public class BoardsDAOImpl implements BoardsDAO{
 		map.put("desc", desc);
 		
 		return sqlSessionTemplate.selectList("boards.pageList", map);
+	}
+	// 페이징 처리을 위한 리스트(러닝그룹)
+	@Override
+	public List<RunGroupsVO> getRunGroupsList(int offset, int limit, String board_idx, String desc) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("limit", limit);
+		map.put("offset", offset);
+		map.put("board_idx", board_idx);
+		map.put("desc", desc);
+		
+		return sqlSessionTemplate.selectList("boards.groupPageList", map);
 	}
 }
