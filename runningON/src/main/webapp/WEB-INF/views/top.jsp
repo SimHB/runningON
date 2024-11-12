@@ -8,6 +8,19 @@
 		<title>RunningON</title>
 		<link href="/resources/SHB/css/top.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<%
+		    String loginchk = (String) session.getAttribute("loginchk");
+			Integer msg = (Integer) session.getAttribute("msg");
+		%>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js">
+		    var loginchk =  "<%= loginchk %>"
+		
+		    if (loginchk === "ok") {
+		        $(".note-num").show();
+		    } else {
+		        $(".note-num").hide();
+		    }
+		</script>
 	</head>
 	<body>
 		<div id="navbox">
@@ -21,13 +34,11 @@
 		
 				<ul class="navbar_link">
 					<li><a class="index_a" href="/main"> 관리자페이지 </a></li>
-					<!-- <li><a class="index_a" href="/loginForm">로그인</a></li>
-					<li><a class="index_a" href="/mypage">MY</a></li> -->
 					
 					<c:choose>
 						<c:when test="${loginchk == 'ok' }">
 							<li><a class="index_a" href="/logout_logout">로그아웃</a></li>
-							<li><a class="index_a" href="/mypage">MY</a></li>
+							<li><a class="index_a" href="/mypage">MY<span class="note-num"><%= msg %></span></a></li>
 						
 						</c:when>
 						<c:otherwise>

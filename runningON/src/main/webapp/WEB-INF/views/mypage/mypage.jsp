@@ -5,10 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>RunningON</title>
-	<link rel="icon" type="image/x-icon" href="/resources/kgw/images/faviconrun.jpg">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-	<!-- 초기화 css -->
+	<title>프로필 및 게시글 목록</title>
 	<link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
 	<link href="/resources/KGW/css/navL.css" rel="stylesheet">
 </head>
@@ -19,5 +16,19 @@
 			<jsp:include page="/WEB-INF/views/mypage/mypage_side_left.jsp" />
 		</div>
 	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			localStorage.setItem("activeLinkId", "myInfoLink");
+			$(".navL a").removeClass("active");
+		    $(".ul2").removeClass("active-parent");
+	
+		    // 클릭한 링크에 active 클래스 추가
+		    $("#myInfoLink").addClass("active");
+	
+		    // 상위 .ul2 요소에 active-parent 클래스 추가
+		    $("#myInfoLink").closest(".ul2").addClass("active-parent");
+		});
+	</script>
 </body>
 </html>

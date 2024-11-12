@@ -13,11 +13,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.runningON.service.LoginService;
+import com.ict.runningON.service.MypageService;
 import com.ict.runningON.vo.UsersVO;
 
 @Controller
 public class LogInController {
-
+	
+	@Autowired
+	private MypageService mypageService;
+	
 	@Autowired
 	private LoginService loginService;
 	
@@ -119,6 +123,9 @@ public class LogInController {
 					}
 					mv.setViewName("redirect:/home");
 					session.setAttribute("uvo", uvo);
+					// My페이지 옆 알림
+					int num = mypageService.getMsgNum(uvo.getUser_id());
+					session.setAttribute("msg", num);
 					return mv;
 				}else {
 					

@@ -13,6 +13,8 @@
 #ul1{
 	text-indent: 40px;
 }
+
+/* 기본 ul2 스타일 - 숨김 상태 */
 .ul2{
 	text-indent: 70px;
 	opacity: 0;
@@ -21,13 +23,39 @@
     transition: opacity 0.5s ease, max-height 0.5s ease;
 }
 
-.navL li{
-	display: block !important;
-	width: 100%;
+.navL a {
+	padding: 16px 50px;
+	display: block;
 }
 
 .navL a:hover {
 	font-size: 16px;
 	background-color: orange;
 	color: white;
+}
+
+.navL li{
+	display: block !important;
+	width: 100%;
+}
+
+.navL a:link, .navL a:visited {
+	color: black; /* 원하는 색상으로 설정 */
+}
+
+.navL a{
+	text-decoration: none; /* -- 밑줄 없어짐 */
+}
+
+/* 클릭한 부분에 적용할 스타일 */
+.active {
+    font-weight: bold;
+    color: green !important;
+}
+
+ /* 상위 ul에 적용할 스타일 */
+.ul2.active-parent {
+    opacity: 1 !important;
+    max-height: 200px !important;
+    transition-duration: 0s;
 }

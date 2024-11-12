@@ -75,3 +75,17 @@ a:hover {
 	background-color: black;
 	color: white;
 }
+
+.note-num {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    text-align: center;
+    background-color: red;
+    border-radius: 15px;
+    display: inline-block;
+}

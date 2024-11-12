@@ -4,5 +4,120 @@
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mypage">
+	<select id="sendlist" parameterType="String" resultType="mvo">
+		select * from messages where msg_sender_id = #{user_id} order by msg_idx desc
+	</select>
 	
+	<select id="receivelist" parameterType="String" resultType="mvo">
+		select * from messages where msg_receiver_id = #{user_id} order by msg_idx desc
+	</select>
+	
+	<insert id="sendmsg">
+		insert into messages(msg_sender_id, msg_receiver_id, msg_subject, msg_content, msg_sent_at)
+		values(#{msg_sender_id}, #{msg_receiver_id}, #{msg_subject}, #{msg_content}, now())
+	</insert>
+	
+	<select id="one" parameterType="String" resultType="mvo">
+		select * from messages where msg_idx = #{msg_idx}
+	</select>
+	
+	<select id="info" parameterType="String" resultType="uvo">
+		select * from users where user_id = #{user_id}
+	</select>
+	
+	<update id="info_update" parameterType="uvo">
+		UPDATE users
+	    <set>
+	        <if test="user_profileImg != 'maintain'">
+	            user_profileImg = #{user_profileImg},
+	        </if>
+	        <if test="user_nickName != null">
+	            user_nickName = #{user_nickName}
+	        </if>
+	    </set> where user_id = #{user_id}
+	</update>
+	
+	<select id="write_list" parameterType="String" resultType="pvo">
+		select * from posts where user_id = #{user_id} and post_is_public = 1 order by post_idx desc
+	</select>
+	
+	<select id="get_comments" parameterType="String" resultType="cvo">
+		select comment_idx, post_idx, Left(comment_content,15) AS comment_content, comment_updated_at from comments where user_id = #{user_id} order by comment_idx desc
+	</select>
+	
+	<select id="get_com_posts" resultType="pvo">
+    	select * from posts where 
+   		post_is_public = 1
+    	and post_idx in
+    	<foreach collection="list" item="item" open="(" separator="," close=")">
+        	#{item}
+   		</foreach>
+	</select>
+	
+	<select id="get_scraps" parameterType="String" resultType="svo">
+		select * from scraps where user_id = #{user_id} order by scrap_idx desc
+	</select>
+	
+	<select id="get_create_group" parameterType="String" resultType="gvo">
+		select * from rungroups where user_id = #{user_id} order by group_idx desc
+	</select>
+	
+	<select id="get_join_groups" parameterType="String" resultType="Integer">
+		select group_idx from group_join where user_id = #{user_id} order by gJoin_idx desc
+	</select>
+	
+	
+	<update id="delete_post">
+		update posts set post_is_public = 0
+		where post_idx in
+		<foreach collection="list" item="item" open="(" separator="," close=")">
+        	#{item}
+   		</foreach>
+	</update>
+	
+	<delete id="delete_comment">
+		delete from comments where comment_idx in
+		<foreach collection="list" item="item" open="(" separator="," close=")">
+        	#{item}
+   		</foreach>
+	</delete>
+	
+	<delete id="delete_scrap" parameterType="map">
+		delete from scraps 
+		where user_id = #{user_id}
+		and post_idx in
+		<foreach collection="post_idx" item="item" open="(" separator="," close=")">
+        	#{item}
+   		</foreach>
+	</delete>
+	
+	<select id="get_groups" resultType="gvo">
+		select * from rungroups
+	    <where>
+	        <if test="group_idx != null">
+	            group_idx in
+	            <foreach collection="group_idx" item="item" open="(" separator="," close=")">
+	                #{item}
+	            </foreach>
+	        </if>
+	        <if test="group_idx == null">
+	            1 = 0
+	        </if>
+	    </where>
+	</select>
+	
+	<select id="get_scrap_groups" parameterType="String" resultType="Integer">
+		select group_idx from scraps where user_id = #{user_id} order by scrap_idx desc
+	</select>
+	
+	<update id="read_msg">
+		update messages set msg_is_read = 1 where msg_idx = #{msg_idx}
+	</update>
+	
+	<select id="count_msg" parameterType="String" resultType="Integer">
+	    SELECT COUNT(*) 
+	    FROM messages
+	    WHERE msg_receiver_id = #{user_id}
+	      AND msg_is_read = 0
+	</select>
 </mapper>

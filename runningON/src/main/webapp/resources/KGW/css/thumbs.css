@@ -1,11 +1,26 @@
 @charset "UTF-8";
 
-.thumbs {
+#main_page {
 	position: relative;
 	display: flex;
 	flex-wrap: wrap;
-	top: 30px;
-	left: 350px;
-	width: calc(100% - 400px);
-	min-width: 900px;
+	top: 0px;
+	left: 293px;
+	width: calc(100% - 393px);
+	min-width: 650px;
+}
+
+a{
+	text-decoration: none; /* -- 밑줄 없어짐 */
+}
+
+
+a:link, a:visited {
+    color: black; /* 원하는 색상으로 설정 */
+}
+
+a:hover {
+	font-size: 16px;
+	background-color: black;
+	color: white;
 }

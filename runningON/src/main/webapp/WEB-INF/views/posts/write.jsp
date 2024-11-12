@@ -35,7 +35,7 @@
 					</div>
 		
 					<!-- 본문 입력 -->
-					<!-- 카카오맵 -->
+					<!-- 카카오맵 미완 -->
 					<!-- <div id="map" style="width: 100%; height: 350px;"></div> -->
 					<textarea id="mytextarea" name="post_content" required ></textarea>
 					
@@ -52,13 +52,44 @@
 				</form>
 			</section>
 		</div>
-		<!-- 카카오맵 -->
+		<!-- 카카오맵 미완 -->
 		<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=18d67ffd0093a972b35554370188ab50"></script>
 		<script src="resources/JSJ/js/kakaomap_line.js"></script> -->
 		<script src="resources/JSJ/js/summernote-lite.js"></script>
 		<script src="resources/JSJ/js/lang/summernote-ko-KR.js"></script>
 		<script>
+			// 썸머노트 툴바 수정 버전
 			$(function() {
+				$("#mytextarea").summernote({
+					lang : 'ko-KR',
+					height : 300,
+					focus : true,
+					placeholder : "최대 3000자까지 쓸 수 있습니다.",
+					toolbar: [
+						['fontname', ['fontname']],
+						['fontsize', ['fontsize']],
+						['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+						['color', ['forecolor','color']],
+						['table', ['table']],
+						['para', ['ul', 'ol', 'paragraph']],
+						['height', ['height']],
+						['insert',['picture','link','video']],
+						['view', []]
+					],
+					fontNames: ['맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+					fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+					callbacks : {
+						onImageUpload : function(files, editor) {
+							for (let i = 0; i < files.length; i++) {
+								sendImage(files[i], editor);
+							}
+						}
+					}
+				});
+			});
+			
+			// 기본 썸머노트
+			/* $(function() {
 				$("#mytextarea").summernote({
 					lang : 'ko-KR',
 					height : 300,
@@ -72,7 +103,7 @@
 						}
 					}
 				});
-			});
+			}); */
 			
 	
 			function sendImage(file, editor) {

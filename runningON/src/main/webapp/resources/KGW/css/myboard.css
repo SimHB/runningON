@@ -1,0 +1,158 @@
+@charset "UTF-8";
+
+body{
+	min-width: 1000px;
+}
+
+#side_left{
+	width:50px;
+}
+
+#board_body{
+	width: 80%; /* 전체의 나머지 80% 너비로 설정 */
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: 0 20px;
+}
+
+#board_header{
+	width: 100%;
+	display: flex;
+	justify-content: space-between; /* 제목과 정렬 버튼을 양쪽으로 배치 */
+	align-items: center; /* 게시판 텍스트와 최신순/인기순을 같은 줄에 나열 */
+}
+#footer{
+	width: 100%;
+	margin-bottom: 20px;
+}
+#board_name{
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+th{
+	font-size: 16px;
+	font-weight: bold;
+	padding: 10px 0;
+}
+table {
+	width: 100%;
+	text-align: center;
+}
+
+thead tr {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+tbody td {
+	padding: 10px 0; /* 위아래 간격 10px */
+}
+.sort_box{
+	text-align: right;
+	margin-bottom: 20px;
+}
+.num{
+	width: 5%;
+	height: 10%;
+	vertical-align: middle;
+}
+
+.group_img, .category, .user, .views, .likes, .regdate{
+	width: 10%;
+	height: 10%;
+	vertical-align: middle;
+}
+
+.title{
+	width: 15%;
+	vertical-align: middle;
+}
+
+.post_link{
+	color: black;
+	text-decoration: none; /* -- 밑줄 없어짐 */	
+}
+.post_link:hover{
+	background-color: lightgray;
+	color: blue;
+	font-weight: bold;
+}
+
+.group_img{
+	width: 10%;
+}
+
+.group_img img{
+	width: 90%;
+	margin: 5%
+}
+
+#page{text-align: center;}
+
+.board_btn{
+	display: inline-block;
+	/* width: 100px;
+	height: 40px; */
+	padding: 10px 15px 10px 15px;
+	border: 2px solid #F7B655;
+	border-radius: 15px; /* 둥근 모서리 */
+	margin-top: 10px;
+	margin-right: 10px;
+	background-color: #F7B655;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none; /* -- 밑줄 없어짐 */
+}
+
+.board_btn:hover {
+	background-color: black;
+	border: 2px solid black;
+	cursor: pointer;
+}
+
+
+
+
+/* paging */
+.paging {
+	list-style: none;
+	margin-top: 40px;
+	display: flex;
+	justify-content: center; /* 가운데 정렬 */
+}
+
+ol.paging li {
+	float: left;
+	margin-right: 8px;
+}
+
+ol.paging li a {
+	display: block;
+	padding: 3px 7px;
+	border: 1px solid black;
+	color: black;
+	font-weight: bold;
+	text-decoration: none; /* -- 밑줄 없어짐 */
+}
+
+ol.paging li a:hover {
+	background: black;
+	color: white;
+	font-weight: bold;
+}
+
+.disable {
+	padding: 3px 7px;
+	border: 1px solid silver;
+	color: silver;
+}
+
+.now {
+	padding: 3px 7px;
+	border: 1px solid #F7B655;
+	background: #F7B655;
+	color: white;
+	font-weight: bold;
+}
