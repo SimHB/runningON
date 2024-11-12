@@ -11,56 +11,59 @@
 
 </head>
 <body bgcolor="#FEF8F1">
-	<form method="post" action="/login_join_ok" style="height: 100vh;">
-		<div class="login_space">
-		<header class = "header">
-			<a href="/main" class="logo">
-				<img alt="로고" src="/resources/KGW/images/logowhite.png" style="width: 100px">
-			</a>
-		</header>
-		   <div id="idCheckResult"></div>
-			<div class="join_space">
-			<table class="join1">
-					<tr>
-						<td>
-						<!-- name 과 id 구분하기 -->
-							<input type="text" placeholder="아이디" size="14" name="user_id" id="user_id" required>
-							 <button type="button" onclick="checkUserId()">중복확인</button>
-							 <span id="idCheckResult"></span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="password" placeholder="비밀번호" size="14" name="user_pw" required>
-						</td>
-					</tr>
-			
-			</table>
-			</div>
-			
-			<table class="join1">
-					<tr>
-						<td>
-							<input type="text" placeholder="이름" size="14" name="user_name" required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="text" placeholder="닉네임" size="14" name="user_nickName" required>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						<input type="text" placeholder="이메일" size="14" name="user_email" required>
-						<button type="button" onclick="checkUseremail()">중복확인</button>
-						</td>
-					</tr>
-				
-			</table>
-			<div class="join_btn">
-			<input type="submit" value="회원가입" >
-			</div>
+	<form method="post" action="/login_join_ok">
+	<div class="login_space">
+	<header class = "header">
+		<a href="/main" class="logo">
+			<img alt="로고" src="/resources/images/logo_image.png" style="width: 100px">
+		</a>
+	</header>
+	   <div id="idCheckResult"></div>
+		<div class="join_space">
+		<table class="join1">
+				<tr>
+					<td>
+					<!-- name 과 id 구분하기 -->
+						<input type="text" placeholder="아이디" size="14" name="user_id" id="user_id" required>
+						 <button type="button" onclick="checkUserId()">중복확인</button>
+						 <span id="idCheckResult"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="password" placeholder="비밀번호" size="14" name="user_pw" required>
+					</td>
+				</tr>
+		
+		</table>
 		</div>
+		
+		<table class="join1">
+				<tr>
+					<td>
+						<input type="text" placeholder="이름" size="14" name="user_name" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" placeholder="닉네임" size="14" name="user_nickName" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<input type="email" id="email" name="user_email" placeholder="이메일" 
+               pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*" 
+               title="이메일 양식" required>
+					<!-- <input type="text" placeholder="이메일" size="14" name="user_email" required>
+					<button type="button" onclick="checkUseremail()">중복확인</button>
+					 --></td>
+				</tr>
+			
+		</table>
+		<div class="join_btn">
+		<input type="submit" value="회원가입" >
+		</div>
+	</div>
 	</form>
 
 <script>
