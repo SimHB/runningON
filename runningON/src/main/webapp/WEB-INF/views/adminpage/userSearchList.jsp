@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -263,7 +264,7 @@
                     <li><button class="m_btn1" onClick="location.href='/userlist'">유저목록</button></li>
                     <li><button class="m_btn1" onClick="location.href='/usercomment'">댓글정보</button></li>
                     <li><button class="m_btn1" onClick="location.href='/userboard'">게시물</button></li>
-                    
+                    <li><button class="m_btn1" onClick="location.href='/test'">TEST</button></li>
                 </ul>
             </div>
         </div>
@@ -285,33 +286,35 @@
     <div class="container">
         <div class="box">
             <div class="search-container">
-                <input type="text" class="search-input" placeholder="검색..." />
-                <button class="search-button">검색</button>
+            	<form action="adminUserSearch" method= "get">
+	                <input type="text" name="userSearch" class="search-input" placeholder="검색..." />
+	                <button type ="submit" class="search-button">검색</button>
+                </form>
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>번호</th>
-                        <th>카테고리</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>조회수</th>
-                        <th>좋아요</th>
-                        <th>작성일</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr onclick="location.href='/user_board_1';" style="cursor: pointer;">
-                        <td>1</td>
-                        <td>자유게시판</td>
-                        <td>런닝과 관련이 전혀 없는 이야기</td>
-                        <td>런닝맨1</td>
-                        <td>666</td>
-                        <td>666</td>
-                        <td>20XX. X. X</td>
-                    </tr>
-                </tbody>
-            </table>
+            <table class="table">             
+			    <thead>
+			        <tr>
+			            <th>번호</th>
+			            <th>닉네임</th>
+			            <th>이름</th>
+			            <th>이메일</th>
+			            <th>가입일자</th>
+			            <th>마지막접속일</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <c:forEach var="user" items="${searchList}" varStatus="status">
+			            <tr onclick="location.href='/user_information?id=${user.user_id}';" style="cursor: pointer;">
+			                <td>${status.index + 1}</td> <!-- 행 번호 출력 -->
+			                <td>${user.user_nickName}</td>
+			                <td>${user.user_name}</td>
+			                <td>${user.user_email}</td>
+			                <td>${user.user_created_at}</td>
+			                <td>${user.user_lastLoginDate}</td>
+			            </tr>
+			        </c:forEach>
+			    </tbody>
+			</table>
 
             <!-- 페이지 네비게이션 추가 -->
             <div class="pagination">

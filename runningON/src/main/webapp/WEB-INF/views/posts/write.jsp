@@ -7,6 +7,7 @@
 		<title>게시글 작성 화면</title>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
 		<link rel="stylesheet" href="/resources/JSJ/css/post_write.css">
+		<link rel="stylesheet" href="resources/JSJ/css/kakaomap_line.css">
 		<link rel="stylesheet" href="resources/JSJ/css/summernote-lite.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	</head>
@@ -34,6 +35,8 @@
 					</div>
 		
 					<!-- 본문 입력 -->
+					<!-- 카카오맵 -->
+					<!-- <div id="map" style="width: 100%; height: 350px;"></div> -->
 					<textarea id="mytextarea" name="post_content" required ></textarea>
 					
 					<!-- 버튼 -->
@@ -49,6 +52,9 @@
 				</form>
 			</section>
 		</div>
+		<!-- 카카오맵 -->
+		<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=18d67ffd0093a972b35554370188ab50"></script>
+		<script src="resources/JSJ/js/kakaomap_line.js"></script> -->
 		<script src="resources/JSJ/js/summernote-lite.js"></script>
 		<script src="resources/JSJ/js/lang/summernote-ko-KR.js"></script>
 		<script>

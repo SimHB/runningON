@@ -266,7 +266,6 @@ body {
 							onClick="location.href='/usercomment'">댓글정보</button></li>
 					<li><button class="m_btn1"
 							onClick="location.href='/userboard'">게시물</button></li>
-					<li><button class="m_btn1" onClick="location.href='/test'">TEST</button></li>
 				</ul>
 			</div>
 		</div>

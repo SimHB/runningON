@@ -26,17 +26,17 @@ text-align: center;
 	<img src="/resources/MJS/images/logob.png" width="100" />
 	<br>
 	<br>
-	<div>
-		<!-- <label>ID</label> -->
-		<input type="text" id="id" name="id" maxlength="10" placeholder="ID">
-	</div>
-	<div>
-		<!-- <label>Password</label> -->
-		<input type="password" id="pwd" maxlength="10" placeholder="PW">
-	</div>
-	<br>
-	<button type="button" id="btn_login" onClick="location.href='/main'">로그인</button>
-
+	<form action="/loginAction" method="post">
+		<div>
+			<input type="text" id="id" name="id" maxlength="24" placeholder="ID">
+		</div>
+		<div>
+			<!-- <label>Password</label> -->
+			<input type="password" id="pwd" name="pw" maxlength="24" placeholder="PW">
+		</div>
+		<br>
+		<button type="submit" id="btn_login">로그인</button>
+	</form>
 </div>
 
 

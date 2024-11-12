@@ -4,6 +4,7 @@ public class ScrapsVO {
 	private String scrap_idx,
 	user_id,
 	post_idx,
+	group_idx,
 	scarped_at;
 
 	public String getScrap_idx() {
@@ -29,6 +30,14 @@ public class ScrapsVO {
 	public void setPost_idx(String post_idx) {
 		this.post_idx = post_idx;
 	}
+	
+	public String getGroup_idx() {
+		return group_idx;
+	}
+
+	public void setGroup_idx(String group_idx) {
+		this.group_idx = group_idx;
+	}
 
 	public String getScarped_at() {
 		return scarped_at;
@@ -37,6 +46,5 @@ public class ScrapsVO {
 	public void setScarped_at(String scarped_at) {
 		this.scarped_at = scarped_at;
 	}
-	
 	
 }

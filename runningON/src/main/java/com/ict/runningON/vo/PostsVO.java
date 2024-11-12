@@ -3,6 +3,7 @@ package com.ict.runningON.vo;
 public class PostsVO {
 	private String post_idx,
 		board_idx,
+		group_idx,
 		user_id,
 		post_img,
 		post_title,
@@ -40,6 +41,14 @@ public class PostsVO {
 
 	public void setBoard_idx(String board_idx) {
 		this.board_idx = board_idx;
+	}
+	
+	public String getGroup_idx() {
+		return group_idx;
+	}
+
+	public void setGroup_idx(String group_idx) {
+		this.group_idx = group_idx;
 	}
 
 	public String getUser_id() {

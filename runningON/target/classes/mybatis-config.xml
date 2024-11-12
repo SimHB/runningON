@@ -24,6 +24,7 @@
 		<typeAlias type="com.ict.runningON.vo.ScrapsVO"  alias="svo" />
 		<typeAlias type="com.ict.runningON.vo.UsersVO"  alias="uvo" />
 		<typeAlias type="com.ict.runningON.vo.ViewsVO"  alias="vvo" />
+		<typeAlias type="com.ict.runningON.vo.AdminVO"  alias="adv" />
 	</typeAliases>
 	
 	<mappers>

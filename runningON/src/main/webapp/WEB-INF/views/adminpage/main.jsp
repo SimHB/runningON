@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -182,6 +183,11 @@ body {
 </style>
 </head>
 <body>
+    <c:if test="${sessionScope.adminVO == null or sessionScope.adminVO.user_rank != 'admin' }">
+       <script type="text/javascript">
+           window.location.href = '/login';
+       </script>
+    </c:if>
 
     <!-- 최상단 헤더 -->
     <header class="navbar">
@@ -190,7 +196,7 @@ body {
         </div>
         <div class="navbar_blank"></div>
         <ul class="navbar_link">
-            <li><a href="http://localhost:8080">로그아웃</a></li> <!-- 로그아웃 링크 -->
+            <li><a href="/adminLogout">로그아웃</a></li>
         </ul>
     </header>
 
@@ -208,7 +214,6 @@ body {
                     <li><button class="m_btn1" onClick="location.href='/userlist'">유저목록</button></li>
                     <li><button class="m_btn1" onClick="location.href='/usercomment'">댓글정보</button></li>
                     <li><button class="m_btn1" onClick="location.href='/userboard'">게시물</button></li>
-                    <li><button class="m_btn1" onClick="location.href='/test'">TEST</button></li>
                 </ul>
             </div>
         </div>

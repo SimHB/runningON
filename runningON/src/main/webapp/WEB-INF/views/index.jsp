@@ -92,6 +92,7 @@
 				function renderTable(list, paging) {
 					let tbody = $("#board_body tbody");
 					let boardName = "공지사항";
+					let user_id = "${uvo.user_id}" || "";
 					
 					// ((현재페이지 - 1) * 페이지당 들어갈 수 있는 게시글 개수)
 					let nowPage = ((paging.nowPage-1)*paging.numPerPage);
@@ -117,7 +118,7 @@
 						} else {
 							row += "<td class='title'><a class='post_link' href='/detail?post_idx=" + item.post_idx + "&cPage=" + item.nowPage + "'>" + item.post_title + "</a></td>";
 						}
-						row +=	"<td class='user'>" + item.user_name + "</td>" +		// 유저 닉네임(**아이디=>닉네임으로 바꾸기)
+						row +=	"<td class='user'>" + item.user_name + "</td>" +		// 유저 닉네임
 								"<td class='views'>" + item.post_views + "</td>" +		// 게시글 조회수
 								"<td class='likes'>" + item.post_likes + "</td>" +		// 게시글 좋아요수
 								"<td class='regdate'>" + item.post_created_at + "</td>" +	// 게시글 작성일

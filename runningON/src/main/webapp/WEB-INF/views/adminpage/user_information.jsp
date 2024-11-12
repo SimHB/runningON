@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -125,21 +126,17 @@
     <tr>
         <th colspan="2" class="merged" rowspan="2">프로필 이미지</th> <!-- 추가로 병합된 셀 -->
         <th>이름</th>
-        <th>김런닝</th>
-        <th>생년월일</th>
-        <th>XXXX년 XX월 XX일</th>
+        <th colspan="3">${userInfo.user_name}</th>
     </tr>
     <tr>
         <th>닉네임</th>
-        <th>김런닝</th>
-        <th>성별</th>
-        <th>남</th>
+        <th colspan="3">${userInfo.user_nickName}</th>
     </tr>
     <tr>
         <th colspan="2" class="merged">이메일</th>
-        <th colspan="2" class="merged">Running@naver.com</th>
+        <th colspan="2" class="merged">${userInfo.user_email}</th>
         <th>가입일자</th>
-        <th>XXXX년 XX월 XX일</th> <!-- 셀 분리됨 -->
+        <th>${userInfo.user_created_at}</th> <!-- 셀 분리됨 -->
     </tr>
     <tr>
         <th class="merged" colspan="2">제제내역</th> <!-- 행 4 병합 -->
@@ -147,7 +144,9 @@
     </tr>
     <tr>
         <th class="merged" colspan="2">활동모임</th> <!-- 행 5 병합 -->
-        <th colspan="4" class="merged">당근이네 런닝모임<br>당근이네 당근모임</th> <!-- 행 5 병합 -->
+            <c:forEach var="group" items="${groupList}">
+       			 ${groupList.group_title}<br>
+    		</c:forEach>
     </tr>
     <tr>
         <th class="merged" colspan="2">마이페이지 소개글</th> <!-- 행 6 병합 -->
