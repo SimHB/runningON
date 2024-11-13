@@ -17,10 +17,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.protobuf.Service;
+import com.ict.runningON.dao.RunGroupsDAO;
 import com.ict.runningON.service.RunGroupsService;
 import com.ict.runningON.vo.Group_joinVO;
 import com.ict.runningON.vo.PostsVO;
 import com.ict.runningON.vo.RunGroupsVO;
+import com.ict.runningON.vo.ScrapsVO;
 import com.ict.runningON.vo.UsersVO;
 
 @Controller
@@ -113,15 +115,15 @@ public class RunningGroupController {
 	// 모임 가입 하기
 	@PostMapping("/group_join_go")
 	public ModelAndView join_group(@RequestParam("group_idx") String group_idx, HttpSession session) {
-		ModelAndView mv = new ModelAndView("redirect:/join_main?group_idx=" + group_idx);
-		// RunGroupsVO gvo = rungroupsService.getgvo(15);
+		ModelAndView mv = new ModelAndView("redirect:/onegroup?group_idx=" + group_idx);
+		RunGroupsVO gvo = rungroupsService.getgvo(group_idx);
 		Group_joinVO gjvo = new Group_joinVO();
 		UsersVO uvo = (UsersVO) session.getAttribute("uvo");
 		String user_id = uvo.getUser_id();
 		gjvo.setUser_id(user_id);
 		gjvo.setGroup_idx(group_idx);
-		int resutl = rungroupsService.GroupJoinInsert(gjvo);
-		// mv.addObject("gvo", gvo);
+		int result = rungroupsService.GroupJoinInsert(gjvo);
+		mv.addObject("gvo", gvo);
 		return mv;
 	}
 	
@@ -138,6 +140,40 @@ public class RunningGroupController {
 	PostsVO pvo2 = rungroupsService.noti(group_idx);
 	mv.addObject("pvo2", pvo2);
 	return mv;
-		
 	}
+	
+	// 모임 즐겨찾기
+//	@PostMapping("/group_bmk_go")
+//	public ModelAndView group_bmk(@RequestParam("group_idx") String group_idx, HttpSession session) {
+//		ModelAndView mv = new ModelAndView("redirect:/join_main?group_idx=" + group_idx);
+//		
+//		// 세션에서 사용자 정보 가져오기
+//        UsersVO uvo = (UsersVO) session.getAttribute("uvo");
+//        if (uvo == null) {
+//            // 로그인 상태가 아닐 경우 로그인 페이지로 리다이렉트
+//            mv.setViewName("redirect:/loginForm");
+//            return mv;
+//        }
+//
+//     // ScrapsVO 객체 생성 및 데이터 설정
+//        ScrapsVO svo = new ScrapsVO();
+//     // UsersVO uvo = (UsersVO) session.getAttribute("uvo");
+//     // String user_id = uvo.getUser_id();
+//     	String user_id = "test2";
+//     	svo.setUser_id(user_id);
+//     	svo.setGroup_idx(group_idx);
+//     		
+//     // Scraps 테이블에 즐겨찾기 데이터 삽입
+//        int result = rungroupsService.insertScrap(svo);
+//        mv.addObject("svo", svo);
+//
+//     // 성공 여부에 따라 메시지 알림
+//        if (result > 0) {
+//            mv.setViewName("redirect:/join_main?group_idx=" + group_idx + "&message=success");
+//        } else {
+//            mv.setViewName("redirect:/join_main?group_idx=" + group_idx + "&message=fail");
+//        }
+//
+//        return mv;
+//    }
 }

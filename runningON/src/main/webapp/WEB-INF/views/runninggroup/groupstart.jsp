@@ -36,7 +36,7 @@
 					<div class="group_count">
 						<ul>
 							<li class="section-title">모임 규모</li>
-							<li><select name="group_maxCount" id="select" style="width: 50%;">
+							<li><select name="group_maxCount" id="select">
 									<option value="5">5</option>
 									<option value="10">10</option>
 									<option value="15">15</option>

@@ -10,6 +10,17 @@
 <link href="/resources/LHN/css/join_main.css" rel="stylesheet">
 </head>
 <body>
+	<%-- <c:if test="${param.message == 'success'}">
+	    <script type="text/javascript">
+	        alert("즐겨찾기에 성공했습니다.");
+	    </script>
+	</c:if>
+	
+	<c:if test="${param.message == 'fail'}">
+	    <script type="text/javascript">
+	        alert("즐겨찾기에 실패했습니다. 다시 시도해 주세요.");
+	    </script>
+	</c:if> --%>
 	<jsp:include page="/WEB-INF/views/top.jsp" />
 	<div id="layout">
 		<div id="side_left">
@@ -28,7 +39,7 @@
 			<hr>
 			<div id="box">
 				<div class="leftbox">
-					<div id="g_img"><img style="width: 100%; height: 100%; object-fit: contain;" alt="이미지" src="/resources/upload/${gvo.group_img}"> </div>
+					<div id="g_img"><img alt="이미지" src="/resources/upload/${gvo.group_img}"> </div>
 					<div id="g_des">${gvo.group_des}</div>
 				</div>
 				<div class="rightbox">
@@ -61,7 +72,7 @@
 					</div>
 
 					<div id="g_member">
-						<h5 style="text-align: left:;">모임 멤버</h5>
+						<h5 style="text-align: left;">모임 멤버</h5>
 						<ul style="text-align: left; margin-left: 15px; margin-top: 10px;">
 							<li>${gvo.user_id}👑</li><br>
 							<c:forEach  var="j" items="${g_list}">
@@ -82,9 +93,9 @@
 					<div class="g_center">
 						<input type="button" value="가입하기" id="joinbtn" onclick="group_join_go(this.form)">
 					</div>
-					<div class="g_right" id="g_book_mark">
+					<!-- <div class="g_right" id="g_book_mark">
 						<input type="submit" value="즐겨찾기" id="g_bmk" onclick="">
-					</div>
+					</div> -->
 				</div>
 			</form>
 		</div>
@@ -94,6 +105,11 @@
 		f.action = "/group_join_go";
 		f.submit();
 	}
+   
+   /* function group_bmk_go(f) { // 즐겨찾기용 별도 함수 정의
+	    f.action = "/group_bmk_go"; // 즐겨찾기 경로 설정
+	    f.submit();
+	} */
    </script>
 </body>
 </html>

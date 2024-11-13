@@ -107,7 +107,7 @@ body{
 	padding: 15px; /* 여백 추가 */
 	border: 1px solid #ddd;
 	text-align: center; /* 가운데 정렬 */
-	background-color: #c8c8c8; /* 헤더 배경 색상 */
+	background-color: #f3f3f5; /* 헤더 배경 색상 */
 }
 
 /* 본문 셀 왼쪽 정렬 */
@@ -124,7 +124,11 @@ body{
     width: 25%; /* 박스의 가로 크기를 부모 요소의 20%로 설정 */
     margin-top: 20px; /* 기존 상단 여백을 100px로 덮어쓰기 */
     text-align: center; /* 내부 텍스트를 가운데 정렬 */
-    background-color: #fdecc6; /* 배경색을 옅은 크림색으로 설정 */
+    background-color: #f3f3f5; /* 배경색을 옅은 크림색으로 설정 */
+    box-sizing: dbdce1; /* 테두리와 패딩을 포함하여 크기 계산 */
+    padding: 10px; /* 내부 여백을 추가하여 내용과 테두리 사이에 여백 추가 */
+    border-radius: 10px; /* 테두리의 모서리를 둥글게 만들기 */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* 테두리 그림자 */
 }
 
 /* 모임 멤버 제목 스타일 */
