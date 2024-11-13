@@ -30,9 +30,10 @@ public class RunningGroupController {
 	
 	// 모임 만들기
 	@PostMapping("/group_start_ok")
-	public ModelAndView groupStartOK(HttpServletRequest request, @ModelAttribute RunGroupsVO gvo) {
+	public ModelAndView groupStartOK(HttpServletRequest request, @ModelAttribute RunGroupsVO gvo, 
+			HttpSession session) {
 		try {
-			ModelAndView mv = new ModelAndView("redirect:/onegroup");
+			ModelAndView mv = new ModelAndView("redirect:/board?board_idx=5");
 			String path = request.getSession().getServletContext().getRealPath("/resources/upload");
 			MultipartFile file = gvo.getFile_name();
 			System.out.println(gvo.getFile_name());
@@ -47,8 +48,10 @@ public class RunningGroupController {
 				file.transferTo(new File(path, group_img));
 			}
 			// user_id 가 메퍼에 고정되어있음
-			System.out.println(request.getAttribute("user_id"));
-			gvo.setUser_id((String) request.getAttribute("user_id"));
+			UsersVO uvo = (UsersVO) session.getAttribute("uvo");
+			
+			System.out.println(uvo.getUser_id());
+			gvo.setUser_id(uvo.getUser_id());
 			// DB에 데이더 저장
 			int result = rungroupsService.getGroupsInsert(gvo);
 			

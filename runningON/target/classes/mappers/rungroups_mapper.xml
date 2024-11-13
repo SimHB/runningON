@@ -10,8 +10,8 @@
 </select>
 
 <insert id="group_insert" parameterType="gvo">
-  insert into rungroups(group_title, user_id, group_img, group_maxCount, group_des, group_created_at, group_currentCount)
-    values(#{group_title}, #{user_id} ,#{group_img}, #{group_maxCount}, #{group_des}, NOW(), '1');
+  insert into rungroups(group_title, board_idx, user_id, group_img, group_maxCount, group_des, group_created_at, group_currentCount)
+    values(#{group_title}, 5, #{user_id} ,#{group_img}, #{group_maxCount}, #{group_des}, NOW(), '1');
 </insert>
 
 <select id="group_idx" resultType="gvo">

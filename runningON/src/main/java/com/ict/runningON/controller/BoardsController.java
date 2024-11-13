@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.runningON.service.BoardsService;
-import com.ict.runningON.service.LoginService;
 import com.ict.runningON.vo.BoardsVO;
 import com.ict.runningON.vo.UsersVO;
 
@@ -19,9 +18,6 @@ public class BoardsController {
 	/* 심현보 */
 	@Autowired
 	private BoardsService boardsService;
-	
-	@Autowired
-	private LoginService loginService;
 	
 	// 메인페이지(index)
 	@GetMapping("/home")
@@ -35,7 +31,7 @@ public class BoardsController {
 		try {
 			ModelAndView mv = new ModelAndView("boards/board");
 			BoardsVO bvo = boardsService.getBoardInfo(board_idx);
-			UsersVO uvo = loginService.LoginChk((String) session.getAttribute("user_id"));
+			UsersVO uvo = (UsersVO) session.getAttribute("uvo");
 			
 			mv.addObject("bvo", bvo);
 			mv.addObject("uvo", uvo);

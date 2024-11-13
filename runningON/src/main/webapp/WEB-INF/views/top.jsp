@@ -39,7 +39,7 @@
 		
 				<!-- 검색창 -->
 				<form method="post" onsubmit="dynamic_go(this); return false;">
-					<input class="search_space" type="text" name="keyword" placeholder="제목" autofocus>
+					<input class="search_space" type="text" name="keyword" placeholder="제목 + 내용" autofocus>
 					<input class="search_button" type="button" value="검색" onclick="dynamic_go(this.form)">
 				</form>
 		

@@ -24,9 +24,9 @@
 			    <c:choose>
 			        <c:when test="${empty k.user_profileImg }">
 			            <div class="circle">
+			            	<!-- 설정된 이미지가 없을 때 생기는 기본 이미지 -->
 			                <img id="profileImg" src="/resources/KGW/images/basic.webp">
 			            </div>
-			            <b>기본이미지</b>
 			        </c:when>
 			        <c:otherwise>
 			            <div class="circle">

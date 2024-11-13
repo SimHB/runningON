@@ -1,4 +1,4 @@
-package com.ict.runningON.controller;
+package com.ict.search.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,29 +14,43 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.common.Paging;
 import com.ict.runningON.service.BoardsService;
+import com.ict.runningON.service.SearchService;
 import com.ict.runningON.vo.PostsVO;
 import com.ict.runningON.vo.RunGroupsVO;
 
 @RestController
-public class BoardsAjaxController {
+public class SearchAjaxController {
 	
-	/* 심현보 */
 	@Autowired
 	private BoardsService boardsService;
 	
 	@Autowired
 	private Paging paging;
 	
-	@RequestMapping("/posts_ajax")
+	@Autowired
+	private SearchService searchService;
+	
+	
+	@RequestMapping("/search_ajax")
 	@ResponseBody
 	public Map<String, Object> getPostListAjax(@RequestParam(defaultValue = "1") int cPage,
-											@RequestParam String board_idx,
+											@RequestParam String keyword,
 											@RequestParam String sortOrder) {
 	    Map<String, Object> map = new HashMap<>();
-
+	    List<PostsVO> list;
+	    int count = 0;
+		try {
+			list = searchService.getSearch(keyword);
+			map.put("list", list);
+			count = list.size();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	    // 1. 전체 게시물 수 가져오기 및 페이징 설정(index로 부터 받은 board_idx에 해당하는 게시판의 게시글)(자유게시판 기준으로 예시)
 	    // 해당 게시판에 대한 게시글 갯수 가져와 count에 저장 == 14
-	    int count = boardsService.getTotalCount(board_idx);
+	    
+	    
 	    // TotalRecord에 count 저장
 	    paging.setTotalRecord(count);
 	    // 만약 불러온 게시글 수가 페이지당 최대 게시글 수(5개) 보다 적다면
@@ -76,32 +90,10 @@ public class BoardsAjaxController {
 	    	desc = "post_views";
 	    }
 	    
-	    // DB에서 데이터 가져오기(러닝모임게시판일 때)
-	    System.out.println("board_idx : " + board_idx);
-	    if(board_idx.equals("5")) {
-	    	System.out.println("group : board_idx : " + board_idx);
-	    	List<RunGroupsVO> list = boardsService.getRunGroupsList(paging.getOffset(), paging.getNumPerPage(),
-	    			board_idx, desc);
-	    	
-	    	map.put("list", list);
-	    	map.put("paging", paging);
-	    	return map;
-	    }else if(board_idx.equals("2")) { // DB에서 데이터 가져오기(HOT 게시판일 때)
-	    	System.out.println("post : board_idx : " + board_idx);
-	    	List<PostsVO> list = boardsService.getHotPostsList(paging.getOffset(), paging.getNumPerPage(),
-	    			desc);
-	    	
-	    	map.put("list", list);
-	    	map.put("paging", paging);
-	    	return map;
-	    }else { // DB에서 데이터 가져오기(러닝모임게시판이 아닐 때)
-	    	System.out.println("post : board_idx : " + board_idx);
-	    	List<PostsVO> list = boardsService.getPostsList(paging.getOffset(), paging.getNumPerPage(),
-	    			board_idx, desc);
-	    	
-	    	map.put("list", list);
-	    	map.put("paging", paging);
-	    	return map;
-	    }
+    	
+    	
+    	map.put("paging", paging);
+    	return map;
+	    
 	}
 }
