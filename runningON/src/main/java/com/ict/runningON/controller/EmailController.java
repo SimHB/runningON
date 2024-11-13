@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.runningON.service.EmailService;
@@ -55,6 +56,10 @@ public class EmailController {
 			// 해당 임시번호를 DB에 저장하기 또는 세션에 저장하기 
 			request.getSession().setAttribute("sessionNumber", randomNumber);
 			
+			// 세션에 저장된 인증번호 확인 (디버깅용)
+	        System.out.println("세션에 저장된 인증번호: " + request.getSession().getAttribute("sessionNumber"));
+
+			
 			// EmailService 호출해서 사용하기 
 			emailService.sendEmail(randomNumber, email);
 			return mv;
@@ -65,16 +70,15 @@ public class EmailController {
 		}
 	}
 	@PostMapping("/email_send_chk")
-	public ModelAndView sendMailChk(@RequestParam("authNumber") String authNumber, HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("/my");
-		
+	@ResponseBody
+	public String sendMailChk(@RequestParam("authNumber") String authNumber, HttpServletRequest request) {
+		// 세션에서 인증번호 가져오기
 		String sessionNumber = (String) request.getSession().getAttribute("sessionNumber");
-		
-		if(authNumber.equalsIgnoreCase(sessionNumber)) {
-			mv.addObject("chkEmail", "인증번호 일치");
+		if(sessionNumber.equalsIgnoreCase(authNumber)) {
+			return "1";
+		}else {
+			return "0";
 		}
-		
-		return mv;
 		
 	}
 }

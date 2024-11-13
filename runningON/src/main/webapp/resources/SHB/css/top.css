@@ -64,7 +64,7 @@ li {
 	margin: auto !important;
 }
 .search_button {
-	width: 5% !important;
+	width: 50px;
 	height: 34px;
 	font-size: 16px;
 	border: 0 !important;

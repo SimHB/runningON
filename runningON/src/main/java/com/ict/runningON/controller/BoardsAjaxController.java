@@ -91,7 +91,7 @@ public class BoardsAjaxController {
 	    	map.put("list", list);
 	    	map.put("paging", paging);
 	    	return map;
-	    }else if(board_idx.equals("2")) {
+	    }else if(board_idx.equals("2")) { // DB에서 데이터 가져오기(HOT 게시판일 때)
 	    	System.out.println("post : board_idx : " + board_idx);
 	    	List<PostsVO> list = boardsService.getHotPostsList(paging.getOffset(), paging.getNumPerPage(),
 	    			desc);
