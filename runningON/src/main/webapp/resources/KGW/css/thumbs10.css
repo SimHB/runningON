@@ -44,12 +44,3 @@ th, td {
 th {
     font-weight: bold;
 }
-.message-title {
-    color: red;
-    font-weight: bold;
-}
-.message-title::before {
-    content: "4.";
-    margin-right: 5px;
-    color: red;
-}

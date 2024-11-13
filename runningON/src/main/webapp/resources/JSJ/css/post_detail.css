@@ -66,6 +66,7 @@ body {
 #author-name {
 	font-size: 16px;
 	color: #333;
+    text-decoration: none;
 }
 #update-delete{
 	margin-left: auto;

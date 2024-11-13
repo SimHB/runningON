@@ -130,12 +130,12 @@
 
 		<!-- 작성자 정보 및 수정 삭제-->
 		<div id="author-info">
-			<div id="author-avatar">
+			<a id="author-avatar" href="/mypage">
 				<img class="profile"
-					onerror="this.src='/resources/JSJ/images/no-img.png'"
-					src="/resources/JSJ/images/img01.jpg">
-			</div>
-			<div id="author-name">${pvo.user_id}</div>
+					onerror="this.src='/resources/KGW/images/basic.webp'"
+					src="/resources/upload/${uvo.user_profileImg}">
+			</a>
+			<a id="author-name" href="/mypage">${pvo.user_id}</a>
 			<div id="update-delete">
 			<form method="post">			
 				<c:choose>

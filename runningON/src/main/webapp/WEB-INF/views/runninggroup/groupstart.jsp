@@ -8,21 +8,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
 <link rel="stylesheet" href="resources/LHN/css/summernote-lite.css">
 <link rel="stylesheet" href="/resources/LHN/css/groupstart.css">
-<!-- 
-		설명:
-	onchange="submitForm()": 
-	드롭다운에서 선택이 변경될 때 submitForm() 함수를 호출합니다.
-	submitForm(): 이 함수는 폼을 자동으로 제출합니다.
-	your_action_page.jsp: 폼의 action 속성에 
-	원하는 페이지 URL을 넣어야 합니다.
-	이렇게 하면 사용자가 드롭다운에서 옵션을 선택할 때마다 
-	자동으로 폼이 제출됩니다.
- -->
-<!-- <script>
-	function submitForm() {
-		document.getElementById("groupForm").submit();
-	}
-</script> -->
+
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/top.jsp" />
@@ -31,7 +17,7 @@
 			<jsp:include page="/WEB-INF/views/side_left.jsp" />
 		</div>
 		<div id="main_page">
-			<form id="groupForm" method="post" enctype="multipart/form-data">
+			<form  id="groupForm" method="post" enctype="multipart/form-data">
 				<div>
 					<div class="form-container">
 						<ul>
@@ -64,10 +50,10 @@
 					<ul>
 						<li class="section-title" style="text-align: left;">모임 소개</li>
 					</ul>
-						<textarea id="new_gr_content" rows="10" style="width: 99%" name="group_des"></textarea>
+						<textarea id="new_gr_content" rows="10" style="width: 99%" name="group_des" ></textarea>
 				</div>
 				<div class="button-group" style="text-align: center;">
-					<input type="hidden" name="cPage" value="${cPage }" >
+				    <input type="hidden" name="cPage" value="${cPage }" >
 					<input type="button" value="완료" id="join_ok" onclick="group_start_ok(this.form)"> 
 					<input type="button" value="취소" id="join_no" onclick="group_list_go(this.form)">
 				</div>

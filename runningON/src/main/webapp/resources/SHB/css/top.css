@@ -41,9 +41,31 @@ li {
 	color: white;
 }
 
-.navbar input {
+.navbar form {
 	width: 50% !important;
+	height: 34px;
+	font-size: 16px;
+	border: 0 !important;
+	border-radius: 10px !important;
+	outline: none;
+	background-color: orange;
+	padding: 1px 2px !important;
+	margin: auto !important;
+}
+.search_space {
+	width: 80% !important;
 	height: 32px;
+	font-size: 16px;
+	border: 0 !important;
+	border-radius: 10px !important;
+	outline: none;
+	background-color: rgb(240, 240, 240);
+	padding: 1px 2px !important;
+	margin: auto !important;
+}
+.search_button {
+	width: 5% !important;
+	height: 34px;
 	font-size: 16px;
 	border: 0 !important;
 	border-radius: 10px !important;
@@ -74,6 +96,11 @@ a:hover {
 	font-size: 16px;
 	background-color: black;
 	color: white;
+}
+
+#MY {
+    position: relative;
+    display: inline-block;
 }
 
 .note-num {

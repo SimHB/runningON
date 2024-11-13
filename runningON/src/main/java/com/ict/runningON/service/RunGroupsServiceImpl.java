@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ict.runningON.dao.RunGroupsDAO;
+import com.ict.runningON.vo.Group_joinVO;
+import com.ict.runningON.vo.PostsVO;
 import com.ict.runningON.vo.RunGroupsVO;
 
 @Service
-public class RunGroupsServiceImpl implements RunGroupsService{
-	@Autowired RunGroupsDAO rungroupsDAO;
+public class RunGroupsServiceImpl implements RunGroupsService {
+	@Autowired
+	RunGroupsDAO rungroupsDAO;
 
 	@Override
 	public RunGroupsVO getBoardName(String group_idx) {
@@ -40,12 +43,12 @@ public class RunGroupsServiceImpl implements RunGroupsService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
+
 	@Override
-	public int getGroupPostUpdate(RunGroupsVO gvo) {
-		return rungroupsDAO.getGroupPostUpdate(gvo);
+	public int getGroupPostUpdate(PostsVO pvo) {
+		return rungroupsDAO.getGroupPostUpdate(pvo);
 	}
-	
+
 	@Override
 	public int getGroupsUpdate(RunGroupsVO gvo) {
 		return rungroupsDAO.getGroupsUpdate(gvo);
@@ -63,13 +66,49 @@ public class RunGroupsServiceImpl implements RunGroupsService{
 	}
 
 	@Override
-	public int insert_g_post(RunGroupsVO gvo) {
-		return rungroupsDAO.insert_g_post(gvo);
+	public List<PostsVO> getpvo(String group_idx) {
+		return rungroupsDAO.getpvo(group_idx);
 	}
 
 	@Override
-	public RunGroupsVO getrungroupsselect(String group_idx) {
-		return rungroupsDAO.getrungroupsselect(group_idx);
+	public List<String> getgmem(String group_idx) {
+		return rungroupsDAO.getgmem(group_idx);
 	}
 
-}
+	@Override
+	public PostsVO noti(String group_idx) {
+		return rungroupsDAO.noti(group_idx);
+	}
+
+	@Override
+	public int getGroupPostInsert(PostsVO pvo) {
+		return rungroupsDAO.getGroupPostInsert(pvo);
+	}
+	
+	
+	@Override 
+	public RunGroupsVO getgvo(String group_idx) { 
+		return rungroupsDAO.getgvo(group_idx); }
+
+	@Override
+	public int GroupJoinInsert(Group_joinVO gjvo) {
+		return rungroupsDAO.GroupJoinInsert(gjvo);
+	}
+	}
+
+	/*
+	 * @Override public int getJoinGroupsInsert(Group_joinVO gjvo) { return
+	 * rungroupsDAO.getJoinGroupsInsert(gjvo); }
+	 */
+
+
+	/*
+	 * @Override public int insert_g_post(PostsVO pvo) { return
+	 * rungroupsDAO.insert_g_post(pvo); }
+	 */
+
+	/*
+	 * @Override public RunGroupsVO getrungroupsselect(int post_idx) { return
+	 * rungroupsDAO.getrungroupsselect(post_idx); }
+	 */
+

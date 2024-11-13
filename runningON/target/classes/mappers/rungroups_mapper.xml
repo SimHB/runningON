@@ -4,16 +4,54 @@
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="rungroups">
-	<select id="count" resultType="int">
-		select count(*) from rungroups
-	</select>
+
+<select id="count" resultType="int">
+  select count(*) from rungroups
+</select>
+
+<insert id="group_insert" parameterType="gvo">
+  insert into rungroups(group_title, user_id, group_img, group_maxCount, group_des, group_created_at, group_currentCount)
+    values(#{group_title}, #{user_id} ,#{group_img}, #{group_maxCount}, #{group_des}, NOW(), '1');
+</insert>
+
+<select id="group_idx" resultType="gvo">
+ select * from rungroups where group_idx = #{group_idx}
+</select>
+
+<select id="group_post" resultType="pvo">
+ select * from posts where group_idx = #{group_idx} and board_idx = 10
+</select>
+
+<select id="group_mem" resultType="String">
+ select user_id from group_join where group_idx = #{group_idx}
+</select>
+
+<select id="noti" resultType="pvo">
+ select * from posts where group_idx = #{group_idx} and board_idx = 9 order by post_idx desc 
+ LIMIT 1
+</select>
+
+<insert id="group_post_insert" parameterType="pvo">
+  insert into posts(board_idx, post_idx, group_idx, user_id, post_title, post_content, post_img, post_views, post_created_at, post_updated_at)
+		values(#{board_idx}, #{post_idx}, #{group_idx}, "admin1", #{post_title}, #{post_content}, #{post_img}, 0, now(), now())
+</insert>
+
+<insert id="group_join_insert" parameterType="gjvo">
+	insert into group_join(user_id, group_idx, gJoin_joined_at)
+	values(#{user_id}, #{group_idx}, now())
+</insert>
+
+<!-- <insert id="post_insert" parameterType="pvo">
+  insert into posts(board_idx, group_idx, user_id, post_title, post_content, post_created_at)
+  values('5', #{group_idx}, #{user_id}, #{post_title}, #{post_content}, NOW());
+  
+  update rungroups
+  set post_idx = LAST_INSERT_ID()
+  where group_idx = #{group_idx};
+</insert> -->
+
+<!-- <select id="select_onegroup" parameterType="int" resultType="gvo">
+  select * from rungroups where post_idx = #{post_idx}
+</select> -->
 	
-	<insert id="group_insert" parameterType="gvo">
-		insert into rungroups(board_idx, user_id, group_img, group_title, group_maxCount, group_des, group_created_at, group_currentCount)
-		values('5', 'admin1', #{group_img}, #{group_title}, #{group_maxCount}, #{group_des}, NOW(), '1');
-	</insert>
-	
-	<select id="select_onegroup" parameterType="String" resultType="gvo">
-		select * from rungroups where group_idx = #{group_idx}
-	</select>
 </mapper>

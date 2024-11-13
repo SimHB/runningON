@@ -32,7 +32,6 @@
    		<div class="profile-info">
            	<h2>${my.user_nickName}</h2>
           		<span>${my.user_id}</span><br>
-           	<span>방문 92 · 작성글 3 · 구독멤버 0</span>
        	</div>
     </div>
 

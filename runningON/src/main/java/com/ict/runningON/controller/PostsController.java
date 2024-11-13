@@ -24,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ict.runningON.service.LikesService;
 import com.ict.runningON.service.LoginService;
+import com.ict.runningON.service.MypageService;
 import com.ict.runningON.service.PostsService;
 import com.ict.runningON.vo.CommentsVO;
 import com.ict.runningON.vo.DislikesVO;
@@ -43,6 +44,8 @@ public class PostsController {
 	private LikesService likesService;
 	@Autowired
 	private LoginService loginService;
+	@Autowired
+	private MypageService mypageService;
 	// 게시글 작성 페이지
 	@GetMapping("/write")
 	public ModelAndView boardwrite() {
@@ -86,12 +89,12 @@ public class PostsController {
 	        comment.setLikeCount(likeCount);
 	    }
 	    // 게시글 내용에 로그인 정보 넣기
-	    try {
-			UsersVO uvo = loginService.LoginChk((String) session.getAttribute("user_id"));
-			mv.addObject("uvo",uvo);
-	    } catch (Exception e) {
-			System.out.println(e);
-		}
+	    if(session.getAttribute("uvo") != null) {
+	    	UsersVO uvo = (UsersVO) session.getAttribute("uvo");
+	    	String user_id = uvo.getUser_id();
+	    	UsersVO uservo = mypageService.getMyInfo(user_id);
+	    	mv.addObject("uvo", uservo);
+	    }
 		mv.addObject("pvo", pvo);
 		mv.addObject("clist", clist);
 		return mv;

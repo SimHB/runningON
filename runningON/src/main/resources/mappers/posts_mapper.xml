@@ -129,4 +129,9 @@
     	set post_is_public = 0
     	where post_idx = #{post_idx}
     </update>
+    
+    <select id="dynamic" parameterType ="String" resultType="pvo">
+		select * from posts where post_title like concat('%', Lower(#{keyword}), '%') 
+		OR post_content like concat('%', Lower(#{keyword}), '%')
+	</select>
 </mapper>

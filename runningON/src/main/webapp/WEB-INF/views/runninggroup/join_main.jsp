@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,63 +22,78 @@
 			<hr>
 			<div class="container2">
 				<div class="g_left"></div>
-				<div class="g_center">모임 상세 보기</div>
+				<div class="g_center"><a href="/onegroup?group_idx=${gvo.group_idx }">모임 상세 보기</a></div>
 				<div class="g_right">${gvo.group_currentCount}/${gvo.group_maxCount }</div>
 			</div>
 			<hr>
 			<div id="box">
 				<div class="leftbox">
-					<div id="g_img"><img alt="이미지" src="/resources/upload/${gvo.group_img}"></div>
+					<div id="g_img"><img alt="이미지" src="/resources/upload/${gvo.group_img}"> </div>
 					<div id="g_des">${gvo.group_des}</div>
 				</div>
 				<div class="rightbox">
 					<div id="g_post">
 						<h5 style="text-align: center; border: thick;">모임 수다</h5>
 						<table style="width: 100%; margin-top: 10px;">
-							<thead>
+						 <thead>
+							<tr>
+								<th>게시물 제목</th>
+								<th>작성자</th>
+							</tr>
+						 </thead>
+						 <tbody id="tbody">
+						 <c:choose>
+						 	<c:when test="${empty list}">
+								<tr><td colspan="2"><h3>게시물이 존재하지 않습니다</h3></td></tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach  var="k" items="${list}">
 								<tr>
-									<th>게시물 제목</th>
-									<th>닉네임</th>
+									<td><a href="/detail?post_idx=${k.post_idx }">${k.post_title}</a></td>
+									<td>${k.user_id}</td>
 								</tr>
-							</thead>
-							<tbody id="tbody">
-								<tr>
-									<td>오늘 운동 너무 힘들었어요!</td>
-									<td>장만호</td>
-								</tr>
-								<tr>
-									<td>같이 뛸 사람 모집합니다~</td>
-									<td>최기영</td>
-								</tr>
-							</tbody>
+								</c:forEach>
+							</c:otherwise>
+						 </c:choose>
+							
 						</table>
+						</tbody>
 					</div>
 
 					<div id="g_member">
-						<h5 style="text-align: left;">모임 멤버</h5>
+						<h5 style="text-align: left:;">모임 멤버</h5>
 						<ul style="text-align: left; margin-left: 15px; margin-top: 10px;">
-							<li>러닝왕👑</li>
-							<li>러닝보</li>
-							<li>최기영</li>
-							<li>양호석</li>
-							<li>오연차</li>
+							<li>${gvo.user_id}👑</li><br>
+							<c:forEach  var="j" items="${g_list}">
+								<li>${j}</li><br>
+							</c:forEach>
+							
+							
 						</ul>
 					</div>
 				</div>
 			</div>
-			<div class="g_join_box">
+			<form method="post" class="g_join_box">
+					<input type="hidden" name="user_id" value="${gvo.user_id}">
+					<input type="hidden" name="group_idx" value="${gvo.group_idx}">
+				
 				<div class="join_container">
 					<div class="g_left"></div>
-
 					<div class="g_center">
-						<input type="submit" value="가입하기" id="joinbtn">
+						<input type="button" value="가입하기" id="joinbtn" onclick="group_join_go(this.form)">
 					</div>
 					<div class="g_right" id="g_book_mark">
-						<input type="submit" value="즐겨찾기" id="g_bmk">
+						<input type="submit" value="즐겨찾기" id="g_bmk" onclick="">
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	</div>
+   <script type="text/javascript">
+   function group_join_go(f) {
+		f.action = "/group_join_go";
+		f.submit();
+	}
+   </script>
 </body>
 </html>

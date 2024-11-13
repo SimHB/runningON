@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ict.runningON.vo.Group_joinVO;
+import com.ict.runningON.vo.PostsVO;
 import com.ict.runningON.vo.RunGroupsVO;
 
 @Repository
@@ -47,8 +49,8 @@ public class RunGroupsDAOImpl implements RunGroupsDAO{
 	}
 	
 	@Override
-	public int getGroupPostUpdate(RunGroupsVO gvo) {
-		return sqlSessionTemplate.update("rungroups.group_post_update", gvo);
+	public int getGroupPostUpdate(PostsVO pvo) {
+		return sqlSessionTemplate.update("rungroups.group_post_update", pvo);
 	}
 
 	@Override
@@ -68,13 +70,42 @@ public class RunGroupsDAOImpl implements RunGroupsDAO{
 	}
 
 	@Override
-	public int insert_g_post(RunGroupsVO gvo) {
-		return sqlSessionTemplate.insert("rungroups.post_insert", gvo);
+	public RunGroupsVO getgvo(String group_idx) {
+		return sqlSessionTemplate.selectOne("rungroups.group_idx", group_idx);
 	}
 
 	@Override
-	public RunGroupsVO getrungroupsselect(String group_idx) {
-		return sqlSessionTemplate.selectOne("rungroups.select_onegroup", group_idx);
+	public List<PostsVO> getpvo(String group_idx) {
+		return sqlSessionTemplate.selectList("rungroups.group_post", group_idx);
 	}
+
+	@Override
+	public List<String> getgmem(String group_idx) {
+		return sqlSessionTemplate.selectList("rungroups.group_mem", group_idx);
+	}
+
+	@Override
+	public PostsVO noti(String group_idx) {
+		return sqlSessionTemplate.selectOne("rungroups.noti", group_idx);
+	}
+
+	@Override
+	public int getGroupPostInsert(PostsVO pvo) {
+		return sqlSessionTemplate.insert("rungroups.group_post_insert", pvo);
+	}
+
+	@Override
+	public int GroupJoinInsert(Group_joinVO gjvo) {
+		return sqlSessionTemplate.insert("rungroups.group_join_insert", gjvo);
+	}
+
+
+	/*
+	 * @Override public int insert_g_post(PostsVO pvo) { return
+	 * sqlSessionTemplate.insert("rungroups.post_insert", pvo); }
+	 * 
+	 * @Override public RunGroupsVO getrungroupsselect(int post_idx) { return
+	 * sqlSessionTemplate.selectOne("rungroup.select_onegroup", post_idx); }
+	 */
 
 }

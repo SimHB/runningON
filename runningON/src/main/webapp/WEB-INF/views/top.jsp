@@ -12,14 +12,22 @@
 		    String loginchk = (String) session.getAttribute("loginchk");
 			Integer msg = (Integer) session.getAttribute("msg");
 		%>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js">
-		    var loginchk =  "<%= loginchk %>"
+		<script>
+		    $(document).ready(function() {
+		        var loginchk = "<%= loginchk %>";
+		        var msg = <%= msg != null ? msg : 0 %>; // msg가 null일 때 0으로 기본값 설정
 		
-		    if (loginchk === "ok") {
-		        $(".note-num").show();
-		    } else {
-		        $(".note-num").hide();
-		    }
+		        if (loginchk === "ok" && msg > 0) {
+		            $(".note-num").show();
+		        } else {
+		            $(".note-num").hide();
+		        }
+		    });
+		    
+		 	function dynamic_go(f) {
+				f.action = "/emp_dynamic_search";
+				f.submit();	
+			} 
 		</script>
 	</head>
 	<body>
@@ -30,15 +38,16 @@
 				</div>
 		
 				<!-- 검색창 -->
-				<input type="text" placeholder="검색" autofocus>
+				<form method="post" onsubmit="dynamic_go(this); return false;">
+					<input class="search_space" type="text" name="keyword" placeholder="검색" autofocus>
+					<input class="search_button" type="button"  onclick="dynamic_go(this.form)">
+				</form>
 		
 				<ul class="navbar_link">
-					<li><a class="index_a" href="/main"> 관리자페이지 </a></li>
-					
 					<c:choose>
 						<c:when test="${loginchk == 'ok' }">
 							<li><a class="index_a" href="/logout_logout">로그아웃</a></li>
-							<li><a class="index_a" href="/mypage">MY<span class="note-num"><%= msg %></span></a></li>
+							<li><a id="MY" class="index_a" href="/mypage">MY<span class="note-num"><%= msg %></span></a></li>
 						
 						</c:when>
 						<c:otherwise>
