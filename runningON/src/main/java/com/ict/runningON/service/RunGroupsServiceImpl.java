@@ -64,7 +64,12 @@ public class RunGroupsServiceImpl implements RunGroupsService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	@Override
+    public int getGroup_joinList(Group_joinVO gjvo) {
+		return rungroupsDAO.getGroup_joinList(gjvo);
+	}
+	
 	@Override
 	public List<PostsVO> getpvo(String group_idx) {
 		return rungroupsDAO.getpvo(group_idx);
@@ -94,7 +99,7 @@ public class RunGroupsServiceImpl implements RunGroupsService {
 	public int GroupJoinInsert(Group_joinVO gjvo) {
 		return rungroupsDAO.GroupJoinInsert(gjvo);
 	}
-	}
+}
 
 	/*
 	 * @Override public int getJoinGroupsInsert(Group_joinVO gjvo) { return

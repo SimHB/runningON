@@ -41,6 +41,13 @@
 	values(#{user_id}, #{group_idx}, now())
 </insert>
 
+<select id="group_join_list" parameterType="gjvo" resultType="int">
+	select count(*)
+	from group_join 
+	where group_idx = #{group_idx} and user_id = #{user_id}
+	
+</select>
+
 <!-- <insert id="post_insert" parameterType="pvo">
   insert into posts(board_idx, group_idx, user_id, post_title, post_content, post_created_at)
   values('5', #{group_idx}, #{user_id}, #{post_title}, #{post_content}, NOW());

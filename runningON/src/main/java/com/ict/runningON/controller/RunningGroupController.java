@@ -100,9 +100,29 @@ public class RunningGroupController {
 	// 모임 가입 페이지
 	@GetMapping("/join_main")
 
-	 public ModelAndView join_main(@RequestParam("group_idx") String group_idx) {
+	 public ModelAndView join_main(@RequestParam("group_idx") String group_idx, HttpSession session) {
 	 ModelAndView mv = new ModelAndView("runninggroup/join_main");
 	 //Integer.parseInt(group_idx)      getvo(여기)
+	 
+	 // 러닝모임 게시판에서 가입한 그룹이면 onegroup으로 보내기
+	 UsersVO uvo = (UsersVO) session.getAttribute("uvo");
+	 if(uvo != null) {
+		 Group_joinVO gjvo = new Group_joinVO();
+		 System.out.println(group_idx);
+		 gjvo.setGroup_idx(group_idx);
+		 gjvo.setUser_id(uvo.getUser_id());
+		 System.out.println(gjvo.getGroup_idx());
+		 System.out.println(gjvo.getUser_id());
+		 int result = rungroupsService.getGroup_joinList(gjvo);
+		 System.out.println("sql문 성공");
+		 if(result > 0) {
+			 System.out.println("result > 0으로");
+			 mv = new ModelAndView("redirect:/onegroup?group_idx=" + group_idx);
+			 return mv;
+		 }
+	 }
+	 
+	 
 	 RunGroupsVO gvo = rungroupsService.getgvo(group_idx);
 	 mv.addObject("gvo", gvo);
 	 List<PostsVO> pvo = rungroupsService.getpvo(group_idx);
@@ -130,6 +150,7 @@ public class RunningGroupController {
 	// 모임 내부 페이지
 	@GetMapping("/onegroup")
 	public ModelAndView onegroup(@RequestParam("group_idx") String group_idx) {
+	System.out.println("onegroup컨트롤러");
 	ModelAndView mv = new ModelAndView("runninggroup/onegroup");
 	RunGroupsVO gvo = rungroupsService.getgvo(group_idx);
 	mv.addObject("gvo", gvo);

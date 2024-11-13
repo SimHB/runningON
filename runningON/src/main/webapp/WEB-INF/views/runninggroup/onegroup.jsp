@@ -88,7 +88,7 @@
           					  <br>
        						</c:if>
 						</c:forEach>
-						<br><img alt="그림8"src="/resources/LHN/images/cat01.png" class="photo8">
+						<br><img alt="그림8"src="/resources/SHB/images/kitten-1.jpg" class="photo8">
 					</div>
 
 					<div id="p_foot">

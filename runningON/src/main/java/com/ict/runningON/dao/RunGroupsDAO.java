@@ -49,6 +49,8 @@ public interface RunGroupsDAO {
 	    // 원글 수정 : 게시글 수정
 	    public int getGroupsUpdate(RunGroupsVO gvo);
 	    
+	    // 러닝모임 게시판에서 유저가 해당 그룹에 가입했는지 확인하기 위해 불러올 gjvo
+	    public int getGroup_joinList(Group_joinVO gjvo);
 		/*
 		 * // 조회수 업데이트 : 게시글 들어갈 때 조회수 증가(계정당 하루에 한번) 
 		 * public int getHitUpdate(String p_idx);

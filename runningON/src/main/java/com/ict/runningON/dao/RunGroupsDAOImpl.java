@@ -68,6 +68,11 @@ public class RunGroupsDAOImpl implements RunGroupsDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+    public int getGroup_joinList(Group_joinVO gjvo) {
+		return sqlSessionTemplate.selectOne("rungroups.group_join_list",gjvo);
+	}
 
 	@Override
 	public RunGroupsVO getgvo(String group_idx) {
