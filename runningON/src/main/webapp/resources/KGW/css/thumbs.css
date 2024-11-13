@@ -5,21 +5,20 @@
 	display: flex;
 	flex-wrap: wrap;
 	top: 0px;
-	left: 293px;
 	width: calc(100% - 393px);
 	min-width: 650px;
 }
 
-a{
+#main_page a{
 	text-decoration: none; /* -- 밑줄 없어짐 */
 }
 
 
-a:link, a:visited {
+#main_page a:link, #main_page a:visited {
     color: black; /* 원하는 색상으로 설정 */
 }
 
-a:hover {
+#main_page a:hover {
 	font-size: 16px;
 	background-color: black;
 	color: white;

@@ -28,7 +28,7 @@
 			<hr>
 			<div id="box">
 				<div class="leftbox">
-					<div id="g_img"><img alt="이미지" src="/resources/upload/${gvo.group_img}"> </div>
+					<div id="g_img"><img style="width: 100%; height: 100%; object-fit: contain;" alt="이미지" src="/resources/upload/${gvo.group_img}"> </div>
 					<div id="g_des">${gvo.group_des}</div>
 				</div>
 				<div class="rightbox">

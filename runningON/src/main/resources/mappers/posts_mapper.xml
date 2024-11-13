@@ -48,7 +48,7 @@
 		select count(*) from likes where post_idx = #{post_idx}
 	</select>
 	<delete id="deletePlike" parameterType="lvo">
-		delete from likes where user_id = #{user_id} and post_idx = #{post_idx}
+		delete from likes where user_id = #{user_id} and post_idx = #{post_idx};
 	</delete>
 	<select id="checkPlike" resultType="int">
         select count(*)
@@ -57,7 +57,20 @@
     </select>
     <update id="updatePlike" parameterType="String">
     	update posts
-		set post_likes = (select count(*) from likes where post_idx = #{post_idx}) where post_idx = #{post_idx}
+		set post_likes = (select count(*) from likes where post_idx = #{post_idx}) 
+		where post_idx = #{post_idx};
+    </update>
+    <update id="update_post_is_hot_set">
+	    	update posts
+			set post_is_hot = 1
+			where post_likes >= 10;
+    </update>
+    <update id="update_post_is_hot_reset">
+	    	update posts
+			set post_is_hot = 0
+			<![CDATA[
+				where post_likes < 10;
+	       	]]>
     </update>
 	<insert id="insertPdislike" parameterType="dlvo">
 		insert into dislikes(user_id, post_idx, dislike_created_at)

@@ -54,7 +54,17 @@ public class LikesDAOImpl implements LikesDAO{
 
 	@Override
 	public int postUpdateLike(String post_idx) {
-		return sqlSessionTemplate.selectOne("posts.updatePlike", post_idx);
+		return sqlSessionTemplate.update("posts.updatePlike", post_idx);
+	}
+	
+	@Override
+	public int postUpdatePostIsHotSet() {
+		return sqlSessionTemplate.update("posts.update_post_is_hot_set");
+	}
+	
+	@Override
+	public int postUpdatePostIsHotReset() {
+		return sqlSessionTemplate.update("posts.update_post_is_hot_reset");
 	}
 
 	@Override

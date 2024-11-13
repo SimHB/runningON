@@ -53,4 +53,14 @@ public class BoardsDAOImpl implements BoardsDAO{
 		
 		return sqlSessionTemplate.selectList("boards.groupPageList", map);
 	}
+	// 페이징 처리을 위한 리스트(Hot 게시글)
+		@Override
+		public List<PostsVO> getHotPostsList(int offset, int limit, String desc) {
+			Map<String, Object> map = new HashMap<>();
+			map.put("limit", limit);
+			map.put("offset", offset);
+			map.put("desc", desc);
+			
+			return sqlSessionTemplate.selectList("boards.hotPageList", map);
+	}
 }

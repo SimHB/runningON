@@ -285,7 +285,19 @@ public class PostsController {
 		}else {
 			int addPlike = likesService.postAddLike(lvo);
 		}
+		System.out.println("좋아요 업데이트 전");
 		int updatePlike = likesService.postUpdateLike(post_idx);
+		System.out.println("thread 전");
+		try {
+			Thread.sleep(1000);
+			System.out.println("thread 후");
+		} catch (InterruptedException e) {
+			System.out.println(e);
+		}
+		System.out.println("is_hot 전");
+		int update_post_is_hot_set = likesService.postUpdatePostIsHotSet();
+		int update_post_is_hot_reset = likesService.postUpdatePostIsHotReset();
+		System.out.println("is_hot 후");
 		return mv;
 	}
 	@PostMapping("/post_dislike")

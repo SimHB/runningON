@@ -8,6 +8,10 @@ body{
 	width:50px;
 }
 
+#mainpage{
+	left: 300px;
+}
+
 #board_body{
 	width: 80%; /* 전체의 나머지 80% 너비로 설정 */
 	padding-top: 10px;

@@ -58,6 +58,15 @@ public class LikesServiceImpl implements LikesService{
 	}
 
 	@Override
+	public int postUpdatePostIsHotSet() {
+		return likesDAO.postUpdatePostIsHotSet();
+	}
+	
+	public int postUpdatePostIsHotReset() {
+		return likesDAO.postUpdatePostIsHotReset();
+	}
+
+	@Override
 	public int postAddDislike(DislikesVO dlvo) {
 		return likesDAO.postAddDislike(dlvo);
 	}

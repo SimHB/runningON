@@ -36,7 +36,12 @@ public class BoardsAjaxController {
 
 	    // 1. 전체 게시물 수 가져오기 및 페이징 설정(index로 부터 받은 board_idx에 해당하는 게시판의 게시글)(자유게시판 기준으로 예시)
 	    // 해당 게시판에 대한 게시글 갯수 가져와 count에 저장 == 14
-	    int count = boardsService.getTotalCount(board_idx);
+	    int count = 0;
+	    if(board_idx.equals("2")) {
+	    	count = boardsService.getTotalCount(board_idx);
+	    }else {
+	    	count = boardsService.getTotalCount(board_idx);
+	    }
 	    // TotalRecord에 count 저장
 	    paging.setTotalRecord(count);
 	    // 만약 불러온 게시글 수가 페이지당 최대 게시글 수(5개) 보다 적다면
@@ -79,9 +84,17 @@ public class BoardsAjaxController {
 	    // DB에서 데이터 가져오기(러닝모임게시판일 때)
 	    System.out.println("board_idx : " + board_idx);
 	    if(board_idx.equals("5")) {
-	    	System.out.println("groub : board_idx : " + board_idx);
+	    	System.out.println("group : board_idx : " + board_idx);
 	    	List<RunGroupsVO> list = boardsService.getRunGroupsList(paging.getOffset(), paging.getNumPerPage(),
 	    			board_idx, desc);
+	    	
+	    	map.put("list", list);
+	    	map.put("paging", paging);
+	    	return map;
+	    }else if(board_idx.equals("2")) {
+	    	System.out.println("post : board_idx : " + board_idx);
+	    	List<PostsVO> list = boardsService.getHotPostsList(paging.getOffset(), paging.getNumPerPage(),
+	    			desc);
 	    	
 	    	map.put("list", list);
 	    	map.put("paging", paging);

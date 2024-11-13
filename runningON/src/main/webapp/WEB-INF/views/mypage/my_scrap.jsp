@@ -9,6 +9,7 @@
     <title>프로필 및 게시글 목록</title>
     <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
     <link href="/resources/KGW/css/thumbs2.css" rel="stylesheet">
+    <link href="/resources/KGW/css/thumbs.css" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/top.jsp" />

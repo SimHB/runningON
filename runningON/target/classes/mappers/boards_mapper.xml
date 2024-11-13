@@ -17,6 +17,9 @@
 			<when test="board_idx == 5">
 				select count(*) from rungroups where board_idx = #{board_idx};
 			</when>
+			<when test="board_idx == 2">
+				select count(*) from posts where post_is_hot = "1";
+			</when>
 			<otherwise>
 				select count(*) from posts where board_idx = #{board_idx};
 			</otherwise>
@@ -60,4 +63,19 @@
 		LIMIT #{limit} OFFSET #{offset};
 	</select>
 	
+	<select id="hotPageList" parameterType="Map" resultType="pvo">
+		SELECT p.*, u.user_name 
+		FROM posts p
+		JOIN users u ON p.user_id = u.user_id
+		WHERE p.post_is_hot = "1"
+		<choose>
+			<when test="desc == 'post_views'">
+				ORDER BY p.post_views DESC
+			</when>
+			<otherwise>
+				ORDER BY p.post_idx DESC
+			</otherwise>
+		</choose>
+		LIMIT #{limit} OFFSET #{offset};
+	</select>
 </mapper>

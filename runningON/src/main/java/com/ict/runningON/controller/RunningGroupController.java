@@ -113,9 +113,8 @@ public class RunningGroupController {
 		ModelAndView mv = new ModelAndView("redirect:/join_main?group_idx=" + group_idx);
 		// RunGroupsVO gvo = rungroupsService.getgvo(15);
 		Group_joinVO gjvo = new Group_joinVO();
-		// UsersVO uvo = (UsersVO) session.getAttribute("uvo");
-        // String user_id = uvo.getUser_id();
-		String user_id = "test2";
+		UsersVO uvo = (UsersVO) session.getAttribute("uvo");
+		String user_id = uvo.getUser_id();
 		gjvo.setUser_id(user_id);
 		gjvo.setGroup_idx(group_idx);
 		int resutl = rungroupsService.GroupJoinInsert(gjvo);

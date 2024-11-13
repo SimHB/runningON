@@ -9,7 +9,7 @@
 <title>프로필 편집</title>
 <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
 <link href="/resources/KGW/css/thumbs1.css" rel="stylesheet">
-
+<link href="/resources/KGW/css/thumbs.css" rel="stylesheet">
 </head>
 <body class="body">
 	<jsp:include page="/WEB-INF/views/top.jsp" />
@@ -30,23 +30,23 @@
 			        </c:when>
 			        <c:otherwise>
 			            <div class="circle">
-			                <a href="#">
-			                <img id="profileImg" src="/resources/upload/${k.user_profileImg}" ></a>
+			                <img id="profileImg" src="/resources/upload/${k.user_profileImg}" >
 			            </div>
 			        </c:otherwise>
 			    </c:choose>
-					<b style="text-align: center;">${k.user_profileImg}</b><br>
+					<%-- <b style="text-align: center;">${k.user_profileImg}</b><br> --%>
 			    <div>
 			      <button onclick="openFilePicker()">사진변경</button>
 			      <button onclick="resetImage()">삭제</button>
 			    </div>
 			    <div>현재 별명 : <span id="currentNickname">${k.user_nickName}</span></div>
 			  </div>
+			  
 			  <div class="nickname">
-			    <div class="title">별명</div>
-			    <input type="text" id="nicknameInput" placeholder="별명을 입력하세요">
-			    <div>
-			      <button onclick="updateNickname()">별명변경</button>
+                <div class="title" style="width: 80px">별명</div>
+                <input type="text" id="nicknameInput" placeholder="별명을 입력하세요">
+                <div style="width: 100px; margin-left: 20px;">
+			      <button style="width: max-content;" onclick="updateNickname()">별명변경</button>
 			    </div>
 			  </div>
 			  <div class="buttons">

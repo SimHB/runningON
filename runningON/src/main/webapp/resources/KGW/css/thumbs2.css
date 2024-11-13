@@ -30,13 +30,12 @@ body{
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    margin-right: 20px;
 }
 .profile-info {
+	margin-left: 20px;
     line-height: 1.6;
 }
 .profile-info h2 {
-    margin: 0;
     font-size: 20px;
 }
 .profile-info span {
@@ -45,6 +44,7 @@ body{
 }
 .tabs {
     display: flex;
+    width: 100%;
     margin-bottom: 20px;
 }
 .tabs a {
@@ -58,10 +58,16 @@ body{
     color: green;
     border-bottom: 2px solid green;
 }
+form{
+    width: 100%;
+}
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+}
+table h3{
+    text-align: center;
 }
 th, td {
     border-bottom: 1px solid #ddd;

@@ -13,6 +13,8 @@ public interface LikesService {
 	public int postDeleteLike(LikesVO lvo);
 	public int postCountLike(String post_idx);
 	public int postUpdateLike(String post_idx);
+	public int postUpdatePostIsHotSet();
+	public int postUpdatePostIsHotReset();
 	public int postAddDislike(DislikesVO dlvo);
 	public int postCheckDislike(DislikesVO dlvo);
 	public int postDeleteDislike(DislikesVO dlvo);

@@ -124,7 +124,9 @@
 
 <table class="square-table">
     <tr>
-        <th colspan="2" class="merged" rowspan="2">프로필 이미지</th> <!-- 추가로 병합된 셀 -->
+    	<th colspan="2" class="merged" rowspan="2">
+    		<img alt="이미지 없음" src="/resources/upload/${userInfo.user_profileImg}">
+    	</th>
         <th>이름</th>
         <th colspan="3">${userInfo.user_name}</th>
     </tr>

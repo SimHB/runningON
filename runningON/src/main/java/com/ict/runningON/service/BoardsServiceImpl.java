@@ -39,4 +39,9 @@ public class BoardsServiceImpl implements BoardsService{
     public List<RunGroupsVO> getRunGroupsList(int offset, int limit, String board_idx, String desc) {
 		return boardsDAO.getRunGroupsList(offset, limit, board_idx, desc);
 	}
+	// 페이징 처리을 위한 리스트(Hot 게시글)
+	@Override
+	public List<PostsVO> getHotPostsList(int offset, int limit, String desc) {
+		return boardsDAO.getHotPostsList(offset, limit, desc);
+	}
 }

@@ -32,9 +32,8 @@ public class BoardsController {
 	// 게시판 페이지
 	@GetMapping("/board")
 	public ModelAndView getBoard(@RequestParam("board_idx") String board_idx, HttpSession session) {
-		ModelAndView mv = new ModelAndView("boards/board");
-		
 		try {
+			ModelAndView mv = new ModelAndView("boards/board");
 			BoardsVO bvo = boardsService.getBoardInfo(board_idx);
 			UsersVO uvo = loginService.LoginChk((String) session.getAttribute("user_id"));
 			

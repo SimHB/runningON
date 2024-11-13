@@ -11,6 +11,7 @@
 
 <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
 <link href="/resources/KGW/css/thumbs8.css" rel="stylesheet">
+<link href="/resources/KGW/css/thumbs.css" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/top.jsp" />
@@ -22,7 +23,7 @@
 		<form method="post" action="/msg_write_ok">
 			<label for="recipients">받는 사람</label> <input type="text"
 				id="recipients" name="msg_receiver_id" value="${rewrite}"
-				placeholder="여러 명은 쉼표(,) 또는 세미콜론(;)구분(최대10명)" maxlength="100" required>
+				placeholder="받는 사람 ID" maxlength="100" required>
 			<input type="text" name="msg_subject" placeholder="제목" required>
 			<textarea id="message" name="msg_content" placeholder="쪽지 내용을 입력하세요..."
 				maxlength="1000"></textarea>

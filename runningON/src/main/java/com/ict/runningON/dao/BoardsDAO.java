@@ -21,4 +21,7 @@ public interface BoardsDAO {
     
     // 페이징 처리을 위한 리스트(러닝그룹)
     public List<RunGroupsVO> getRunGroupsList(int offset, int limit, String board_idx, String desc);
+    
+    // 페이징 처리을 위한 리스트(Hot게시판)
+	public List<PostsVO> getHotPostsList(int offset, int limit, String desc);
 }
