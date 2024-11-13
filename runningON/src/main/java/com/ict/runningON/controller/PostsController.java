@@ -91,9 +91,10 @@ public class PostsController {
 	    // 게시글 내용에 로그인 정보 넣기
 	    if(session.getAttribute("uvo") != null) {
 	    	UsersVO uvo = (UsersVO) session.getAttribute("uvo");
-	    	String user_id = uvo.getUser_id();
-	    	UsersVO uservo = mypageService.getMyInfo(user_id);
-	    	mv.addObject("uvo", uservo);
+	        String user_id = pvo.getUser_id();
+	        UsersVO uservo = mypageService.getMyInfo(user_id);
+	        uservo.setUser_id(uvo.getUser_id());
+	        mv.addObject("uvo", uservo);
 	    }
 		mv.addObject("pvo", pvo);
 		mv.addObject("clist", clist);
