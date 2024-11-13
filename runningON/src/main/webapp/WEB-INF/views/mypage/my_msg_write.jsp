@@ -27,7 +27,7 @@
 			<textarea id="message" name="msg_content" placeholder="쪽지 내용을 입력하세요..."
 				maxlength="1000"></textarea>
 
-			<div class="char-count" id="char-count">0 / 1000자</div>
+			<!-- <div class="char-count" id="char-count">0 / 1000자</div> -->
 
 			<div class="submit-button">
 				<input type="submit" value="보내기" >
@@ -35,7 +35,7 @@
 		</form>
 		</div>
 	</div>
-	<script>
+	<!-- <script>
 		document.addEventListener("DOMContentLoaded", function() {
 			const messageInput = document.getElementById('message');
 			const charCount = document.getElementById('char-count');
@@ -45,7 +45,7 @@
 				charCount.textContent = `${currentLength} / 1000자`;
 			});
 		});
-	</script>
+	</script> -->
 
 
 </body>

@@ -192,18 +192,20 @@ public class MypageController {
 	}
 	
 	@GetMapping("/my_msg_detail")
-	public ModelAndView my_msg_detail(String msg_idx, HttpSession session) {
-		ModelAndView mv = new ModelAndView("mypage/my_msg_detail");
-		MessagesVO list = mypageService.getOneMsg(msg_idx);
-		mypageService.readMsg(msg_idx);
-		mv.addObject("list", list);
-		UsersVO uvo = (UsersVO) session.getAttribute("uvo");
-		String user_id = uvo.getUser_id();
-		int num = mypageService.getMsgNum(user_id);
-		session.setAttribute("msg", num);
-		return mv;
-		
-	}
+    public ModelAndView my_msg_detail(String msg_idx, HttpSession session, String count) {
+        ModelAndView mv = new ModelAndView("mypage/my_msg_detail");
+        MessagesVO list = mypageService.getOneMsg(msg_idx);
+        mv.addObject("list", list);
+        UsersVO uvo = (UsersVO) session.getAttribute("uvo");
+        String user_id = uvo.getUser_id();
+        if(count.equals("true")) {
+            mypageService.readMsg(msg_idx);
+            int num = mypageService.getMsgNum(user_id);
+            session.setAttribute("msg", num);
+        }
+        return mv;
+        
+    }
 	
 	@PostMapping("/my_info_update")
 	public ModelAndView updateProfile(

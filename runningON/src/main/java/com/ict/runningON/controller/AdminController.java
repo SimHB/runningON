@@ -27,15 +27,15 @@ public class AdminController {
 	
 	@GetMapping("/login")
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
-		
+		System.out.println("login Controller진입");
 		ModelAndView mv = new ModelAndView("/adminpage/login");
-		
+		System.out.println("login Controller반환");
 		return mv;
 	}
 	
 	@PostMapping("/loginAction")
 	public ModelAndView loginAction(HttpServletRequest request, HttpServletResponse response) {
-		
+		System.out.println("loginActoin Controller진입");
 		String admin_id = request.getParameter("id");
 		System.out.println(admin_id);
 		
@@ -45,7 +45,7 @@ public class AdminController {
 		adminService.AdminLoginAction(request, response);
 		
 		ModelAndView mv = new ModelAndView("/adminpage/loginaction");
-		
+		System.out.println("loginActoin Controller반환");
 		return mv;
 	}
 	
@@ -67,9 +67,10 @@ public class AdminController {
 	}
 	
 	@GetMapping("/announcement")
-	public ModelAndView announcement(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView announcement(@ModelAttribute AdminVO vo, Model model) {
+		List<AdminVO> list = adminService.announcement();
+		model.addAttribute("list", list);
 		ModelAndView mv = new ModelAndView("/adminpage/announcement");
-		
 		return mv;
 	}
 	
@@ -83,7 +84,6 @@ public class AdminController {
 		return mv;
 	}
 	
-	// USER ID
 	@GetMapping("/user_information")
 	public ModelAndView user_information(@RequestParam("id")String user_id, Model model) {
 		AdminVO vo = new AdminVO();
@@ -113,9 +113,25 @@ public class AdminController {
 	}
 	
 	@GetMapping("/userboard")
-	public ModelAndView userboard(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView userboard(@ModelAttribute AdminVO vo, Model model) {
+		List<AdminVO> list = adminService.adminBoardList(vo);
+		model.addAttribute("boardList", list);
 		ModelAndView mv = new ModelAndView("/adminpage/userboard");
-		
+		return mv;
+	}
+	
+	@PostMapping("/boardHide")
+	public ModelAndView userBoardHide(@ModelAttribute AdminVO vo, Model model) {
+		int result = adminService.adminBoardHide(vo);
+		model.addAttribute("result", result);
+		ModelAndView mv = new ModelAndView("/adminpage/userboardHide");
+		return mv;
+	}
+	@PostMapping("/boardShow")
+	public ModelAndView userBoardShow(@ModelAttribute AdminVO vo, Model model) {
+		int result = adminService.adminBoardShow(vo);
+		model.addAttribute("result", result);
+		ModelAndView mv = new ModelAndView("/adminpage/userboardHide");
 		return mv;
 	}
 	

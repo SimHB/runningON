@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ict.runningON.vo.AdminVO;
 
-// DB
+// DB 와 연결이되는 클래스라고 알려주는 것
 @Repository
 public class AdminDAOImpl implements AdminDAO{
 	
@@ -17,7 +17,7 @@ public class AdminDAOImpl implements AdminDAO{
 	
 	@Override
 	public AdminVO AdminLoginAcion(AdminVO vo) {
-		
+		System.out.println(vo.getUser_id() + "이거 DAO vo임");
 		AdminVO adminLoginVo = sqlSessionTemplate.selectOne("admin.AdminLoginAcion", vo);
 		return adminLoginVo;
 	}
@@ -40,6 +40,26 @@ public class AdminDAOImpl implements AdminDAO{
 	@Override
 	public List<AdminVO> adminUserSearchList(AdminVO vo) {
 		return sqlSessionTemplate.selectList("admin.adminUserSearchList", vo);
+	}
+
+	@Override
+	public List<AdminVO> adminBoardList(AdminVO vo) {
+		return sqlSessionTemplate.selectList("admin.adminBoardList", vo);
+	}
+
+	@Override
+	public int adminBoardHide(AdminVO vo) {
+		return sqlSessionTemplate.update("admin.adminBoardHide", vo);
+	}
+
+	@Override
+	public int adminBoardShow(AdminVO vo) {
+		return sqlSessionTemplate.update("admin.adminBoardShow", vo);
+	}
+
+	@Override
+	public List<AdminVO> announcement() {
+		return sqlSessionTemplate.selectList("admin.announcement");
 	}
 
 

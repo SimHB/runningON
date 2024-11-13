@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -303,28 +304,14 @@ body {
 					</tr>
 				</thead>
 				<tbody>
-					<tr onclick="location.href='#';" style="cursor: pointer;">
-						<td>1</td>
-						<td>XX월 제재명단 업데이트 진행관련 공지사항</td>
-						<td>XX월XX일</td>
-						<td>관리자1</td>
+					<c:forEach var="board" items="${list}" varStatus="status">
+					<tr>
+						<td>${status.index + 1}</td>
+						<td>${board.post_title}</td>
+						<td>${board.post_created_at}</td>
+						<td>${board.user_id}</td>
 					</tr>
-				</tbody>
-				<tbody>
-					<tr onclick="location.href='#';" style="cursor: pointer;">
-						<td>2</td>
-						<td>XX월 제재명단 업데이트 진행관련 공지사항</td>
-						<td>XX월XX일</td>
-						<td>관리자2</td>
-					</tr>
-				<tbody>
-					<tr onclick="location.href='#';" style="cursor: pointer;">
-						<td>3</td>
-						<td>XX월 제재명단 업데이트 진행관련 공지사항</td>
-						<td>XX월XX일</td>
-						<td>관리자3</td>
-					</tr>
-				</tbody>
+					</c:forEach>
 				</tbody>
 			</table>
 

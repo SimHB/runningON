@@ -38,7 +38,7 @@
 		<c:otherwise>
 			<c:forEach var="k" items="${list}" varStatus="c">
 			<tr>
-				<td class="message-title"><a href="/my_msg_detail?msg_idx=${k.msg_idx}">${k.msg_subject}</a></td>
+				<td class="message-title"><a href="/my_msg_detail?msg_idx=${k.msg_idx}&count=false">${k.msg_subject}</a></td>
 				<td>${k.msg_receiver_id}</td>
 				<td>${k.msg_sent_at }</td>
 			</tr>

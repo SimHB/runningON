@@ -37,7 +37,11 @@
 		<c:otherwise>
 			<c:forEach var="k" items="${list}" varStatus="c">
 			<tr>
-				<td class="message-title"><a href="/my_msg_detail?msg_idx=${k.msg_idx}">${k.msg_subject}</a></td>
+				<td class="message-title"><a href="/my_msg_detail?msg_idx=${k.msg_idx}&count=true">${k.msg_subject}</a>
+                    <c:if test="${k.msg_is_read == 0}">
+                        <span style="color: red;">NEW</span>
+                    </c:if>
+                </td>
 				<td>${k.msg_sender_id}</td>
 				<td>${k.msg_sent_at }</td>
 			</tr>

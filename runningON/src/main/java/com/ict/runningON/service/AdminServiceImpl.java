@@ -27,7 +27,7 @@ public class AdminServiceImpl implements AdminService{
 		adminLoginVO.setUser_rank("admin");
 		
 		AdminVO resultAdminLoginVO = adminDAO.AdminLoginAcion(adminLoginVO);
-		
+		System.out.println(resultAdminLoginVO.getUser_id());
 		if (resultAdminLoginVO != null) {
 			session.setAttribute("adminVO", resultAdminLoginVO);
 		}
@@ -52,6 +52,26 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public List<AdminVO> adminUserSearchList(AdminVO vo) {
 		return adminDAO.adminUserSearchList(vo);
+	}
+
+	@Override
+	public List<AdminVO> adminBoardList(AdminVO vo) {
+		return adminDAO.adminBoardList(vo);
+	}
+
+	@Override
+	public int adminBoardHide(AdminVO vo) {
+		return adminDAO.adminBoardHide(vo);
+	}
+
+	@Override
+	public int adminBoardShow(AdminVO vo) {
+		return adminDAO.adminBoardShow(vo);
+	}
+
+	@Override
+	public List<AdminVO> announcement() {
+		return adminDAO.announcement();
 	}
 
 

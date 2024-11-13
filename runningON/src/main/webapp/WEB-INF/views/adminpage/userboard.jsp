@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -292,35 +293,35 @@
                 <thead>
                     <tr>
                         <th>번호</th>
-                        <th>카테고리</th>
                         <th>제목</th>
                         <th>작성자</th>
                         <th>조회수</th>
-                        <th>좋아요</th>
                         <th>작성일</th>
+                        <th>숨김상태</th>
+                        <th>숨기기</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr onclick="location.href='/user_board_1';" style="cursor: pointer;">
-                        <td>1</td>
-                        <td>자유게시판</td>
-                        <td>코스 관련 질문입니다</td>
-                        <td>런닝맨</td>
-                        <td>77</td>
-                        <td>77</td>
-                        <td>20XX. X. X</td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr onclick="location.href='/user_board_1';" style="cursor: pointer;">
-                        <td>2</td>
-                        <td>HOT게시판</td>
-                        <td>운동하면서 듣기좋은 추천리스트 목록</td>
-                        <td>런닝맨9</td>
-                        <td>61</td>
-                        <td>109</td>
-                        <td>20XX. X. X</td>
-                    </tr>
+                	<c:forEach var="board" items="${boardList}" varStatus="status">
+                		<tr>
+	                        <td>${status.index + 1}</td>
+	                        <td>${board.post_title}</td>
+	                        <td>${board.user_id}</td>
+	                        <td>${board.post_views}</td>
+	                        <td>${board.post_created_at}</td>
+	                        <td>${board.post_is_public}</td>
+	                       	<td>
+	                       		<form action="/boardHide" method="post">
+	                       			<input type="hidden" name="post_idx" value="${board.post_idx}"> 
+				                	<button type="submit">숨기기</button>
+            					</form>&nbsp;
+					            <form action="/boardShow" method="post">
+					            	<input type="hidden" name="post_idx" value="${board.post_idx}">
+					                <button type="submit">보이기</button>
+					            </form>
+					       </td>
+	                    </tr>
+                    </c:forEach>
                 </tbody>
             </table>
 
@@ -350,6 +351,7 @@
             // 다음 페이지 로직 구현
             alert("다음 페이지");
         }
+        
     </script>
 </body>
 </html>

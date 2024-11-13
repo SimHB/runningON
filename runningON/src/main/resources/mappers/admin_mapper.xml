@@ -23,4 +23,20 @@
 	<select id="adminUserSearchList" parameterType ="adv" resultType ="adv">
 		select * from users where user_rank = "user" AND user_id = #{userSearch}
 	</select>
+	
+	<select id="adminBoardList" parameterType ="adv" resultType ="adv">
+		select * from posts where board_idx != '1'
+	</select>
+	
+	<update id="adminBoardHide" parameterType ="adv">
+		UPDATE posts SET post_is_public = 0 WHERE post_idx = #{post_idx} 
+	</update>
+	
+	<update id="adminBoardShow" parameterType ="adv">
+		UPDATE posts SET post_is_public = 1 WHERE post_idx = #{post_idx} 
+	</update>
+	
+	<select id="announcement" resultType ="adv">
+		select * from posts where board_idx = '1'
+	</select>
 </mapper>

@@ -47,6 +47,13 @@ public class AdminVO {
 	, group_currentCount
 	, group_created_at;
 	
+	private String post_title
+	, post_content
+	, post_views
+	, post_created_at
+	, post_updated_at
+	, post_is_public;
+	
 	//검색 값 받는 변수
 	private String userSearch;
 
@@ -413,6 +420,54 @@ public class AdminVO {
 
 	public void setUserSearch(String userSearch) {
 		this.userSearch = userSearch;
+	}
+
+	public String getPost_title() {
+		return post_title;
+	}
+
+	public void setPost_title(String post_title) {
+		this.post_title = post_title;
+	}
+
+	public String getPost_content() {
+		return post_content;
+	}
+
+	public void setPost_content(String post_content) {
+		this.post_content = post_content;
+	}
+
+	public String getPost_views() {
+		return post_views;
+	}
+
+	public void setPost_views(String post_views) {
+		this.post_views = post_views;
+	}
+
+	public String getPost_created_at() {
+		return post_created_at;
+	}
+
+	public void setPost_created_at(String post_created_at) {
+		this.post_created_at = post_created_at;
+	}
+
+	public String getPost_updated_at() {
+		return post_updated_at;
+	}
+
+	public void setPost_updated_at(String post_updated_at) {
+		this.post_updated_at = post_updated_at;
+	}
+
+	public String getPost_is_public() {
+		return post_is_public;
+	}
+
+	public void setPost_is_public(String post_is_public) {
+		this.post_is_public = post_is_public;
 	}
 	
 }
